@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cardápio Arena</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="layout">
+
+<!-- MENU -->
+<div class="sidebar">
+<h2>🍔 Arena</h2>
+
+<button onclick="mostrar('pizzas')">🍕 Pizzas</button>
+<button onclick="mostrar('espetinhos')">🍢 Espetinhos</button>
+<button onclick="mostrar('cervejas')">🍺 Cervejas</button>
+<button onclick="mostrar('bebidas')">🥤 Bebidas</button>
+<button onclick="mostrar('porcoes')">🍟 Porções</button>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="conteudo">
+
+<div id="inicio" class="inicio">
+<h1>Bem-vindo à Arena São Francisco 🎾</h1>
+<p>Escolha uma categoria no menu ao lado.</p>
+</div>
+
+<div id="menu" class="menu"></div>
+
+</div>
+
+<!-- CARRINHO -->
+<div class="carrinho">
+<h2>🛒 Pedido</h2>
+
+<input type="text" id="nome" placeholder="Seu nome">
+
+<div id="carrinho"></div>
+
+<p>Total: R$ <span id="total">0</span></p>
+
+<button onclick="enviarPedido()">Enviar Pedido</button>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
