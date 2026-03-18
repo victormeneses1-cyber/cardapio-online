@@ -81,7 +81,7 @@ bebidas: [
 {nome:"Matte", preco:8},
 {nome:"Suco Del Valle", preco:8},
 {nome:"Powerade", preco:10.5}
-]
+],
 
 porcoes: [
 {
@@ -96,7 +96,7 @@ descricao:"Assado na brasa"
 },
 {
 nome:"Aipim 500g",
-preço:22,
+preco:22,
 descricao:"Porçao crocante"
 }
 ]
@@ -171,15 +171,6 @@ alert("Digite seu nome!")
 return
 }
 
-function removerItem(index){
-
-total -= carrinho[index].preco
-
-carrinho.splice(index, 1)
-
-renderCarrinho()
-}
-
 let mensagem = "Pedido Arena%0A%0A"
 mensagem += "Cliente: "+nomeCliente+"%0A"
 mensagem += "Itens:%0A"
@@ -191,4 +182,16 @@ mensagem += "- "+item+"%0A"
 mensagem += "%0ATotal: R$ "+total.toFixed(2)
 
 window.open("https://wa.me/5521968892544?text="+mensagem)
+
+
 }
+function removerItem(index){
+
+total -= carrinho[index].preco
+
+carrinho.splice(index, 1)
+
+renderCarrinho()
+
+}
+
