@@ -4,29 +4,101 @@ let total = 0
 const cardapio = {
 
 pizzas: [
-{nome:"Mussarela", preco:18, descricao:"Molho, queijo e orégano"},
-{nome:"Frango", preco:18, descricao:"Frango e catupiry"},
-{nome:"Calabresa", preco:18, descricao:"Calabresa e orégano"}
+{
+nome:"Mussarela",
+preco:18,
+descricao:"Molho, mussarela, tomate cereja e orégano"
+},
+{
+nome:"Frango com Catupiry",
+preco:18,
+descricao:"Molho, mussarela, frango, catupiry e orégano"
+},
+{
+nome:"Calabresa",
+preco:18,
+descricao:"Molho, mussarela, calabresa e orégano"
+},
+{
+nome:"Carne Seca",
+preco:18,
+descricao:"Molho, mussarela, carne seca, cebola e orégano"
+}
 ],
 
 espetinhos: [
-{nome:"Carne", preco:18, descricao:"Acompanha farofa e molho"},
-{nome:"Frango", preco:15, descricao:"Acompanha farofa e molho"},
-{nome:"Linguiça", preco:17, descricao:"Acompanha farofa e molho"}
+{
+nome:"Espetinho de Carne",
+preco:18,
+descricao:"Acompanha farofa e molho"
+},
+{
+nome:"Espetinho de Kafta",
+preco:18,
+descricao:"Acompanha farofa e molho"
+},
+{
+nome:"Espetinho de Coração",
+preco:18,
+descricao:"Acompanha farofa e molho"
+},
+{
+nome:"Espetinho de Lombo",
+preco:18,
+descricao:"Acompanha farofa e molho"
+},
+{
+nome:"Espetinho de Queijo Coalho",
+preco:18,
+descricao:"Acompanha farofa e molho"
+},
+{
+nome:"Espetinho de Frango",
+preco:15,
+descricao:"Acompanha farofa e molho"
+},
+{
+nome:"Espetinho de Linguiça",
+preco:17,
+descricao:"Acompanha farofa e molho"
+}
 ],
 
 cervejas: [
 {nome:"Corona", preco:13},
-{nome:"Heineken", preco:13}
+{nome:"Heineken", preco:13},
+{nome:"Stella Pure Gold", preco:13},
+{nome:"Therezópolis", preco:13},
+{nome:"Michelob", preco:13}
 ],
 
 bebidas: [
 {nome:"Coca-Cola", preco:8.5},
-{nome:"Água", preco:6}
-],
+{nome:"Sprite", preco:8.5},
+{nome:"Água com gás", preco:6.5},
+{nome:"Água sem gás", preco:6},
+{nome:"Ice Tea", preco:8},
+{nome:"Matte", preco:8},
+{nome:"Suco Del Valle", preco:8},
+{nome:"Powerade", preco:10.5}
+]
 
 porcoes: [
-{nome:"Batata Frita", preco:22}
+{
+nome:"Batata Frita 350g",
+preco:22,
+descricao:"Porção individual crocante"
+},
+{
+nome:"Pão de Alho",
+preco:6,
+descricao:"Assado na brasa"
+},
+{
+nome:"Aipim 500g",
+preço:22,
+descricao:"Porçao crocante"
+}
 ]
 
 }
