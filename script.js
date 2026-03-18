@@ -138,11 +138,28 @@ alert("Digite seu nome!")
 return
 }
 
-carrinho.push(nome)
+carrinho.push({nome, preco})
 total += preco
 
-document.getElementById("carrinho").innerHTML += "<p>"+nome+"</p>"
+renderCarrinho()
+}
+
+function renderCarrinho(){
+
+let carrinhoHTML = ""
+
+carrinho.forEach((item, index) => {
+carrinhoHTML += `
+<p>
+${item.nome} - R$ ${item.preco}
+<button onclick="removerItem(${index})">❌</button>
+</p>
+`
+})
+
+document.getElementById("carrinho").innerHTML = carrinhoHTML
 document.getElementById("total").innerText = total.toFixed(2)
+
 }
 
 function enviarPedido(){
@@ -152,6 +169,15 @@ let nomeCliente = document.getElementById("nome").value
 if(nomeCliente === ""){
 alert("Digite seu nome!")
 return
+}
+
+function removerItem(index){
+
+total -= carrinho[index].preco
+
+carrinho.splice(index, 1)
+
+renderCarrinho()
 }
 
 let mensagem = "Pedido Arena%0A%0A"
