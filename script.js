@@ -118,7 +118,7 @@ menu.innerHTML += `
 
 ${item.descricao ? `<p>${item.descricao}</p>` : ""}
 
-<p class="preco">R$ ${item.preco}</p>
+<p class="preco">R$ ${item.preco.toFixed(2)}</p>
 
 <button onclick="addItem('${item.nome}', ${item.preco})">
 Adicionar
@@ -151,7 +151,7 @@ let carrinhoHTML = ""
 carrinho.forEach((item, index) => {
 carrinhoHTML += `
 <p>
-${item.nome} - R$ ${item.preco}
+${item.nome} - R$ ${item.preco.toFixed(2)}
 <button onclick="removerItem(${index})">❌</button>
 </p>
 `
@@ -176,7 +176,7 @@ mensagem += "Cliente: "+nomeCliente+"%0A"
 mensagem += "Itens:%0A"
 
 carrinho.forEach(item=>{
-mensagem += "- "+item+"%0A"
+mensagem += "- "+item.nome+"%0A"
 })
 
 mensagem += "%0ATotal: R$ "+total.toFixed(2)
