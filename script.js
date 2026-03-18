@@ -181,6 +181,59 @@ mensagem += "- "+item.nome+"%0A"
 
 mensagem += "%0ATotal: R$ "+total.toFixed(2)
 
+let historico = JSON.parse(localStorage.getItem("pedidos")) || []
+
+historico.push({
+cliente: nomeCliente,
+itens: carrinho,
+total: total,
+data: new Date().toLocaleDateString()
+})
+
+localStorage.setItem("pedidos", JSON.stringify(historico))
+
+function verHistorico(){
+
+let historico = JSON.parse(localStorage.getItem("pedidos")) || []
+
+let tela = document.getElementById("menu")
+tela.innerHTML = "<h2>📋 Histórico de Pedidos</h2>"
+
+// AGRUPAR POR DATA
+let agrupado = {}
+
+historico.forEach(pedido => {
+
+if(!agrupado[pedido.data]){
+agrupado[pedido.data] = []
+}
+
+agrupado[pedido.data].push(pedido)
+
+})
+
+// MOSTRAR NA TELA
+for(let data in agrupado){
+
+tela.innerHTML += `<h2>📅 ${data}</h2>`
+
+agrupado[data].forEach(pedido => {
+
+tela.innerHTML += `
+<div class="card">
+<h3>${pedido.cliente}</h3>
+
+${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
+
+<p class="preco">Total: R$ ${pedido.total.toFixed(2)}</p>
+</div>
+`
+
+})
+
+}
+
+}
 window.open("https://wa.me/5521968892544?text="+mensagem)
 
 
