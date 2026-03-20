@@ -192,6 +192,19 @@ data: new Date().toLocaleDateString()
 
 localStorage.setItem("pedidos", JSON.stringify(historico))
 
+
+window.open("https://wa.me/5521968892544?text="+mensagem)
+
+
+}
+function removerItem(index){
+
+total -= carrinho[index].preco
+
+carrinho.splice(index, 1)
+
+renderCarrinho()
+
 function verHistorico(){
 
 let historico = JSON.parse(localStorage.getItem("pedidos")) || []
@@ -212,7 +225,7 @@ agrupado[pedido.data].push(pedido)
 
 })
 
-// MOSTRAR NA TELA
+// MOSTRAR
 for(let data in agrupado){
 
 tela.innerHTML += `<h2>📅 ${data}</h2>`
@@ -234,17 +247,5 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 }
 
 }
-window.open("https://wa.me/5521968892544?text="+mensagem)
-
-
-}
-function removerItem(index){
-
-total -= carrinho[index].preco
-
-carrinho.splice(index, 1)
-
-renderCarrinho()
-
 }
 
