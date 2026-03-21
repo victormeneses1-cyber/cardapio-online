@@ -97,12 +97,13 @@ descricao:"Assado na brasa"
 {
 nome:"Aipim 500g",
 preco:22,
-descricao:"Porçao crocante"
+descricao:"Porção crocante"
 }
 ]
 
 }
 
+// MOSTRAR PRODUTOS
 function mostrar(categoria){
 
 document.getElementById("inicio").style.display = "none"
@@ -129,6 +130,7 @@ Adicionar
 })
 }
 
+// ADICIONAR ITEM
 function addItem(nome, preco){
 
 let nomeCliente = document.getElementById("nome").value
@@ -144,6 +146,7 @@ total += preco
 renderCarrinho()
 }
 
+// RENDERIZAR CARRINHO
 function renderCarrinho(){
 
 let carrinhoHTML = ""
@@ -162,6 +165,16 @@ document.getElementById("total").innerText = total.toFixed(2)
 
 }
 
+// REMOVER ITEM
+function removerItem(index){
+
+total -= carrinho[index].preco
+carrinho.splice(index, 1)
+
+renderCarrinho()
+}
+
+// ENVIAR PEDIDO
 function enviarPedido(){
 
 let nomeCliente = document.getElementById("nome").value
@@ -181,6 +194,7 @@ mensagem += "- "+item.nome+"%0A"
 
 mensagem += "%0ATotal: R$ "+total.toFixed(2)
 
+// SALVAR HISTÓRICO
 let historico = JSON.parse(localStorage.getItem("pedidos")) || []
 
 historico.push({
@@ -192,19 +206,17 @@ data: new Date().toLocaleDateString()
 
 localStorage.setItem("pedidos", JSON.stringify(historico))
 
-
-window.open("https://wa.me/5521968892544?text="+mensagem)
-
-
-}
-function removerItem(index){
-
-total -= carrinho[index].preco
-
-carrinho.splice(index, 1)
-
+// LIMPAR CARRINHO
+carrinho = []
+total = 0
 renderCarrinho()
 
+// ENVIAR WHATSAPP
+window.open("https://wa.me/5521968892544?text="+mensagem)
+
+}
+
+// HISTÓRICO
 function verHistorico(){
 
 let historico = JSON.parse(localStorage.getItem("pedidos")) || []
@@ -247,5 +259,5 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 }
 
 }
-}
-conole.log("JS OK"
+
+console.log("JS OK 🔥")
