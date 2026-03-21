@@ -273,4 +273,4 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 
 }
 
-
+}
