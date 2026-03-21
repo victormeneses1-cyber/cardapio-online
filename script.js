@@ -174,6 +174,11 @@ carrinho.splice(index, 1)
 renderCarrinho()
 }
 
+function voltarInicio(){
+document.getElementById("menu").innerHTML = ""
+document.getElementById("inicio").style.display = "block"
+}
+
 // ENVIAR PEDIDO
 function enviarPedido(){
 
@@ -219,10 +224,25 @@ window.open("https://wa.me/5521968892544?text="+mensagem)
 // HISTÓRICO
 function verHistorico(){
 
+document.getElementById("inicio").style.display = "none"
+
 let historico = JSON.parse(localStorage.getItem("pedidos")) || []
 
 let tela = document.getElementById("menu")
-tela.innerHTML = "<h2>📋 Histórico de Pedidos</h2>"
+
+tela.innerHTML = `
+<div class="historico-container">
+
+<button onclick="voltarInicio()" class="btn-voltar">⬅ Voltar</button>
+
+<h1>📋 Histórico de Pedidos</h1>
+
+<div id="listaHistorico"></div>
+
+</div>
+`
+
+let lista = document.getElementById("listaHistorico")
 
 // AGRUPAR POR DATA
 let agrupado = {}
@@ -237,14 +257,14 @@ agrupado[pedido.data].push(pedido)
 
 })
 
-// MOSTRAR
+// MOSTRAR BONITO
 for(let data in agrupado){
 
-tela.innerHTML += `<h2>📅 ${data}</h2>`
+lista.innerHTML += `<h2>📅 ${data}</h2>`
 
 agrupado[data].forEach(pedido => {
 
-tela.innerHTML += `
+lista.innerHTML += `
 <div class="card">
 <h3>${pedido.cliente}</h3>
 
@@ -259,5 +279,3 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 }
 
 }
-
-console.log("JS OK 🔥")
