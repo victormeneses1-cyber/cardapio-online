@@ -248,4 +248,4 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 
 }
 }
-
+conole.log("JS OK"
