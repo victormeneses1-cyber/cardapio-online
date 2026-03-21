@@ -109,22 +109,25 @@ width: 300px;
 max-width: 90%;
 }
 
-#menu {
-display: flex;
-flex-direction: column;
-align-items: center; /* CENTRALIZA */
-justify-content: center;
-width: 100%;
-}
-
-/* TÍTULO DO HISTÓRICO */
-#menu h2 {
-text-align: center;
-margin-top: 20px;
-}
-
-/* CARDS CENTRALIZADOS */
 #menu .card {
-width: 300px;
-max-width: 90%;
+width:300px;
+max0widh: 90%;
+margin: 10px;
+padding: 15px;
+border-radius: 12px;
+background: rgba(22,27,34,0.95);
+box-shadow: 0 0 15pc rgba(0,0,0,0.7);
 }
+
+.card {
+opacity: 0;
+transform: tranLateY(20px);
+animation: aparecer 0.4s ease fowards;
+}
+@keyframes aparecer {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
