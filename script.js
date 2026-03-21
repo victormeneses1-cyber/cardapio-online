@@ -272,25 +272,5 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 })
 
 }
-// MOSTRAR BONITO
-for(let data in agrupado){
 
-lista.innerHTML += `<h2>📅 ${data}</h2>`
 
-agrupado[data].forEach(pedido => {
-
-lista.innerHTML += `
-<div class="card">
-<h3>${pedido.cliente}</h3>
-
-${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
-
-<p class="preco">Total: R$ ${pedido.total.toFixed(2)}</p>
-</div>
-`
-
-})
-
-}
-
-}
