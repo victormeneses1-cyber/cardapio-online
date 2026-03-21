@@ -244,19 +244,34 @@ tela.innerHTML = `
 
 let lista = document.getElementById("listaHistorico")
 
-// AGRUPAR POR DATA
 let agrupado = {}
 
 historico.forEach(pedido => {
-
 if(!agrupado[pedido.data]){
 agrupado[pedido.data] = []
 }
-
 agrupado[pedido.data].push(pedido)
+})
+
+for(let data in agrupado){
+
+lista.innerHTML += `<h2>📅 ${data}</h2>`
+
+agrupado[data].forEach(pedido => {
+
+lista.innerHTML += `
+<div class="card">
+<h3>${pedido.cliente}</h3>
+
+${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
+
+<p class="preco">Total: R$ ${pedido.total.toFixed(2)}</p>
+</div>
+`
 
 })
 
+}
 // MOSTRAR BONITO
 for(let data in agrupado){
 
