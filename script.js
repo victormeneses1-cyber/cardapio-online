@@ -74,12 +74,12 @@ cervejas: [
 ],
 
 bebidas: [
-{nome:"Coca-Cola", preco:8.5},
-{nome:"Sprite", preco:8.5},
-{nome:"Água com gás", preco:6.5},
-{nome:"Água sem gás", preco:6},
-{nome:"Ice Tea", preco:8},
-{nome:"Matte", preco:8},
+{nome:"Coca-Cola", preco:8.5, img:"coca_cola.jpeg"},
+{nome:"Sprite", preco:8.5, img:"sprite.jpeg"},
+{nome:"Água com gás", preco:6.5, img:"agua_com_gas.jpeg"},
+{nome:"Água sem gás", preco:6, img:"agua_sem_gas.jpeg"},
+{nome:"Ice Tea", preco:8, img:"ice_tea.jpeg"},
+{nome:"Matte", preco:8, img:"matte_original.jpeg"},
 {nome:"Suco Del Valle",
 preco:8,
 opcoes:[
