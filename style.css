@@ -111,18 +111,18 @@ max-width: 90%;
 
 #menu .card {
 width:300px;
-max0widh: 90%;
+max-widh: 90%;
 margin: 10px;
 padding: 15px;
 border-radius: 12px;
 background: rgba(22,27,34,0.95);
-box-shadow: 0 0 15pc rgba(0,0,0,0.7);
+box-shadow: 0 0 15px rgba(0,0,0,0.7);
 }
 
 .card {
 opacity: 0;
-transform: tranLateY(20px);
-animation: aparecer 0.4s ease fowards;
+transform: transLateY(20px);
+animation: aparecer 0.4s ease forwards;
 }
 @keyframes aparecer {
 to {
