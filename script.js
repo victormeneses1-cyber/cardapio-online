@@ -80,8 +80,25 @@ bebidas: [
 {nome:"Água sem gás", preco:6},
 {nome:"Ice Tea", preco:8},
 {nome:"Matte", preco:8},
-{nome:"Suco Del Valle", preco:8},
-{nome:"Powerade", preco:10.5}
+{nome:"Suco Del Valle",
+preco:8,
+opcoes:[
+{nome:"Pêssego", img:"delvalle_pessego.jpeg"},
+{nome:"Manga", img:"delvalle_manga.jpeg"},
+{nome:"Maracujá", img:"delvalle_maracuja.jpeg"}
+]
+},
+
+{nome:"Powerade",
+preco:10.5,
+opcoes:[
+{nome:"Laranja", img:"powerade_laranja.jpeg"},
+{nome:"Tangerina", img:"powerade_tangerina.jpeg"},
+{nome:"Uva", img:"powerade_uva.jpeg"},
+{nome:"Frutas Tropicais", img:"powerade_tropical.jpeg"},
+{nome:"Mix de Frutas", img:"powerade_mix.jpeg"}
+]
+}
 ],
 
 porcoes: [
@@ -123,15 +140,45 @@ ${item.descricao ? `<p>${item.descricao}</p>` : ""}
 
 <p class="preco">R$ ${item.preco.toFixed(2)}</p>
 
-<button onclick="addItem('${item.nome}', ${item.preco})">
-Adicionar
-</button>
+${item.opcoes 
+? `<button onclick="mostrarOpcoes('${categoria}', '${item.nome}')">Escolher</button>`
+: `<button onclick="addItem('${item.nome}', ${item.preco})">Adicionar</button>`
+}
 
 </div>
 `
 })
 }
 
+function mostrarOpcoes(categoria, nomeProduto){
+
+let produto = cardapio[categoria].find(item => item.nome === nomeProduto)
+
+let menu = document.getElementById("menu")
+menu.innerHTML = `
+<button onclick="mostrar('${categoria}')">⬅ Voltar</button>
+<h2>${produto.nome}</h2>
+`
+
+produto.opcoes.forEach(op => {
+menu.innerHTML += `
+<div class="card">
+
+${op.img ? `<img src="${op.img}" style="width:100%; height:150px; object-fit:cover; border-radius:10px;">` : ""}
+
+<h3>${op.nome}</h3>
+
+<p class="preco">R$ ${produto.preco.toFixed(2)}</p>
+
+<button onclick="addItem('${produto.nome} - ${op.nome}', ${produto.preco})">
+Adicionar
+</button>
+
+</div>
+`
+})
+
+}
 // ADICIONAR ITEM
 function addItem(nome, preco){
 
