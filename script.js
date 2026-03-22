@@ -95,7 +95,7 @@ opcoes:[
 {nome:"Laranja", img:"powerade_laranja.jpeg"},
 {nome:"Tangerina", img:"powerade_tangerina.jpeg"},
 {nome:"Uva", img:"powerade_uva.jpeg"},
-{nome:"Frutas Tropicais", img:"powerade_tropical.jpeg"},
+{nome:"Frutas Tropicais", img:"powerade_frutas.jpeg"},
 {nome:"Mix de Frutas", img:"powerade_mix.jpeg"}
 ]
 }
