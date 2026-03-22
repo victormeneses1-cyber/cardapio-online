@@ -22,7 +22,8 @@ descricao:"Molho, mussarela, calabresa e orégano"
 {
 nome:"Carne Seca",
 preco:18,
-descricao:"Molho, mussarela, carne seca, cebola e orégano"
+descricao:"Molho, mussarela, carne seca, cebola e orégano",
+img: "brotinho_de_carne_seca.jpeg"
 }
 ],
 
@@ -116,6 +117,7 @@ cardapio[categoria].forEach(item => {
 menu.innerHTML += `
 <div class="card">
 <h3>${item.nome}</h3>
+${item.img ? `<img src="${item.img}" style="width:100%; border-radius:10px; margin:10px 0;">` : ""}
 
 ${item.descricao ? `<p>${item.descricao}</p>` : ""}
 
@@ -242,7 +244,7 @@ tela.innerHTML = `
 </div>
 `
 
-let lista = document.getElementById("listaHistorico")
+let lista = document.getElementById("listaHistorico") 
 
 let agrupado = {}
 
