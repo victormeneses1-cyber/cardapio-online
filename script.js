@@ -66,11 +66,11 @@ descricao:"Acompanha farofa e molho"
 ],
 
 cervejas: [
-{nome:"Corona", preco:13},
-{nome:"Heineken", preco:13},
-{nome:"Stella Pure Gold", preco:13},
-{nome:"Therezópolis", preco:13},
-{nome:"Michelob", preco:13}
+{nome:"Corona", preco:13, img:"corona.jpeg"},
+{nome:"Heineken", preco:13, img:"heineken.jpeg"},
+{nome:"Stella Pure Gold", preco:13, img:"Stella.jpeg"},
+{nome:"Therezópolis", preco:13, img:"therezopolis.jpeg"},
+{nome:"Michelob", preco:13, img:"w}
 ],
 
 bebidas: [
