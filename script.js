@@ -230,7 +230,7 @@ document.getElementById("inicio").style.display = "block"
 
 function abrirCardapio(){
 document.getElementById("inicio").style.display = "none"
-mostrar('pizzas')
+document.querySelector(".sidebar").style.display = "block"
 }
 
 // ENVIAR PEDIDO
