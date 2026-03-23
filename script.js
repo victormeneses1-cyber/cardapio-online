@@ -228,6 +228,11 @@ document.getElementById("menu").innerHTML = ""
 document.getElementById("inicio").style.display = "block"
 }
 
+function abrirCardapio(){
+document.getElementById("inicio").style.display = "none"
+mostrar('pizzas')
+}
+
 // ENVIAR PEDIDO
 function enviarPedido(){
 
