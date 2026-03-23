@@ -25,13 +25,13 @@ z-index:-1;
 display:flex;
 }
 
-/* MENU */
+/* SIDEBAR */
 .sidebar{
 width:200px;
 background:#161b22;
 padding:15px;
 height:100vh;
-display: none;
+display:none;
 }
 
 .sidebar button{
@@ -51,36 +51,82 @@ flex:1;
 padding:20px;
 }
 
-/* TEXTO */
+/* TELA INICIAL */
 .inicio{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-height: 80vh;
-text-align: center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:80vh;
+text-align:center;
+}
+
+/* BOTÃO INICIAL 🔥 */
+.btn-start{
+margin-top:25px;
+padding:14px 35px;
+font-size:18px;
+font-weight:bold;
+color:white;
+background: linear-gradient(135deg, #238636, #2ea043);
+border:none;
+border-radius:30px;
+cursor:pointer;
+box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+transition: all 0.3s ease;
+}
+
+.btn-start:hover{
+transform: translateY(-3px) scale(1.05);
+box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
+
+.btn-start:active{
+transform: scale(0.95);
 }
 
 /* CARDS */
-.menu {
-padding-top: 20px;
-display: grid;
+.menu{
+display:grid;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 20px;
-justify-content: center; 
-max-width: 1000px;
-margin: 0 auto;
-}
+gap:20px;
+max-width:1000px;
+margin:0 auto;
 }
 
-.card {
+.card{
 background: rgba(0,0,0,0.7);
-padding: 15px;
-border-radius: 15px;
-transition: 0.3s;
-width: 100%;
+padding:15px;
+border-radius:15px;
+transition:0.3s;
+animation: aparecer 0.4s ease forwards;
 }
 
+.card:hover{
+transform: scale(1.03);
+}
+
+@keyframes aparecer {
+from{
+opacity:0;
+transform: translateY(20px);
+}
+to{
+opacity:1;
+transform: translateY(0);
+}
+}
+
+/* IMAGEM */
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+margin:10px 0;
+}
+
+/* PREÇO */
 .preco{
 color:#2ea043;
 font-weight:bold;
@@ -97,96 +143,24 @@ padding:15px;
 border-radius:10px;
 }
 
-/* TÍTULO DO HISTÓRICO */
-#menu h2 {
-text-align: center;
-margin-top: 20px;
-}
-
-/* CARDS CENTRALIZADOS */
-#menu .card {
-width: 300px;
-max-width: 90%;
-}
-
-#menu .card {
-width:300px;
-max-widh: 90%;
-margin: 10px;
-padding: 15px;
-border-radius: 12px;
-background: rgba(22,27,34,0.95);
-box-shadow: 0 0 15px rgba(0,0,0,0.7);
-}
-
-.card {
-opacity: 0;
-transform: transLateY(20px);
-animation: aparecer 0.4s ease forwards;
-}
-@keyframes aparecer {
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
+/* HISTÓRICO */
 .historico-container{
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-}
-
-.historico-container h1{
-margin-bottom: 10px;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
 }
 
 #listaHistorico{
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 #listaHistorico .card{
-width: 350px;
-max-width: 90%;
-margin: 10px 0;
-}
-
-#listaHistorico h2{
-margin-top: 20px;
-}
-
-.card img{
-width:100%;
-height:150px;
-object-fit:cover;
-border-radius:10px;
+width:350px;
+max-width:90%;
 margin:10px 0;
-}
-
-.card img{
-width: 100%;
-height: 160px;
-object-fit: cover;
-object-position: center;
-border-radius: 10px;
-}
-}
-
-/* deixa os cards mais bonitos e alinhados */
-
-/* melhora visual do card */
-.card {
-  background: rgba(0,0,0,0.7);
-  padding: 15px;
-  border-radius: 15px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.03);
 }
