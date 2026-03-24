@@ -198,12 +198,12 @@ z-index:1000;
 }
 
 .carrinho.ativo{
-bottom:80px;
+bottom:200px;
 }
 
 .btn-carrinho{
 position:fixed;
-bottom:80px; /* 👈 sobe ele */
+bottom:200px; /* 👈 sobe ele */
 right:20px;
 
 padding:12px 20px;
