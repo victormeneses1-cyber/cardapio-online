@@ -123,7 +123,7 @@ descricao:"Porção crocante"
 const professores = [
 {
 nome: "Caio Froes",
-img: "",
+img: "caio,jpeg",
 habilidades: "Instrutor há +5 anos | Direção defensiva",
 aulas: [
 {dia:"Segunda", horario:"07:00", vagas:3},
@@ -152,7 +152,7 @@ aulas: [
 },
 {
 nome: "Pedro Lucca",
-img: "prof_joao.jpeg",
+img: "pedro.jpeg",
 habilidades: "Especialista iniciantes | Paciência total",
 aulas: [
 {dia:"Segunda", horario:"15:00", vagas:3},
@@ -176,7 +176,7 @@ aulas: [
 },
 {
 nome: "Leonardo Briornes",
-img:"",
+img:"Leonardo.jpeg",
 habilidades: "Bom professor",
 aulas: [
 {dia:"Segunda", horario:"16:00", vagas:3},
@@ -194,7 +194,7 @@ aulas: [
 },
 {
 nome: "Luiz Marabezi",
-img:"",
+img:"marabezi.jpeg",
 habilidades: "Bom professor",
 aulas: [
 {dia:"Segunda", horario:"19:00", vagas:2},
