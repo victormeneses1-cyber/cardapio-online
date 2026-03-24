@@ -32,6 +32,11 @@ background:#161b22;
 padding:15px;
 height:100vh;
 display:none;
+background: rgba(22, 27, 34, 0.6);
+backdrop-filter: blur(10px);
+
+border-right: 1px solid rgba(255,255,255,0.1);
+}
 }
 
 .sidebar button{
