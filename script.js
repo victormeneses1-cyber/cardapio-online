@@ -170,8 +170,15 @@ function voltarInicio() {
 }
 
 function abrirCardapio() {
-    document.getElementById("inicio").style.display = "none"
-    document.querySelector(".sidebar").style.display = "flex" // Ajustado para aparecer corretamente
+    // 1. Esconde a tela de início
+    document.getElementById("inicio").style.display = "none";
+    
+    // 2. Mostra a barra lateral (ajustado para flex para seguir seu CSS)
+    document.querySelector(".sidebar").style.display = "flex";
+    
+    // 3. Carrega automaticamente a primeira categoria (Pizzas) 
+    // para a tela não ficar em branco
+    mostrar('pizzas');
 }
 
 function enviarPedido() {
