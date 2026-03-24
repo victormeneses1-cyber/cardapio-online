@@ -116,9 +116,100 @@ descricao:"Assado na brasa"
 nome:"Aipim 500g",
 preco:22,
 descricao:"Porção crocante"
-}
-]
+},
 
+const professores = [
+{
+nome: "Caio Froes",
+img: "",
+habilidades: "Instrutor há +5 anos | Direção defensiva",
+aulas: [
+{dia:"Segunda", horario:"07:00", vagas:3},
+{dia:"Segunda", horario:"08:00", vagas:0},
+{dia:"Segunda", horario:"09:00", vagas:2},
+{dia:"Segunda", horario:"17:00", vagas:1},
+{dia:"Segunda", horario:"18:00", vagas:0},
+{dia:"Segunda", horario:"19:00", vagas:0},
+{dia:"Terça", horario:"17:00", vagas:0},
+{dia:"Terça", horario:"17:00", vagas:0},
+{dia:"Terça", horario:"18:00", vagas:1},
+{dia:"Terça", horario:"19:00", vagas:0},
+{dia:"Quarta", horario:"07:00", vagas:3},
+{dia:"Quarta", horario:"08:00", vagas:1},
+{dia:"Quarta", horario:"09:00", vagas:2},
+{dia:"Quarta", horario:"17:00", vagas:0},
+{dia:"Quinta", horario:"17:00", vagas:0},
+{dia:"Quinta", horario:"18:00", vagas:1},
+{dia:"Sexta", horario:"07:00", vagas:1},
+{dia:"Sexta", horario:"08:00", vagas:3},
+{dia:"Sexta", horario:"09:00", vagas:0},
+{dia:"Sexta", horario:"16:00", vagas:2},
+{dia:"Sexta", horario:"17:00", vagas:0},
+{dia:"Sexta", horario:"18:00", vagas:0},
+]
+},
+{
+nome: "Pedro Lucca",
+img: "prof_joao.jpeg",
+habilidades: "Especialista iniciantes | Paciência total",
+aulas: [
+{dia:"Segunda", horario:"15:00", vagas:3},
+{dia:"Segunda", horario:"16:00", vagas:2},
+{dia:"Segunda", horario:"17:00", vagas:2},
+{dia:"Terça", horario:"14:00", vagas:4},
+{dia:"Terça", horario:"15:00", vagas:4},
+{dia:"Terça", horario:"16:00", vagas:4},
+{dia:"Terça", horario:"17:00", vagas:4},
+{dia:"Quarta", horario:"15:00", vagas:3},
+{dia:"Quarta", horario:"16:00", vagas:2},
+{dia:"Quarta", horario:"17:00", vagas:4},
+{dia:"Quinta", horario:"15:00", vagas:3},
+{dia:"Quinta", horario:"16:00", vagas:3},
+{dia:"Quinta", horario:"17:00", vagas:1},
+{dia:"Sexta", horario:"14:00", vagas:4},
+{dia:"Sexta", horario:"15:00", vagas:4},
+{dia:"Sexta", horario:"16:00", vagas:4},
+{dia:"Sexta", horario:"17:00", vagas:4},
+]
+},
+{
+nome: "Leonardo Briornes",
+img:"",
+habilidades: "Bom professor",
+aulas: [
+{dia:"Segunda", horario:"16:00", vagas:3},
+{dia:"Quarta", horario:"09:00", vagas:3},
+{dia:"Quarta", horario:"10:00", vagas:3},
+{dia:"Quarta", horario:"14:00", vagas:1},
+{dia:"Quarta", horario:"15:00", vagas:0},
+{dia:"Quarta", horario:"17:00", vagas:1},
+{dia:"Quarta", horario:"20:00", vagas:1},
+{dia:"Quarta", horario:"21:00", vagas:3},
+{dia:"Sexta", horario:"09:00", vagas:0},
+{dia:"Sexta", horario:"10:00", vagas:0},
+{dia:"Sexta", horario:"16:00", vagas:0},
+]
+},
+{
+nome: "Luiz Marabezi",
+img:"",
+habilidades: "Bom professor",
+aulas: [
+{dia:"Segunda", horario:"19:00", vagas:2},
+{dia:"Segunda", horario:"07:00", vagas:2},
+{dia:"Terça", horario:"07:00", vagas:0},
+{dia:"Terça", horario:"08:00", vagas:2},
+{dia:"Terça", horario:"09:00", vagas:4},
+{dia:"Terça", horario:"10:00", vagas:4},
+{dia:"Quarta", horario:"09:00", vagas:1},
+{dia:"Quarta", horario:"11:00", vagas:3},
+{dia:"Quinta", horario:"07:00", vagas:0},
+{dia:"Quinta", horario:"08:00", vagas:2},
+{dia:"Sexta", horario:"09:00", vagas:1},
+{dia:"Sexta", horario:"11:00", vagas:3},
+{dia:"Sexta", horario:"17:00", vagas:3},
+{dia:"Sexta", horario:"20:00", vagas:0},
+]
 }
 
 // MOSTRAR PRODUTOS
@@ -331,4 +422,59 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 function toggleCarrinho(){
 let carrinhoBox = document.querySelector(".carrinho")
 carrinhoBox.classList.toggle("ativo")
+}
+
+function verProfessor(index){
+
+let prof = professores[index]
+let menu = document.getElementById("menu")
+
+menu.innerHTML = `
+<button onclick="abrirAulas()" class="btn-voltar">⬅ Voltar</button>
+
+<h2>${prof.nome}</h2>
+<p>${prof.habilidades}</p>
+
+<div class="aulas-container">
+`
+
+prof.aulas.forEach((aula, i) => {
+
+menu.innerHTML += `
+<div class="card">
+
+<h3>${aula.dia}</h3>
+<p>${aula.horario}</p>
+
+<button 
+onclick="reservarAula(${index}, ${i})"
+${aula.vagas === 0 ? "disabled" : ""}>
+
+${aula.vagas > 0 
+? `Reservar (${aula.vagas} vagas)`
+: "Lotado ❌"}
+
+</button>
+
+</div>
+`
+
+})
+
+menu.innerHTML += `</div>`
+
+}
+
+function reservarAula(profIndex, aulaIndex){
+
+let aula = professores[profIndex].aulas[aulaIndex]
+
+if(aula.vagas > 0){
+aula.vagas--
+alert("Aula reservada com sucesso!")
+verProfessor(profIndex)
+}else{
+alert("Essa aula está lotada!")
+}
+
 }
