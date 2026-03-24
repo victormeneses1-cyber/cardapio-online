@@ -365,12 +365,38 @@ alert("Essa aula está lotada!")
 .btn-verde{
 background: linear-gradient(135deg, #2ea043, #238636);
 color:white;
+
 }
 
 /* VERMELHO = LOTADO */
 .btn-vermelho{
 background: linear-gradient(135deg, #ff4d4d, #cc0000);
+box-shadow: 0 0 10px rgba(255,0,0,0.5);
 color:white;
 cursor:not-allowed;
+
+}
+.btn-verde:hover{
+transform: scale(1.05);
+background: linear-gradient(135deg, #238636, #2ea043);
+}
+/* VERDE = TEM VAGA */
+.btn-verde{
+background: linear-gradient(135deg, #2ea043, #238636);
+color:white;
+}
+
+/* VERMELHO = LOTADO */
+.btn-vermelho{
+background: linear-gradient(135deg, #ff4d4d, #cc0000);
+box-shadow: 0 0 10px rgba(255,0,0,0.5);
+color:white;
+cursor:not-allowed;
+}
+
+/* hover só no verde */
+.btn-verde:hover{
+transform: scale(1.05);
+background: linear-gradient(135deg, #238636, #2ea043);
 }
 }
