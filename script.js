@@ -116,7 +116,9 @@ descricao:"Assado na brasa"
 nome:"Aipim 500g",
 preco:22,
 descricao:"Porção crocante"
-},
+}
+]
+}
 
 const professores = [
 {
