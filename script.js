@@ -447,6 +447,7 @@ menu.innerHTML += `
 <p>${aula.horario}</p>
 
 <button 
+class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}"
 onclick="reservarAula(${index}, ${i})"
 ${aula.vagas === 0 ? "disabled" : ""}>
 
