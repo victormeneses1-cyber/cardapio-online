@@ -62,12 +62,9 @@ box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 .sidebar button:hover{
+background: rgba(46,160,67, 1);
 transform: translateX(5px) scale(1.03);
-background: linear-gradient(135deg, #2ea043, #238636);
-}
-
-.sidebar button:active{
-transform: scale(0.95);
+box-shadow: 0 6px 15px rgba(0,0,0,0.6);
 }
 
 /* CONTEÚDO */
