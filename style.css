@@ -289,3 +289,65 @@ background: linear-gradient(135deg, #238636, #2ea043);
 .card button:active{
 transform: scale(0.95);
 }
+
+@media (max-width: 768px){
+
+/* layout geral */
+.layout{
+flex-direction: column;
+}
+
+/* sidebar ocupa topo */
+.sidebar{
+width:100%;
+height:auto;
+position:relative;
+}
+
+/* conteúdo */
+.conteudo{
+padding:10px;
+}
+
+/* cards menores */
+.menu{
+grid-template-columns: repeat(2, 1fr);
+gap:10px;
+}
+
+/* cards */
+.card{
+padding:10px;
+}
+
+/* imagens menores */
+.card img{
+height:120px;
+}
+
+/* carrinho central menor */
+.carrinho{
+width:90%;
+bottom:-500px;
+}
+
+.carrinho.ativo{
+bottom:60px;
+}
+
+/* botão carrinho */
+.btn-carrinho{
+bottom:60px;
+right:10px;
+padding:10px 15px;
+font-size:14px;
+}
+
+/* título inicial */
+.inicio{
+height:auto;
+margin-top:50px;
+padding:20px;
+}
+
+}
