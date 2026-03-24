@@ -361,5 +361,16 @@ verProfessor(profIndex)
 }else{
 alert("Essa aula está lotada!")
 }
+/* VERDE = TEM VAGA */
+.btn-verde{
+background: linear-gradient(135deg, #2ea043, #238636);
+color:white;
+}
 
+/* VERMELHO = LOTADO */
+.btn-vermelho{
+background: linear-gradient(135deg, #ff4d4d, #cc0000);
+color:white;
+cursor:not-allowed;
+}
 }
