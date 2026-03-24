@@ -216,33 +216,24 @@ aulas: [
 
 // MOSTRAR PRODUTOS
 function mostrar(categoria){
+    document.getElementById("inicio").style.display = "none"
+    let menu = document.getElementById("menu")
+    menu.innerHTML = ""
 
-document.getElementById("inicio").style.display = "none"
-
-let menu = document.getElementById("menu")
-menu.innerHTML = ""
-
-cardapio[categoria].forEach(item => {
-
-menu.innerHTML += `
-<div class="card">
-<h3>${item.nome}</h3>
-${item.img ? `<img src="${item.img}" style="width:100%; border-radius:10px; margin:10px 0;">` : ""}
-
-${item.descricao ? `<p>${item.descricao}</p>` : ""}
-
-<p class="preco">R$ ${item.preco.toFixed(2)}</p>
-
-${item.opcoes 
-? `<button onclick="mostrarOpcoes('${categoria}', '${item.nome}')">Escolher</button>`
-: `<button onclick="addItem('${item.nome}', ${item.preco})">Adicionar</button>`
-}
-
-</div>
-`
-})
-}
-
+    cardapio[categoria].forEach(item => {
+        menu.innerHTML += `
+        <div class="card">
+            <h3>${item.nome}</h3>
+            ${item.img ? `<img src="${item.img}" style="width:100%; border-radius:10px; margin:10px 0;">` : ""}
+            ${item.descricao ? `<p>${item.descricao}</p>` : ""}
+            <p class="preco">R$ ${item.preco.toFixed(2)}</p>
+            ${item.opcoes 
+                ? `<button onclick="mostrarOpcoes('${categoria}', '${item.nome}')">Escolher</button>`
+                : `<button onclick="addItem('${item.nome}', ${item.preco})">Adicionar</button>`
+            }
+        </div>`
+    }); // Fechamento do forEach
+} // Fechamento da função mostrar
 function mostrarOpcoes(categoria, nomeProduto){
 
 let produto = cardapio[categoria].find(item => item.nome === nomeProduto)
@@ -468,16 +459,39 @@ menu.innerHTML += `</div>`
 
 }
 
-function reservarAula(profIndex, aulaIndex){
+// Função de reservar (CORRIGIDA COM A CHAVE DE FECHAMENTO)
+function reservarAula(profIndex, aulaIndex) {
+    let aula = professores[profIndex].aulas[aulaIndex];
 
-let aula = professores[profIndex].aulas[aulaIndex]
+    if (aula.vagas > 0) {
+        aula.vagas--;
+        alert("Aula reservada com sucesso!");
+        verProfessor(profIndex);
+    } else {
+        alert("Essa aula está lotada!");
+    }
+} // <--- ESTA CHAVE É ESSENCIAL PARA FECHAR A RESERVARAULA
 
-if(aula.vagas > 0){
-aula.vagas--
-alert("Aula reservada com sucesso!")
-verProfessor(profIndex)
-}else{
-alert("Essa aula está lotada!")
+// Agora sim, a função abrirAulas fora da outra
+function abrirAulas() {
+    document.getElementById("inicio").style.display = "none";
+    let menu = document.getElementById("menu");
+    menu.innerHTML = "<h2>Nossos Professores</h2>";
+    
+    // Criando o container para os cards ficarem alinhados
+    let grid = document.createElement("div");
+    grid.className = "menu"; 
+
+    professores.forEach((prof, index) => {
+        grid.innerHTML += `
+        <div class="card">
+            <img src="${prof.img}" alt="${prof.nome}" style="width:100%; height:160px; object-fit:cover; border-radius:10px;">
+            <h3>${prof.nome}</h3>
+            <p>${prof.habilidades}</p>
+            <button onclick="verProfessor(${index})">Ver Horários</button>
+        </div>`;
+    });
+    
+    menu.appendChild(grid);
 }
-
 }
