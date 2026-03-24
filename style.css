@@ -157,7 +157,7 @@ font-weight:bold;
 /* CARRINHO */
 .carrinho{
 position:fixed;
-bottom:20px;
+bottom:-400px; /* 👈 escondido */
 left:50%;
 transform:translateX(-50%);
 
@@ -171,6 +171,7 @@ padding:15px;
 border-radius:15px;
 
 box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+transition: 0.4s;
 z-index:1000;
 }
 
