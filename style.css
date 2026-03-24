@@ -178,6 +178,26 @@ z-index:1000;
 .carrinho.ativo{
 bottom:20px;
 }
+
+.btn-carrinho{
+position:fixed;
+bottom:20px;
+right:20px;
+
+padding:12px 20px;
+border:none;
+border-radius:30px;
+
+background: linear-gradient(135deg, #2ea043, #238636);
+color:white;
+font-weight:bold;
+
+cursor:pointer;
+box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+z-index:1001;
+}
+
+
 /* HISTÓRICO */
 .historico-container{
 width:100%;
