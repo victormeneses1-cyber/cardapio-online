@@ -44,17 +44,21 @@ display:block;
 width:100%;
 margin:10px 0;
 padding:12px;
-font-size:15px;
+
+color:white;
 font-weight:bold;
 
-background: linear-gradient(135deg, #238636, #2ea043);
+background: rgba(46,160,67, 0.85); /* 👈 mais forte */
 border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
+border-radius:12px;
 
+cursor:pointer;
 transition: all 0.3s ease;
-box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+
+/* efeito glass leve */
+backdrop-filter: blur(5px);
+
+box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 .sidebar button:hover{
