@@ -329,6 +329,6 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 
 }
 function toggleCarrinho(){
-let carrinho = document.querySelector(".carrinho")
-carrinho.classList.toggle("ativo")
+let carrinhoBox = document.querySelector(".carrinho")
+carrinhoBox.classList.toggle("ativo")
 }
