@@ -328,3 +328,7 @@ ${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}
 }
 
 }
+function toggleCarrinho(){
+let carrinho = document.querySelector(".carrinho")
+carrinho.classList.toggle("ativo")
+}
