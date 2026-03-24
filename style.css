@@ -38,11 +38,27 @@ display:none;
 display:block;
 width:100%;
 margin:10px 0;
-padding:10px;
-background:#238636;
+padding:12px;
+font-size:15px;
+font-weight:bold;
+
+background: linear-gradient(135deg, #238636, #2ea043);
 border:none;
+border-radius:10px;
 color:white;
 cursor:pointer;
+
+transition: all 0.3s ease;
+box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+}
+
+.sidebar button:hover{
+transform: translateX(5px) scale(1.03);
+background: linear-gradient(135deg, #2ea043, #238636);
+}
+
+.sidebar button:active{
+transform: scale(0.95);
 }
 
 /* CONTEÚDO */
@@ -163,4 +179,52 @@ align-items:center;
 width:350px;
 max-width:90%;
 margin:10px 0;
+}
+
+.card button{
+width:100%;
+padding:10px;
+margin-top:10px;
+
+background: linear-gradient(135deg, #2ea043, #238636);
+border:none;
+border-radius:8px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+
+transition: 0.3s;
+}
+
+.card button:hover{
+transform: scale(1.05);
+background: linear-gradient(135deg, #238636, #2ea043);
+}
+
+.card button:active{
+transform: scale(0.95);
+}
+
+.card button{
+width:100%;
+padding:10px;
+margin-top:10px;
+
+background: linear-gradient(135deg, #2ea043, #238636);
+border:none;
+border-radius:8px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+
+transition: 0.3s;
+}
+
+.card button:hover{
+transform: scale(1.05);
+background: linear-gradient(135deg, #238636, #2ea043);
+}
+
+.card button:active{
+transform: scale(0.95);
 }
