@@ -280,6 +280,7 @@ videoContainer.innerHTML = `
         height="280"
        src="https://www.youtube.com/embed/${prof.video}?autoplay=1&modestbranding=1&rel=0"
         frameborder="0"
+        allow="autoplay"
         allowfullscreen
         style="border-radius:15px;">
     </iframe>`; 
