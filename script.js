@@ -273,8 +273,16 @@ function verProfessor(index) {
     document.getElementById("container-professor").style.display = "block";
 
     document.getElementById("nome-prof-titulo").innerText = "Aulas de " + prof.nome;
-    let videoTag = document.getElementById("video-prof");
-    videoTag.src = prof.nome.split(' ')[0].toLowerCase() + ".mp4"; 
+   let videoContainer = document.getElementById("video-prof");
+videoContainer.innerHTML = `
+    <iframe
+        width="100%"
+        height="280"
+        src="https://www.youtube.com/embed/${prof.video}"
+        frameborder="0"
+        allowfullscreen
+        style="border-radius:15px;">
+    </iframe>`; 
 
     let agenda = document.getElementById("agenda-semanal");
     agenda.innerHTML = "";
