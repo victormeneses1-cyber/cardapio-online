@@ -114,9 +114,13 @@ const professores = [
 // --- FUNÇÕES DE NAVEGAÇÃO ---
 function abrirCardapio() {
     document.getElementById("inicio").style.display = "none";
-    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "none";
-    document.querySelector(".sidebar").style.display = "flex";
+    document.getElementById("secao-professores").style.display = "none"; // Esconde os profs da home
+    document.getElementById("container-professor").style.display = "none"; // Esconde vídeo/agenda se estiver aberto
+    
+    document.getElementById("sidebar").style.display = "flex";
+    document.getElementById("menu").style.display = "grid";
     mostrar('pizzas');
+}
 }
 
 function voltarInicio() {
