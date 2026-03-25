@@ -200,22 +200,55 @@ function carregarProfessoresHome() {
 function verProfessor(index) {
     let prof = professores[index];
     let menu = document.getElementById("menu");
+    let videoDiv = document.getElementById("video-container");
+    let videoTag = document.getElementById("video-professor");
+
+    // 1. Esconde a home e mostra o vídeo do professor
     document.getElementById("inicio").style.display = "none";
     document.getElementById("secao-professores").style.display = "none";
-    menu.innerHTML = `<button onclick="voltarInicio()">⬅ Voltar</button><h2>${prof.nome}</h2><div class="menu" id="gridAulas"></div>`;
-    let grid = document.getElementById("gridAulas");
-    prof.aulas.forEach((aula, i) => {
-        grid.innerHTML += `
-        <div class="card">
-            <h3>${aula.dia}</h3>
-            <p>${aula.horario}</p>
-            <button class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}" onclick="reservarAula(${index}, ${i})">
-                ${aula.vagas > 0 ? `Reservar (${aula.vagas} vagas)` : "Lotado"}
-            </button>
-        </div>`;
+    
+    // Supondo que o nome do vídeo seja o nome do professor.mp4
+    videoTag.src = prof.nome.toLowerCase().replace(" ", "_") + ".mp4"; 
+    videoDiv.style.display = "block";
+
+    // 2. Criar a estrutura de dias
+    menu.innerHTML = `
+        <button class="btn-verde" onclick="voltarInicio()">⬅ Voltar</button>
+        <h2 style="margin-top:20px;">Horários de ${prof.nome}</h2>
+        <div id="agenda-semanal"></div>
+    `;
+
+    let agenda = document.getElementById("agenda-semanal");
+    
+    // Lista de dias para organizar a ordem
+    const diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+
+    diasSemana.forEach(dia => {
+        // Filtra as aulas daquele professor que são desse dia
+        let aulasDoDia = prof.aulas.filter(a => a.dia === dia);
+
+        if (aulasDoDia.length > 0) {
+            agenda.innerHTML += `<h3>📅 ${dia}</h3><div class="menu" id="grid-${dia}"></div>`;
+            
+            let gridDia = document.getElementById(`grid-${dia}`);
+            
+            aulasDoDia.forEach(aula => {
+                // Descobre o index original da aula para a reserva funcionar
+                let originalIndex = prof.aulas.indexOf(aula);
+                
+                gridDia.innerHTML += `
+                <div class="card" style="padding: 10px; min-height: auto;">
+                    <p><strong>${aula.horario}</strong></p>
+                    <button class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}" 
+                            ${aula.vagas === 0 ? "disabled" : ""} 
+                            onclick="reservarAula(${index}, ${originalIndex})">
+                        ${aula.vagas > 0 ? `Reservar (${aula.vagas} vagas)` : "Lotado"}
+                    </button>
+                </div>`;
+            });
+        }
     });
 }
-
 function reservarAula(p, a) { alert("Reserva solicitada para " + professores[p].nome + "!"); }
 
 // --- OUTRAS FUNÇÕES ---
