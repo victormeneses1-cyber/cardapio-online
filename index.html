@@ -2,14 +2,14 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Cardápio Arena</title>
+    <title>Cardápio Arena São Francisco</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="layout">
 
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <h2>🍔 Arena</h2>
         <button onclick="mostrar('pizzas')">🍕 Pizzas</button>
         <button onclick="mostrar('espetinhos')">🍢 Espetinhos</button>
@@ -24,7 +24,7 @@
 
         <div id="inicio" class="inicio">
             <h1>Bem-vindo à Arena São Francisco 🎾</h1>
-            <p>Escolha uma categoria no menu ao lado.</p>
+            <p>A melhor experiência em Beach Tennis e Gastronomia.</p>
             <button class="btn-start" onclick="abrirCardapio()">🍔 Ver Cardápio</button>
         </div>
 
@@ -38,16 +38,18 @@
     </div>
 
     <div class="carrinho">
-        <h2>🛒 Pedido</h2>
-        <input type="text" id="nome" placeholder="Seu nome">
+        <h2>🛒 Seu Pedido</h2>
+        <input type="text" id="nome" placeholder="Digite seu nome">
         <div id="carrinho"></div>
-        <p>Total: R$ <span id="total">0</span></p>
-        <button onclick="enviarPedido()">Enviar Pedido</button>
+        <p>Total: R$ <span id="total">0.00</span></p>
+        <button onclick="enviarPedido()" style="background: #238636; color: white; width: 100%; padding: 10px; border-radius: 10px; border: none; cursor: pointer; font-weight: bold;">
+            Enviar Pedido via WhatsApp
+        </button>
     </div>
 
 </div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
