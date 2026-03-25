@@ -128,6 +128,9 @@ function voltarInicio() {
     document.getElementById("secao-professores").style.display = "flex";
     document.getElementById("sidebar").style.display = "none";
     document.getElementById("container-professor").style.display = "none";
+    let videoTag = document.getElementById("video-prof");
+videoTag.pause();
+videoTag.src = "";
 }
 
 // CARDÁPIO
