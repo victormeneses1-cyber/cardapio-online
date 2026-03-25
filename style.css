@@ -1,3 +1,4 @@
+/* 1. CONFIGURAÇÕES GERAIS DO SITE */
 body {
     margin: 0; font-family: Arial, sans-serif; color: white;
     background-image: url("fundo.jpg"); background-size: cover;
@@ -7,20 +8,69 @@ body::before {
     content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.7); z-index: -1;
 }
+
+/* 2. LAYOUT E ESTRUTURA */
 .layout { display: flex; }
+
 .sidebar {
     width: 200px; background: rgba(22, 27, 34, 0.8); padding: 15px;
     height: 100vh; display: none; flex-direction: column;
     position: sticky; top: 0; backdrop-filter: blur(10px);
 }
+
 .sidebar button, .btn-start, .btn-verde {
     margin: 10px 0; padding: 12px; border: none; border-radius: 12px;
     font-weight: bold; color: white; cursor: pointer; background: #238636;
 }
-.conteudo { flex: 1; padding: 20px; }
-.inicio { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
-/* LAYOUT DUAS COLUNAS PROFESSOR */
+.conteudo { flex: 1; padding: 20px; }
+
+/* 3. TELA INICIAL (BOAS-VINDAS) */
+.inicio { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+}
+
+/* 4. SEÇÃO DE PROFESSORES (AQUI ESTÁ A MUDANÇA!) */
+#secao-professores {
+    display: block; /* Tiramos o flex-column daqui para os filhos respirarem */
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* O container que segura os cards dos professores */
+#lista-professores-home {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 5. CARDS (PIZZAS E PROFESSORES) */
+.menu { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 20px; 
+}
+
+.card { 
+    background: rgba(22, 27, 34, 0.9); 
+    padding: 15px; 
+    border-radius: 15px; 
+    text-align: center; 
+}
+
+.card img { 
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+}
+
+/* 6. LAYOUT DUAS COLUNAS DO PROFESSOR (VÍDEO + AGENDA) */
 .layout-professor { display: flex; gap: 30px; margin-top: 20px; align-items: flex-start; }
 .coluna-video { flex: 1; min-width: 300px; }
 .coluna-video video { border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
@@ -30,12 +80,19 @@ body::before {
     background: rgba(255, 255, 255, 0.1); padding: 15px;
     border-radius: 10px; min-width: 200px; border-top: 4px solid #2ea043;
 }
+
 .btn-voltar-pequeno { background: #444; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
-.menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-.card { background: rgba(22, 27, 34, 0.9); padding: 15px; border-radius: 15px; text-align: center; }
-.card img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; }
-.carrinho { position: fixed; bottom: -500px; left: 50%; transform: translateX(-50%); width: 320px; background: #161b22; padding: 20px; border-radius: 20px 20px 0 0; transition: 0.5s; z-index: 1000; }
+
+/* 7. CARRINHO */
+.carrinho { 
+    position: fixed; bottom: -500px; left: 50%; transform: translateX(-50%); 
+    width: 320px; background: #161b22; padding: 20px; border-radius: 20px 20px 0 0; 
+    transition: 0.5s; z-index: 1000; 
+}
 .carrinho.ativo { bottom: 0; }
 .btn-vermelho { background: #8b0000; cursor: not-allowed; }
 
-@media (max-width: 800px) { .layout-professor { flex-direction: column; } }
+/* 8. RESPONSIVIDADE (CELULAR) */
+@media (max-width: 800px) { 
+    .layout-professor { flex-direction: column; } 
+}
