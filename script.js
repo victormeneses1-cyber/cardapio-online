@@ -58,6 +58,7 @@ const cardapio = {
 const professores = [
     {
         nome: "Caio Froes", img: "caio.jpeg", habilidades: "Instrutor há +5 anos",
+        video: "1jWEIN_ubYs",
         aulas: [
             {dia:"Segunda", horario:"07:00 as 08:00", vagas:3}, {dia:"Segunda", horario:"08:00 as 09:00", vagas:0},
             {dia:"Segunda", horario:"09:00 as 10:00", vagas:2}, {dia:"Segunda", horario:"17:00 as 18:00", vagas:1},
