@@ -49,6 +49,9 @@ body::before {
     gap: 20px;
     justify-content: center;
     width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    
 }
 
 /* 5. CARDS (PIZZAS E PROFESSORES) */
@@ -154,12 +157,30 @@ body::before {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Botão + com rotação no hover */
+
+/* Botões dos cards */
 .card button {
-  transition: transform .15s, background .2s;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #238636;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+    letter-spacing: .5px;
 }
+
 .card button:hover {
-  transform: scale(1.15) rotate(90deg);
+    background: #2ea043;
+    transform: scale(1.04);
+}
+
+.card button:active {
+    transform: scale(.97);
 }
 
 /* Transição suave ao trocar de seção */
