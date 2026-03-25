@@ -131,13 +131,12 @@ body::before {
 }
 
 /* Cards ficam invisíveis inicialmente */
-.card {
+/* CERTO — afeta só o menu do cardápio */
+#menu .card {
   opacity: 0;
-  transition: border-color .25s, transform .2s, background .2s;
 }
 
-/* Classe adicionada via JS para disparar a animação */
-.card.animado {
+#menu .card.animado {
   animation: cardPop .55s cubic-bezier(.34,1.45,.64,1) both;
 }
 
