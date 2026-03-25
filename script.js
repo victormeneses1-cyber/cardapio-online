@@ -170,15 +170,15 @@ function voltarInicio() {
 }
 
 function abrirCardapio() {
-    // 1. Esconde a tela de início
+    // Esconde a div inteira de início (que agora inclui os professores)
     document.getElementById("inicio").style.display = "none";
     
-    // 2. Mostra a barra lateral (ajustado para flex para seguir seu CSS)
+    // Mostra a barra lateral
     document.querySelector(".sidebar").style.display = "flex";
     
-    // 3. Carrega automaticamente a primeira categoria (Pizzas) 
-    // para a tela não ficar em branco
+    // Abre as pizzas por padrão
     mostrar('pizzas');
+}
 }
 
 function enviarPedido() {
@@ -214,14 +214,15 @@ function toggleCarrinho() {
 }
 
 // FUNÇÕES DE PROFESSORES
-function abrirAulas() {
-    document.getElementById("inicio").style.display = "none";
-    let menu = document.getElementById("menu");
-    menu.innerHTML = "<h2>Nossos Professores</h2>";
-    let grid = document.createElement("div");
-    grid.className = "menu";
+// Esta função agora coloca os professores na Home
+function carregarProfessoresHome() {
+    let container = document.getElementById("lista-professores-home");
+    if(!container) return; // Segurança caso o elemento não exista
+
+    container.innerHTML = ""; // Limpa antes de carregar
+    
     professores.forEach((prof, index) => {
-        grid.innerHTML += `
+        container.innerHTML += `
         <div class="card">
             <img src="${prof.img}" alt="${prof.nome}" style="width:100%; height:160px; object-fit:cover; border-radius:10px;">
             <h3>${prof.nome}</h3>
@@ -229,8 +230,10 @@ function abrirAulas() {
             <button onclick="verProfessor(${index})">Ver Horários</button>
         </div>`;
     });
-    menu.appendChild(grid);
 }
+
+// Chame a função logo no final do seu script.js para ela rodar ao abrir o site
+carregarProfessoresHome();
 
 function verProfessor(index) {
     let prof = professores[index]
