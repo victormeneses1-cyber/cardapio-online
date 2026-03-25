@@ -262,3 +262,30 @@ function reservarAula(profIndex, aulaIndex) {
         alert("Essa aula está lotada!")
     }
 }
+// 2. Função para carregar os professores na Home
+function carregarProfessoresHome() {
+    let container = document.getElementById("lista-professores-home");
+    if(!container) return;
+
+    container.innerHTML = "";
+    professores.forEach((prof, index) => {
+        container.innerHTML += `
+        <div class="card">
+            <img src="${prof.img}" alt="${prof.nome}" style="width:100%; height:160px; object-fit:cover; border-radius:10px;">
+            <h3>${prof.nome}</h3>
+            <p>${prof.habilidades}</p>
+            <button onclick="verProfessor(${index})">Ver Horários</button>
+        </div>`;
+    });
+}
+
+// 3. Ajuste na função Voltar para mostrar os professores de novo
+function voltarInicio() {
+    document.getElementById("menu").innerHTML = "";
+    document.getElementById("inicio").style.display = "flex";
+    document.getElementById("secao-professores").style.display = "flex";
+    document.querySelector(".sidebar").style.display = "none";
+}
+
+// IMPORTANTE: Chame esta função no final do seu script.js
+carregarProfessoresHome();
