@@ -159,3 +159,61 @@ body::before {
 #agenda-semanal .menu {
     margin-bottom: 20px;
 }
+/* Botão de voltar menor */
+.btn-voltar-pequeno {
+    width: auto;
+    padding: 8px 20px;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Container principal em duas colunas */
+.layout-professor {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.coluna-video {
+    flex: 1.5; /* Dá mais espaço para o vídeo */
+    position: sticky;
+    top: 20px;
+}
+
+.coluna-video video {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.coluna-agenda {
+    flex: 2; /* Espaço para os dias ao lado */
+    display: flex;
+    flex-wrap: wrap; /* Permite que os dias quebrem linha se não couberem */
+    gap: 20px;
+}
+
+/* Estilo de cada bloco de dia */
+.bloco-dia {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 12px;
+    min-width: 200px;
+    flex: 1;
+}
+
+.bloco-dia h3 {
+    border-bottom: 2px solid #2ea043;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 900px) {
+    .layout-professor { flex-direction: column; }
+    .coluna-video { position: relative; }
+}
