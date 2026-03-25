@@ -1,69 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Cardápio Arena</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Cardápio Arena</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="layout">
 
-<!-- MENU -->
-<div class="sidebar">
-<h2>🍔 Arena</h2>
-
-<button onclick="window.mostrar('pizzas')">🍕 Pizzas</button>
-<button onclick="window.mostrar('espetinhos')">🍢 Espetinhos</button>
-<button onclick="window.mostrar('cervejas')">🍺 Cervejas</button>
-<button onclick="window.mostrar('bebidas')">🥤 Bebidas</button>
-<button onclick="window.mostrar('porcoes')">🍟 Porções</button>
-<button onclick="window.verHistorico()">📋 Histórico</button>
-<button class="btn-carrinho" onclick="toggleCarrinho()">🛒 Ver Pedido</button>
-<button class="btn-start" onclick="abrirAulas()">👨‍🏫 Ver Professores</button>
-</div>
-
-<!-- CONTEÚDO -->
-<div class="conteudo">
-
-<div class="conteudo">
-
-    <div id="inicio" class="inicio">
-        <h1>Bem-vindo à Arena São Francisco 🎾</h1>
-        <p>Escolha uma categoria no menu ao lado.</p>
-        <button class="btn-start" onclick="abrirCardapio()">🍔 Ver Cardápio</button>
+    <div class="sidebar">
+        <h2>🍔 Arena</h2>
+        <button onclick="mostrar('pizzas')">🍕 Pizzas</button>
+        <button onclick="mostrar('espetinhos')">🍢 Espetinhos</button>
+        <button onclick="mostrar('cervejas')">🍺 Cervejas</button>
+        <button onclick="mostrar('bebidas')">🥤 Bebidas</button>
+        <button onclick="mostrar('porcoes')">🍟 Porções</button>
+        <button onclick="verHistorico()">📋 Histórico</button>
+        <button class="btn-carrinho" onclick="toggleCarrinho()">🛒 Ver Pedido</button>
     </div>
 
-    <div id="secao-professores" class="inicio" style="margin-top: 50px;">
-        <h2>👨‍🏫 Nossos Professores</h2>
-        <div id="lista-professores-home" class="menu"></div>
+    <div class="conteudo">
+
+        <div id="inicio" class="inicio">
+            <h1>Bem-vindo à Arena São Francisco 🎾</h1>
+            <p>Escolha uma categoria no menu ao lado.</p>
+            <button class="btn-start" onclick="abrirCardapio()">🍔 Ver Cardápio</button>
+        </div>
+
+        <div id="secao-professores" class="inicio" style="margin-top: 50px;">
+            <h2>👨‍🏫 Nossos Professores</h2>
+            <div id="lista-professores-home" class="menu"></div>
+        </div>
+
+        <div id="menu" class="menu"></div>
+
     </div>
 
-    <div id="menu" class="menu"></div>
+    <div class="carrinho">
+        <h2>🛒 Pedido</h2>
+        <input type="text" id="nome" placeholder="Seu nome">
+        <div id="carrinho"></div>
+        <p>Total: R$ <span id="total">0</span></p>
+        <button onclick="enviarPedido()">Enviar Pedido</button>
+    </div>
 
 </div>
 
-<div id="menu" class="menu"></div>
-
-</div>
-
-<!-- CARRINHO -->
-<div class="carrinho">
-<h2>🛒 Pedido</h2>
-
-<input type="text" id="nome" placeholder="Seu nome">
-
-<div id="carrinho"></div>
-
-<p>Total: R$ <span id="total">0</span></p>
-
-<button onclick="enviarPedido()">Enviar Pedido</button>
-</div>
-
-</div>
-
-<script src="script.js?v=2"></script>
+<script src="script.js?v=4"></script>
 
 </body>
 </html>
