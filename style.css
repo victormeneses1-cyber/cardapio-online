@@ -205,8 +205,26 @@ body::before {
 }
 
 /* Título entra de cima */
+/* Título principal estilizado */
 .inicio h1 {
-  animation: heroDown .7s cubic-bezier(.34,1.4,.64,1) .1s both;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.inicio h1 span {
+  color: #2ea043;
+}
+
+.inicio p.subtitulo {
+  font-size: 12px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: -8px;
+  animation: heroFade .6s ease .2s both;
 }
 
 /* Botão "Ver Cardápio" sobe de baixo */
