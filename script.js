@@ -278,7 +278,7 @@ videoContainer.innerHTML = `
     <iframe
         width="100%"
         height="280"
-        src="https://www.youtube.com/embed/${prof.video}"
+       src="https://www.youtube.com/embed/${prof.video}?autoplay=1&modestbranding=1&rel=0"
         frameborder="0"
         allowfullscreen
         style="border-radius:15px;">
