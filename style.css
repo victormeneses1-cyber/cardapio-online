@@ -340,3 +340,24 @@ body::before {
     max-width: 400px;
     border-radius: 15px;
 }
+@media (max-width: 600px) {
+    /* Vídeo ocupa tela toda */
+    #video-prof {
+        max-width: 100%;
+    }
+
+    /* Agenda em coluna única */
+    .coluna-agenda {
+        flex-direction: column;
+    }
+
+    .bloco-dia {
+        min-width: unset;
+        width: 100%;
+    }
+
+    /* Título menor */
+    #nome-prof-titulo {
+        font-size: 18px;
+    }
+}
