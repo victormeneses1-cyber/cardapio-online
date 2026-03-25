@@ -1,5 +1,5 @@
-let carrinho = []
-let total = 0
+let carrinho = [];
+let total = 0;
 
 const cardapio = {
     pizzas: [
@@ -53,69 +53,83 @@ const cardapio = {
         { nome: "Pão de Alho", preco: 6, descricao: "Assado na brasa" },
         { nome: "Aipim 500g", preco: 22, descricao: "Porção crocante" }
     ]
-}
+};
 
 const professores = [
     {
         nome: "Caio Froes", img: "caio.jpeg", habilidades: "Instrutor há +5 anos | Direção defensiva",
         aulas: [
-            { dia: "Segunda", horario: "07:00", vagas: 3 }, { dia: "Segunda", horario: "08:00", vagas: 0 },
-            { dia: "Segunda", horario: "09:00", vagas: 2 }, { dia: "Segunda", horario: "17:00", vagas: 1 },
-            { dia: "Segunda", horario: "18:00", vagas: 0 }, { dia: "Segunda", horario: "19:00", vagas: 0 },
-            { dia: "Terça", horario: "17:00", vagas: 0 }, { dia: "Terça", horario: "18:00", vagas: 1 },
-            { dia: "Terça", horario: "19:00", vagas: 0 }, { dia: "Quarta", horario: "07:00", vagas: 3 },
-            { dia: "Quarta", horario: "08:00", vagas: 1 }, { dia: "Quarta", horario: "09:00", vagas: 2 },
-            { dia: "Quarta", horario: "17:00", vagas: 0 }, { dia: "Quinta", horario: "17:00", vagas: 0 },
-            { dia: "Quinta", horario: "18:00", vagas: 1 }, { dia: "Sexta", horario: "07:00", vagas: 1 },
-            { dia: "Sexta", horario: "08:00", vagas: 3 }, { dia: "Sexta", horario: "09:00", vagas: 0 },
-            { dia: "Sexta", horario: "16:00", vagas: 2 }, { dia: "Sexta", horario: "17:00", vagas: 0 },
-            { dia: "Sexta", horario: "18:00", vagas: 0 }
+            {dia:"Segunda", horario:"07:00", vagas:3}, {dia:"Segunda", horario:"08:00", vagas:0},
+            {dia:"Segunda", horario:"09:00", vagas:2}, {dia:"Segunda", horario:"17:00", vagas:1},
+            {dia:"Segunda", horario:"18:00", vagas:0}, {dia:"Segunda", horario:"19:00", vagas:0},
+            {dia:"Terça", horario:"17:00", vagas:0}, {dia:"Terça", horario:"18:00", vagas:1},
+            {dia:"Terça", horario:"19:00", vagas:0}, {dia:"Quarta", horario:"07:00", vagas:3},
+            {dia:"Quarta", horario:"08:00", vagas:1}, {dia:"Quarta", horario:"09:00", vagas:2},
+            {dia:"Quarta", horario:"17:00", vagas:0}, {dia:"Quinta", horario:"17:00", vagas:0},
+            {dia:"Quinta", horario:"18:00", vagas:1}, {dia:"Sexta", horario:"07:00", vagas:1},
+            {dia:"Sexta", horario:"08:00", vagas:3}, {dia:"Sexta", horario:"09:00", vagas:0},
+            {dia:"Sexta", horario:"16:00", vagas:2}, {dia:"Sexta", horario:"17:00", vagas:0},
+            {dia:"Sexta", horario:"18:00", vagas:0}
         ]
     },
     {
         nome: "Pedro Lucca", img: "pedro.jpeg", habilidades: "Especialista iniciantes | Paciência total",
         aulas: [
-            { dia: "Segunda", horario: "15:00", vagas: 3 }, { dia: "Segunda", horario: "16:00", vagas: 2 },
-            { dia: "Segunda", horario: "17:00", vagas: 2 }, { dia: "Terça", horario: "14:00", vagas: 4 },
-            { dia: "Terça", horario: "15:00", vagas: 4 }, { dia: "Terça", horario: "16:00", vagas: 4 },
-            { dia: "Terça", horario: "17:00", vagas: 4 }, { dia: "Quarta", horario: "15:00", vagas: 3 },
-            { dia: "Quarta", horario: "16:00", vagas: 2 }, { dia: "Quarta", horario: "17:00", vagas: 4 },
-            { dia: "Quinta", horario: "15:00", vagas: 3 }, { dia: "Quinta", horario: "16:00", vagas: 3 },
-            { dia: "Quinta", horario: "17:00", vagas: 1 }, { dia: "Sexta", horario: "14:00", vagas: 4 },
-            { dia: "Sexta", horario: "15:00", vagas: 4 }, { dia: "Sexta", horario: "16:00", vagas: 4 },
-            { dia: "Sexta", horario: "17:00", vagas: 4 }
+            {dia:"Segunda", horario:"15:00", vagas:3}, {dia:"Segunda", horario:"16:00", vagas:2},
+            {dia:"Segunda", horario:"17:00", vagas:2}, {dia:"Terça", horario:"14:00", vagas:4},
+            {dia:"Terça", horario:"15:00", vagas:4}, {dia:"Terça", horario:"16:00", vagas:4},
+            {dia:"Terça", horario:"17:00", vagas:4}, {dia:"Quarta", horario:"15:00", vagas:3},
+            {dia:"Quarta", horario:"16:00", vagas:2}, {dia:"Quarta", horario:"17:00", vagas:4},
+            {dia:"Quinta", horario:"15:00", vagas:3}, {dia:"Quinta", horario:"16:00", vagas:3},
+            {dia:"Quinta", horario:"17:00", vagas:1}, {dia:"Sexta", horario:"14:00", vagas:4},
+            {dia:"Sexta", horario:"15:00", vagas:4}, {dia:"Sexta", horario:"16:00", vagas:4},
+            {dia:"Sexta", horario:"17:00", vagas:4}
         ]
     },
     {
         nome: "Leonardo Briornes", img: "Leonardo.jpeg", habilidades: "Bom professor",
         aulas: [
-            { dia: "Segunda", horario: "16:00", vagas: 3 }, { dia: "Quarta", horario: "09:00", vagas: 3 },
-            { dia: "Quarta", horario: "10:00", vagas: 3 }, { dia: "Quarta", horario: "14:00", vagas: 1 },
-            { dia: "Quarta", horario: "15:00", vagas: 0 }, { dia: "Quarta", horario: "17:00", vagas: 1 },
-            { dia: "Quarta", horario: "20:00", vagas: 1 }, { dia: "Quarta", horario: "21:00", vagas: 3 },
-            { dia: "Sexta", horario: "09:00", vagas: 0 }, { dia: "Sexta", horario: "10:00", vagas: 0 },
-            { dia: "Sexta", horario: "16:00", vagas: 0 }
+            {dia:"Segunda", horario:"16:00", vagas:3}, {dia:"Quarta", horario:"09:00", vagas:3},
+            {dia:"Quarta", horario:"10:00", vagas:3}, {dia:"Quarta", horario:"14:00", vagas:1},
+            {dia:"Quarta", horario:"15:00", vagas:0}, {dia:"Quarta", horario:"17:00", vagas:1},
+            {dia:"Quarta", horario:"20:00", vagas:1}, {dia:"Quarta", horario:"21:00", vagas:3},
+            {dia:"Sexta", horario:"09:00", vagas:0}, {dia:"Sexta", horario:"10:00", vagas:0},
+            {dia:"Sexta", horario:"16:00", vagas:0}
         ]
     },
     {
         nome: "Luiz Marabezi", img: "marabezi.jpeg", habilidades: "Bom professor",
         aulas: [
-            { dia: "Segunda", horario: "19:00", vagas: 2 }, { dia: "Segunda", horario: "07:00", vagas: 2 },
-            { dia: "Terça", horario: "07:00", vagas: 0 }, { dia: "Terça", horario: "08:00", vagas: 2 },
-            { dia: "Terça", horario: "09:00", vagas: 4 }, { dia: "Terça", horario: "10:00", vagas: 4 },
-            { dia: "Quarta", horario: "09:00", vagas: 1 }, { dia: "Quarta", horario: "11:00", vagas: 3 },
-            { dia: "Quinta", horario: "07:00", vagas: 0 }, { dia: "Quinta", horario: "08:00", vagas: 2 },
-            { dia: "Sexta", horario: "09:00", vagas: 1 }, { dia: "Sexta", horario: "11:00", vagas: 3 },
-            { dia: "Sexta", horario: "17:00", vagas: 3 }, { dia: "Sexta", horario: "20:00", vagas: 0 }
+            {dia:"Segunda", horario:"19:00", vagas:2}, {dia:"Segunda", horario:"07:00", vagas:2},
+            {dia:"Terça", horario:"07:00", vagas:0}, {dia:"Terça", horario:"08:00", vagas:2},
+            {dia:"Terça", horario:"09:00", vagas:4}, {dia:"Terça", horario:"10:00", vagas:4},
+            {dia:"Quarta", horario:"09:00", vagas:1}, {dia:"Quarta", horario:"11:00", vagas:3},
+            {dia:"Quinta", horario:"07:00", vagas:0}, {dia:"Quinta", horario:"08:00", vagas:2},
+            {dia:"Sexta", horario:"09:00", vagas:1}, {dia:"Sexta", horario:"11:00", vagas:3},
+            {dia:"Sexta", horario:"17:00", vagas:3}, {dia:"Sexta", horario:"20:00", vagas:0}
         ]
     }
-]
+];
 
-// FUNÇÕES DE NAVEGAÇÃO E CARDÁPIO
+// --- FUNÇÕES DE NAVEGAÇÃO ---
+function abrirCardapio() {
+    document.getElementById("inicio").style.display = "none";
+    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "none";
+    document.querySelector(".sidebar").style.display = "flex";
+    mostrar('pizzas');
+}
+
+function voltarInicio() {
+    document.getElementById("menu").innerHTML = "";
+    document.getElementById("inicio").style.display = "flex";
+    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "flex";
+    document.querySelector(".sidebar").style.display = "none";
+}
+
+// --- FUNÇÕES DO CARDÁPIO ---
 function mostrar(categoria) {
     document.getElementById("inicio").style.display = "none";
     if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "none";
-    
     let menu = document.getElementById("menu");
     menu.innerHTML = "";
     cardapio[categoria].forEach(item => {
@@ -123,13 +137,12 @@ function mostrar(categoria) {
         <div class="card">
             <h3>${item.nome}</h3>
             ${item.img ? `<img src="${item.img}" style="width:100%; border-radius:10px; margin:10px 0;">` : ""}
-            ${item.descricao ? `<p>${item.descricao}</p>` : ""}
             <p class="preco">R$ ${item.preco.toFixed(2)}</p>
             ${item.opcoes
                 ? `<button onclick="mostrarOpcoes('${categoria}', '${item.nome}')">Escolher</button>`
                 : `<button onclick="addItem('${item.nome}', ${item.preco})">Adicionar</button>`
             }
-        </div>`
+        </div>`;
     });
 }
 
@@ -140,14 +153,14 @@ function mostrarOpcoes(categoria, nomeProduto) {
     produto.opcoes.forEach(op => {
         menu.innerHTML += `
         <div class="card">
-            ${op.img ? `<img src="${op.img}" style="width:100%; height:150px; object-fit:cover; border-radius:10px;">` : ""}
+            <img src="${op.img}" style="width:100%; height:150px; object-fit:cover; border-radius:10px;">
             <h3>${op.nome}</h3>
-            <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
             <button onclick="addItem('${produto.nome} - ${op.nome}', ${produto.preco})">Adicionar</button>
-        </div>`
+        </div>`;
     });
 }
 
+// --- FUNÇÕES DO CARRINHO ---
 function addItem(nome, preco) {
     let nomeCliente = document.getElementById("nome").value;
     if (nomeCliente === "") { alert("Digite seu nome!"); return; }
@@ -155,11 +168,11 @@ function addItem(nome, preco) {
 }
 
 function renderCarrinho() {
-    let carrinhoHTML = "";
+    let html = "";
     carrinho.forEach((item, index) => {
-        carrinhoHTML += `<p>${item.nome} - R$ ${item.preco.toFixed(2)} <button onclick="removerItem(${index})">❌</button></p>`;
+        html += `<p>${item.nome} - R$ ${item.preco.toFixed(2)} <button onclick="removerItem(${index})">❌</button></p>`;
     });
-    document.getElementById("carrinho").innerHTML = carrinhoHTML;
+    document.getElementById("carrinho").innerHTML = html;
     document.getElementById("total").innerText = total.toFixed(2);
 }
 
@@ -167,53 +180,9 @@ function removerItem(index) {
     total -= carrinho[index].preco; carrinho.splice(index, 1); renderCarrinho();
 }
 
-function voltarInicio() {
-    document.getElementById("menu").innerHTML = "";
-    document.getElementById("inicio").style.display = "flex";
-    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "flex";
-    document.querySelector(".sidebar").style.display = "none";
-}
+function toggleCarrinho() { document.querySelector(".carrinho").classList.toggle("ativo"); }
 
-function abrirCardapio() {
-    document.getElementById("inicio").style.display = "none";
-    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "none";
-    document.querySelector(".sidebar").style.display = "flex";
-    mostrar('pizzas');
-}
-
-function enviarPedido() {
-    let nomeCliente = document.getElementById("nome").value;
-    if (nomeCliente === "") { alert("Digite seu nome!"); return; }
-    let mensagem = "Pedido Arena%0A%0ACliente: " + nomeCliente + "%0AItens:%0A";
-    carrinho.forEach(item => { mensagem += "- " + item.nome + "%0A" });
-    mensagem += "%0ATotal: R$ " + total.toFixed(2);
-    let historico = JSON.parse(localStorage.getItem("pedidos")) || [];
-    historico.push({ cliente: nomeCliente, itens: carrinho, total: total, data: new Date().toLocaleDateString() });
-    localStorage.setItem("pedidos", JSON.stringify(historico));
-    carrinho = []; total = 0; renderCarrinho();
-    window.open("https://wa.me/5521968892544?text=" + mensagem);
-}
-
-function verHistorico() {
-    document.getElementById("inicio").style.display = "none";
-    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "none";
-    let historico = JSON.parse(localStorage.getItem("pedidos")) || [];
-    let tela = document.getElementById("menu");
-    tela.innerHTML = `<div class="historico-container"><button onclick="voltarInicio()" class="btn-voltar">⬅ Voltar</button><h1>📋 Histórico</h1><div id="listaHistorico"></div></div>`;
-    let lista = document.getElementById("listaHistorico"); let agrupado = {};
-    historico.forEach(pedido => { if (!agrupado[pedido.data]) { agrupado[pedido.data] = [] }; agrupado[pedido.data].push(pedido) });
-    for (let data in agrupado) {
-        lista.innerHTML += `<h2>📅 ${data}</h2>`;
-        agrupado[data].forEach(pedido => {
-            lista.innerHTML += `<div class="card"><h3>${pedido.cliente}</h3>${pedido.itens.map(item => `<p>- ${item.nome}</p>`).join("")}<p class="preco">Total: R$ ${pedido.total.toFixed(2)}</p></div>`;
-        });
-    }
-}
-
-function toggleCarrinho() {
-    document.querySelector(".carrinho").classList.toggle("ativo");
-}
-
+// --- FUNÇÕES DE PROFESSORES ---
 function carregarProfessoresHome() {
     let container = document.getElementById("lista-professores-home");
     if(!container) return;
@@ -221,9 +190,8 @@ function carregarProfessoresHome() {
     professores.forEach((prof, index) => {
         container.innerHTML += `
         <div class="card">
-            <img src="${prof.img}" alt="${prof.nome}" style="width:100%; height:160px; object-fit:cover; border-radius:10px;">
+            <img src="${prof.img}" style="width:100%; height:160px; object-fit:cover; border-radius:10px;">
             <h3>${prof.nome}</h3>
-            <p>${prof.habilidades}</p>
             <button onclick="verProfessor(${index})">Ver Horários</button>
         </div>`;
     });
@@ -232,30 +200,33 @@ function carregarProfessoresHome() {
 function verProfessor(index) {
     let prof = professores[index];
     let menu = document.getElementById("menu");
-    menu.innerHTML = `<button onclick="voltarInicio()" class="btn-voltar">⬅ Voltar</button><h2>${prof.nome}</h2><p>${prof.habilidades}</p><div class="menu" id="gridAulas"></div>`;
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("secao-professores").style.display = "none";
+    menu.innerHTML = `<button onclick="voltarInicio()">⬅ Voltar</button><h2>${prof.nome}</h2><div class="menu" id="gridAulas"></div>`;
     let grid = document.getElementById("gridAulas");
     prof.aulas.forEach((aula, i) => {
         grid.innerHTML += `
         <div class="card">
             <h3>${aula.dia}</h3>
             <p>${aula.horario}</p>
-            <button class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}" onclick="reservarAula(${index}, ${i})" ${aula.vagas === 0 ? "disabled" : ""}>
-                ${aula.vagas > 0 ? `Reservar (${aula.vagas} vagas)` : "Lotado ❌"}
+            <button class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}" onclick="reservarAula(${index}, ${i})">
+                ${aula.vagas > 0 ? `Reservar (${aula.vagas} vagas)` : "Lotado"}
             </button>
         </div>`;
     });
 }
 
-function reservarAula(profIndex, aulaIndex) {
-    let aula = professores[profIndex].aulas[aulaIndex];
-    if (aula.vagas > 0) {
-        aula.vagas--;
-        alert("Aula reservada com sucesso!");
-        verProfessor(profIndex);
-    } else {
-        alert("Essa aula está lotada!");
-    }
+function reservarAula(p, a) { alert("Reserva solicitada para " + professores[p].nome + "!"); }
+
+// --- OUTRAS FUNÇÕES ---
+function enviarPedido() {
+    let nome = document.getElementById("nome").value;
+    if (!nome || carrinho.length === 0) { alert("Nome vazio ou carrinho vazio!"); return; }
+    let msg = `Pedido Arena%0ACliente: ${nome}%0AItens:%0A` + carrinho.map(i => `- ${i.nome}`).join('%0A') + `%0ATotal: R$ ${total.toFixed(2)}`;
+    window.open(`https://wa.me/5521968892544?text=${msg}`);
 }
 
-// INICIALIZAÇÃO
+function verHistorico() { alert("Histórico em desenvolvimento!"); }
+
+// Inicialização
 carregarProfessoresHome();
