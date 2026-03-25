@@ -20,9 +20,20 @@
         <button class="btn-carrinho" onclick="toggleCarrinho()">🛒 Ver Pedido</button>
     </div>
 
-   <div class="conteudo">
-    <div id="inicio" class="inicio"> ... </div>
-    <div id="secao-professores"> ... </div>
+  <div class="conteudo">
+
+    <div id="inicio" class="inicio">
+        <h1>Bem-vindo à Arena São Francisco 🎾</h1>
+        <p>A melhor experiência em Beach Tennis e Gastronomia.</p>
+        <button class="btn-start" onclick="abrirCardapio()">
+            🍔 Ver Cardápio
+        </button>
+    </div>
+
+    <div id="secao-professores" class="inicio" style="margin-top: 50px;">
+        <h2>👨‍🏫 Nossos Professores</h2>
+        <div id="lista-professores-home" class="menu"></div>
+    </div>
 
     <div id="container-professor" style="display:none;">
         <button class="btn-voltar-pequeno" onclick="voltarInicio()">⬅ Voltar para o Início</button>
@@ -32,6 +43,7 @@
                 <h2 id="nome-prof-titulo"></h2>
                 <video id="video-prof" controls>
                     <source src="" type="video/mp4">
+                    Seu navegador não suporta vídeos.
                 </video>
             </div>
 
@@ -41,16 +53,8 @@
     </div>
 
     <div id="menu" class="menu"></div>
+
 </div>
-
-        <div id="secao-professores" class="inicio" style="margin-top: 50px;">
-            <h2>👨‍🏫 Nossos Professores</h2>
-            <div id="lista-professores-home" class="menu"></div>
-        </div>
-
-        <div id="menu" class="menu"></div>
-
-    </div>
 
     <div class="carrinho">
         <h2>🛒 Seu Pedido</h2>
