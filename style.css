@@ -334,3 +334,9 @@ body::before {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 15px;
 }
+
+#video-prof {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+}
