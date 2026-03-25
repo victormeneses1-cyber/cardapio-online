@@ -204,27 +204,38 @@ function carregarProfessoresHome() {
 function verProfessor(index) {
     let prof = professores[index];
     
-    // Esconder tudo e mostrar o container novo
-    document.getElementById("inicio").style.display = "none";
-    document.getElementById("secao-professores").style.display = "none";
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("container-professor").style.display = "block";
-
-    // Configurar Vídeo e Título
-    document.getElementById("nome-prof-titulo").innerText = "Aulas de " + prof.nome;
-    let video = document.getElementById("video-prof");
-    video.src = prof.nome.toLowerCase().split(' ')[0] + ".mp4"; // Pega o primeiro nome (ex: caio.mp4)
-
-    // Montar Agenda por Dias ao lado
+    // 1. Elementos que vamos manipular
+    let inicio = document.getElementById("inicio");
+    let secaoProfs = document.getElementById("secao-professores");
+    let menuComida = document.getElementById("menu");
+    let containerVideoAgenda = document.getElementById("container-professor");
     let agenda = document.getElementById("agenda-semanal");
-    agenda.innerHTML = "";
+    let videoTag = document.getElementById("video-prof");
+    let tituloNome = document.getElementById("nome-prof-titulo");
 
+    // 2. ESCONDER TUDO DA HOME E DO CARDÁPIO
+    if(inicio) inicio.style.display = "none";
+    if(secaoProfs) secaoProfs.style.display = "none";
+    if(menuComida) menuComida.style.display = "none";
+
+    // 3. MOSTRAR A ÁREA DO PROFESSOR
+    containerVideoAgenda.style.display = "block";
+
+    // 4. CONFIGURAR VÍDEO E TÍTULO
+    tituloNome.innerText = "Aulas de " + prof.nome;
+    // Pega o primeiro nome para o arquivo (ex: Caio Froes -> caio.mp4)
+    let nomeArquivo = prof.nome.split(' ')[0].toLowerCase();
+    videoTag.src = nomeArquivo + ".mp4"; 
+
+    // 5. LIMPAR E MONTAR A AGENDA POR DIAS
+    agenda.innerHTML = "";
     const diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 
     diasSemana.forEach(dia => {
         let aulasDoDia = prof.aulas.filter(a => a.dia === dia);
 
         if (aulasDoDia.length > 0) {
+            // Criar o bloco do dia
             let htmlDia = `
                 <div class="bloco-dia">
                     <h3>📅 ${dia}</h3>
@@ -232,16 +243,18 @@ function verProfessor(index) {
             `;
 
             aulasDoDia.forEach(aula => {
+                // Pegamos o index real da aula para a reserva funcionar
+                let idxAula = prof.aulas.indexOf(aula);
+                
                 htmlDia += `
-                    <div style="margin-bottom: 10px; border-bottom: 1px solid #333; padding: 5px 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">
                         <span>${aula.horario}</span>
                         <button class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}" 
-                                style="padding: 5px; font-size: 12px; float: right;"
+                                style="padding: 5px 10px; font-size: 11px;"
                                 ${aula.vagas === 0 ? "disabled" : ""} 
-                                onclick="reservarAula(${index}, ${prof.aulas.indexOf(aula)})">
+                                onclick="reservarAula(${index}, ${idxAula})">
                             ${aula.vagas > 0 ? 'Reservar' : 'Lotado'}
                         </button>
-                        <div style="clear:both;"></div>
                     </div>`;
             });
 
