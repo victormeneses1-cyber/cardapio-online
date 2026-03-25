@@ -264,3 +264,8 @@ function enviarPedido() { alert("Pedido enviado!"); }
 function verHistorico() { alert("Em breve!"); }
 
 carregarProfessoresHome();
+
+@keyframes popIn {
+  from { opacity:0; transform:scale(.92) translateY(20px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
+}
