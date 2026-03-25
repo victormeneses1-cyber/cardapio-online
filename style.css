@@ -247,3 +247,74 @@ body::before {
 #lista-professores-home .card:nth-child(2) { animation-delay: .75s; }
 #lista-professores-home .card:nth-child(3) { animation-delay: .9s; }
 #lista-professores-home .card:nth-child(4) { animation-delay: 1.05s; }
+/* Input do nome */
+.carrinho input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.07);
+  color: white;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  transition: border-color .2s, background .2s;
+  margin-bottom: 12px;
+}
+
+.carrinho input[type="text"]::placeholder {
+  color: rgba(255,255,255,.3);
+}
+
+.carrinho input[type="text"]:focus {
+  border-color: #2ea043;
+  background: rgba(46,160,67,.08);
+}
+
+/* Botão Enviar Pedido */
+.carrinho button[onclick="enviarPedido()"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background: #238636;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background .2s, transform .1s;
+  letter-spacing: .5px;
+}
+
+.carrinho button[onclick="enviarPedido()"]:hover {
+  background: #2ea043;
+  transform: scale(1.02);
+}
+
+/* Itens do carrinho */
+.carrinho p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  font-size: 13px;
+}
+
+/* Botão ❌ remover */
+.carrinho p button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: background .2s;
+  width: auto;
+  margin: 0;
+}
+
+.carrinho p button:hover {
+  background: rgba(255,0,0,.15);
+}
