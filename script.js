@@ -131,20 +131,44 @@ function voltarInicio() {
 
 // CARDÁPIO
 function mostrar(categoria) {
-    let menu = document.getElementById("menu");
+  let menu = document.getElementById("menu");
+
+  /* 1. Fade out rápido antes de trocar */
+  menu.style.opacity = "0";
+
+  setTimeout(() => {
     menu.innerHTML = "";
-    cardapio[categoria].forEach(item => {
-        menu.innerHTML += `
-        <div class="card">
-            <h3>${item.nome}</h3>
-            ${item.img ? `<img src="${item.img}" style="width:100%; border-radius:10px; margin:10px 0;">` : ""}
-            <p class="preco">R$ ${item.preco.toFixed(2)}</p>
-            ${item.opcoes
-                ? `<button onclick="mostrarOpcoes('${categoria}', '${item.nome}')">Escolher</button>`
-                : `<button onclick="addItem('${item.nome}', ${item.preco})">Adicionar</button>`
-            }
-        </div>`;
+    menu.style.opacity = "1";
+
+    cardapio[categoria].forEach((item, index) => {
+      menu.innerHTML += `
+      <div class="card">
+        <h3>${item.nome}</h3>
+        ${item.img
+          ? `<img src="${item.img}"
+               style="width:100%; border-radius:10px; margin:10px 0;">`
+          : ""
+        }
+        <p class="preco">R$ ${item.preco.toFixed(2)}</p>
+        ${item.opcoes
+          ? `<button onclick="mostrarOpcoes('${categoria}','${item.nome}')">
+               Escolher
+             </button>`
+          : `<button onclick="addItem('${item.nome}',${item.preco})">
+               Adicionar
+             </button>`
+        }
+      </div>`;
     });
+
+    /* 2. Dispara animação em cascata em cada card */
+    document.querySelectorAll(".card").forEach((card, i) => {
+      setTimeout(() => {
+        card.classList.add("animado");
+      }, i * 100); /* 100ms de delay entre cada card */
+    });
+
+  }, 200); /* aguarda o fade out terminar */
 }
 
 function mostrarOpcoes(categoria, nomeProduto) {
