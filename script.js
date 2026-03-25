@@ -185,11 +185,53 @@ function mostrarOpcoes(categoria, nomeProduto) {
     });
 }
 
-// CARRINHO
 function addItem(nome, preco) {
-    let nomeCliente = document.getElementById("nome").value;
-    if (nomeCliente === "") { alert("Digite seu nome!"); return; }
-    carrinho.push({ nome, preco }); total += preco; renderCarrinho();
+  let nomeCliente = document.getElementById("nome").value.trim();
+  if (nomeCliente === "") {
+    abrirModalNome(nome, preco);
+    return;
+  }
+  carrinho.push({ nome, preco });
+  total += preco;
+  renderCarrinho();
+}
+
+function abrirModalNome(nome, preco) {
+  const modal = document.getElementById("modal-nome");
+  modal.style.display = "flex";
+  modal.dataset.nome = nome;
+  modal.dataset.preco = preco;
+  document.getElementById("modal-nome-input").focus();
+}
+
+function confirmarNome() {
+  const input = document.getElementById("modal-nome-input");
+  const erro = document.getElementById("modal-erro");
+  const v = input.value.trim();
+
+  if (!v) {
+    erro.style.opacity = "1";
+    input.style.borderColor = "#e74c3c";
+    setTimeout(() => input.style.borderColor = "", 1500);
+    return;
+  }
+
+  /* Preenche o campo nome do carrinho automaticamente */
+  document.getElementById("nome").value = v;
+
+  /* Fecha o modal */
+  const modal = document.getElementById("modal-nome");
+  modal.style.display = "none";
+
+  /* Adiciona o item que estava tentando adicionar */
+  const nomeProduto = modal.dataset.nome;
+  const precoProduto = parseFloat(modal.dataset.preco);
+  carrinho.push({ nome: nomeProduto, preco: precoProduto });
+  total += precoProduto;
+  renderCarrinho();
+
+  /* Abre o carrinho automaticamente */
+  document.querySelector(".carrinho").classList.add("ativo");
 }
 
 function renderCarrinho() {
