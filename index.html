@@ -20,29 +20,32 @@
     </div>
 
     <div class="conteudo">
-        <div id="inicio" class="inicio">
-            <h1>Bem-vindo à Arena São Francisco 🎾</h1>
-            <p>A melhor experiência em Beach Tennis e Gastronomia.</p>
-            <button class="btn-start" onclick="abrirCardapio()">🍔 Ver Cardápio</button>
-        </div>
+    <div id="inicio" class="inicio">
+        <h1>Bem-vindo à Arena São Francisco 🎾</h1>
+        <button class="btn-start" onclick="abrirCardapio()">🍔 Ver Cardápio</button>
+    </div>
 
-        <div id="secao-professores" class="inicio" style="margin-top: 50px;">
-            <h2>👨‍🏫 Nossos Professores</h2>
-            <div id="lista-professores-home" class="menu"></div>
-        </div>
+    <div id="secao-professores" class="inicio" style="margin-top: 50px;">
+        <h2>👨‍🏫 Nossos Professores</h2>
+        <div id="lista-professores-home" class="menu"></div>
+    </div>
 
-        <div id="container-professor" style="display:none;">
-            <button class="btn-voltar-pequeno" onclick="voltarInicio()">⬅ Voltar para o Início</button>
-            <div class="layout-professor">
-                <div class="coluna-video">
-                    <h2 id="nome-prof-titulo"></h2>
-                    <video id="video-prof" controls width="100%">
-                        <source src="" type="video/mp4">
-                    </video>
-                </div>
-                <div id="agenda-semanal" class="coluna-agenda"></div>
+    <div id="container-professor" style="display:none;">
+        <button class="btn-voltar-pequeno" onclick="voltarInicio()">⬅ Voltar</button>
+        <div class="layout-professor">
+            <div class="coluna-video">
+                <h2 id="nome-prof-titulo"></h2>
+                <video id="video-prof" controls width="100%" style="border-radius:15px;">
+                    <source src="" type="video/mp4">
+                </video>
             </div>
+            <div id="agenda-semanal" class="coluna-agenda">
+                </div>
         </div>
+    </div>
+
+    <div id="menu" class="menu"></div>
+</div>
 
         <div id="menu" class="menu"></div>
     </div>
