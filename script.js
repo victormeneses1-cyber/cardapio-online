@@ -249,7 +249,7 @@ function verProfessor(index) {
                                 style="padding: 5px 10px; font-size: 11px;"
                                 ${aula.vagas === 0 ? "disabled" : ""} 
                                 onclick="reservarAula(${index})">
-                            ${aula.vagas > 0 ? 'agendar' : 'Lotado'}
+                            ${aula.vagas > 0 ? 'Agendar' : 'Lotado'}
                         </button>
                     </div>`;
             });
