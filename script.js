@@ -59,54 +59,54 @@ const professores = [
     {
         nome: "Caio Froes", img: "caio.jpeg", habilidades: "Instrutor há +5 anos",
         aulas: [
-            {dia:"Segunda", horario:"07:00", vagas:3}, {dia:"Segunda", horario:"08:00", vagas:0},
-            {dia:"Segunda", horario:"09:00", vagas:2}, {dia:"Segunda", horario:"17:00", vagas:1},
-            {dia:"Segunda", horario:"18:00", vagas:0}, {dia:"Segunda", horario:"19:00", vagas:0},
-            {dia:"Terça", horario:"17:00", vagas:0}, {dia:"Terça", horario:"18:00", vagas:1},
-            {dia:"Terça", horario:"19:00", vagas:0}, {dia:"Quarta", horario:"07:00", vagas:3},
-            {dia:"Quarta", horario:"08:00", vagas:1}, {dia:"Quarta", horario:"09:00", vagas:2},
-            {dia:"Quarta", horario:"17:00", vagas:0}, {dia:"Quinta", horario:"17:00", vagas:0},
-            {dia:"Quinta", horario:"18:00", vagas:1}, {dia:"Sexta", horario:"07:00", vagas:1},
-            {dia:"Sexta", horario:"08:00", vagas:3}, {dia:"Sexta", horario:"09:00", vagas:0},
-            {dia:"Sexta", horario:"16:00", vagas:2}, {dia:"Sexta", horario:"17:00", vagas:0},
-            {dia:"Sexta", horario:"18:00", vagas:0}
+            {dia:"Segunda", horario:"07:00 as 08:00", vagas:3}, {dia:"Segunda", horario:"08:00 as 09:00", vagas:0},
+            {dia:"Segunda", horario:"09:00 as 10:00", vagas:2}, {dia:"Segunda", horario:"17:00 as 18:00", vagas:1},
+            {dia:"Segunda", horario:"18:00 as 19:00", vagas:0}, {dia:"Segunda", horario:"19:00 as 20:00", vagas:0},
+            {dia:"Terça", horario:"17:00 as 18:00", vagas:0}, {dia:"Terça", horario:"18:00 as 19:00", vagas:1},
+            {dia:"Terça", horario:"19:00 as 20:00", vagas:0}, {dia:"Quarta", horario:"07:00 as 08:00", vagas:3},
+            {dia:"Quarta", horario:"08:00 as 09:00", vagas:1}, {dia:"Quarta", horario:"09:00 as 10:00", vagas:2},
+            {dia:"Quarta", horario:"17:00 as 18:00", vagas:0}, {dia:"Quinta", horario:"17:00 as 18:00", vagas:0},
+            {dia:"Quinta", horario:"18:00 as 19:00", vagas:1}, {dia:"Sexta", horario:"07:00 as 08:00", vagas:1},
+            {dia:"Sexta", horario:"08:00 as 09:00", vagas:3}, {dia:"Sexta", horario:"09:00 as 10:00", vagas:0},
+            {dia:"Sexta", horario:"16:00 as 17:00", vagas:2}, {dia:"Sexta", horario:"17:00 as 18:00", vagas:0},
+            {dia:"Sexta", horario:"18:00 as 19:00", vagas:0}
         ]
     },
     {
         nome: "Pedro Lucca", img: "pedro.jpeg", habilidades: "Especialista iniciantes",
         aulas: [
-            {dia:"Segunda", horario:"15:00", vagas:3}, {dia:"Segunda", horario:"16:00", vagas:2},
-            {dia:"Segunda", horario:"17:00", vagas:2}, {dia:"Terça", horario:"14:00", vagas:4},
-            {dia:"Terça", horario:"15:00", vagas:4}, {dia:"Terça", horario:"16:00", vagas:4},
-            {dia:"Terça", horario:"17:00", vagas:4}, {dia:"Quarta", horario:"15:00", vagas:3},
-            {dia:"Quarta", horario:"16:00", vagas:2}, {dia:"Quarta", horario:"17:00", vagas:4},
-            {dia:"Quinta", horario:"15:00", vagas:3}, {dia:"Quinta", horario:"16:00", vagas:3},
-            {dia:"Quinta", horario:"17:00", vagas:1}, {dia:"Sexta", horario:"14:00", vagas:4},
-            {dia:"Sexta", horario:"15:00", vagas:4}, {dia:"Sexta", horario:"16:00", vagas:4},
-            {dia:"Sexta", horario:"17:00", vagas:4}
+            {dia:"Segunda", horario:"15:00 as 16:00", vagas:3}, {dia:"Segunda", horario:"16:00 as 17:00", vagas:2},
+            {dia:"Segunda", horario:"17:00 as 18:00", vagas:2}, {dia:"Terça", horario:"14:00 as 15:00", vagas:4},
+            {dia:"Terça", horario:"15:00 as 16:00", vagas:4}, {dia:"Terça", horario:"16:00 as 17:00", vagas:4},
+            {dia:"Terça", horario:"17:00 as 18:00", vagas:4}, {dia:"Quarta", horario:"15:00 as 16:00", vagas:3},
+            {dia:"Quarta", horario:"16:00 as 17:00", vagas:2}, {dia:"Quarta", horario:"17:00 as 18:00", vagas:4},
+            {dia:"Quinta", horario:"15:00 as 16:00", vagas:3}, {dia:"Quinta", horario:"16:00 as 17:00", vagas:3},
+            {dia:"Quinta", horario:"17:00 as 18:00", vagas:1}, {dia:"Sexta", horario:"14:00 as 15:00", vagas:4},
+            {dia:"Sexta", horario:"15:00 as 16:00", vagas:4}, {dia:"Sexta", horario:"16:00 as 17:00", vagas:4},
+            {dia:"Sexta", horario:"17:00 as 18:00", vagas:4}
         ]
     },
     {
         nome: "Leonardo Briornes", img: "Leonardo.jpeg", habilidades: "Bom professor",
         aulas: [
-            {dia:"Segunda", horario:"16:00", vagas:3}, {dia:"Quarta", horario:"09:00", vagas:3},
-            {dia:"Quarta", horario:"10:00", vagas:3}, {dia:"Quarta", horario:"14:00", vagas:1},
-            {dia:"Quarta", horario:"15:00", vagas:0}, {dia:"Quarta", horario:"17:00", vagas:1},
-            {dia:"Quarta", horario:"20:00", vagas:1}, {dia:"Quarta", horario:"21:00", vagas:3},
-            {dia:"Sexta", horario:"09:00", vagas:0}, {dia:"Sexta", horario:"10:00", vagas:0},
-            {dia:"Sexta", horario:"16:00", vagas:0}
+            {dia:"Segunda", horario:"16:00 as 17:00", vagas:3}, {dia:"Quarta", horario:"09:00 as 10:00", vagas:3},
+            {dia:"Quarta", horario:"10:00 as 11:00", vagas:3}, {dia:"Quarta", horario:"14:00 as 15:00", vagas:1},
+            {dia:"Quarta", horario:"15:00 as 16:00", vagas:0}, {dia:"Quarta", horario:"17:00 as 18:00", vagas:1},
+            {dia:"Quarta", horario:"20:00 as 21:00", vagas:1}, {dia:"Quarta", horario:"21:00 as 22:00", vagas:3},
+            {dia:"Sexta", horario:"09:00 as 10:00", vagas:0}, {dia:"Sexta", horario:"10:00 as 11:00", vagas:0},
+            {dia:"Sexta", horario:"16:00 as 17:00", vagas:0}
         ]
     },
     {
         nome: "Luiz Marabezi", img: "marabezi.jpeg", habilidades: "Bom professor",
         aulas: [
-            {dia:"Segunda", horario:"19:00", vagas:2}, {dia:"Segunda", horario:"07:00", vagas:2},
-            {dia:"Terça", horario:"07:00", vagas:0}, {dia:"Terça", horario:"08:00", vagas:2},
-            {dia:"Terça", horario:"09:00", vagas:4}, {dia:"Terça", horario:"10:00", vagas:4},
-            {dia:"Quarta", horario:"09:00", vagas:1}, {dia:"Quarta", horario:"11:00", vagas:3},
-            {dia:"Quinta", horario:"07:00", vagas:0}, {dia:"Quinta", horario:"08:00", vagas:2},
-            {dia:"Sexta", horario:"09:00", vagas:1}, {dia:"Sexta", horario:"11:00", vagas:3},
-            {dia:"Sexta", horario:"17:00", vagas:3}, {dia:"Sexta", horario:"20:00", vagas:0}
+            {dia:"Segunda", horario:"19:00 as 20:00", vagas:2}, {dia:"Segunda", horario:"20:00 as 21:00", vagas:2},
+            {dia:"Terça", horario:"07:00 as 08:00", vagas:0}, {dia:"Terça", horario:"08:00 as 09:00", vagas:2},
+            {dia:"Terça", horario:"09:00 as 10:00", vagas:4}, {dia:"Terça", horario:"10:00 as 11:00", vagas:4},
+            {dia:"Quarta", horario:"09:00 as 10:00", vagas:1}, {dia:"Quarta", horario:"11:00 as 12:00", vagas:3},
+            {dia:"Quinta", horario:"07:00 as 08:00", vagas:0}, {dia:"Quinta", horario:"08:00 as 09:00", vagas:2},
+            {dia:"Sexta", horario:"09:00 as 10:00", vagas:1}, {dia:"Sexta", horario:"11:00 as 12:00", vagas:3},
+            {dia:"Sexta", horario:"17:00 as 18:00", vagas:3}, {dia:"Sexta", horario:"20:00 as 21:00", vagas:0}
         ]
     }
 ];
