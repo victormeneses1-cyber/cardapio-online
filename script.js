@@ -114,20 +114,20 @@ const professores = [
 // --- FUNÇÕES DE NAVEGAÇÃO ---
 function abrirCardapio() {
     document.getElementById("inicio").style.display = "none";
-    document.getElementById("secao-professores").style.display = "none"; // Esconde os profs da home
-    document.getElementById("container-professor").style.display = "none"; // Esconde vídeo/agenda se estiver aberto
+    document.getElementById("secao-professores").style.display = "none";
+    if(document.getElementById("container-professor")) document.getElementById("container-professor").style.display = "none";
     
     document.getElementById("sidebar").style.display = "flex";
     document.getElementById("menu").style.display = "grid";
     mostrar('pizzas');
 }
-}
 
 function voltarInicio() {
     document.getElementById("menu").innerHTML = "";
     document.getElementById("inicio").style.display = "flex";
-    if(document.getElementById("secao-professores")) document.getElementById("secao-professores").style.display = "flex";
-    document.querySelector(".sidebar").style.display = "none";
+    document.getElementById("secao-professores").style.display = "flex";
+    document.getElementById("sidebar").style.display = "none";
+    if(document.getElementById("container-professor")) document.getElementById("container-professor").style.display = "none";
 }
 
 // --- FUNÇÕES DO CARDÁPIO ---
@@ -204,48 +204,34 @@ function carregarProfessoresHome() {
 function verProfessor(index) {
     let prof = professores[index];
     
-    // 1. Elementos que vamos manipular
-    let inicio = document.getElementById("inicio");
-    let secaoProfs = document.getElementById("secao-professores");
-    let menuComida = document.getElementById("menu");
+    // Esconder o que não deve aparecer
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("secao-professores").style.display = "none";
+    document.getElementById("menu").style.display = "none";
+
+    // Configura o container do professor
     let containerVideoAgenda = document.getElementById("container-professor");
-    let agenda = document.getElementById("agenda-semanal");
-    let videoTag = document.getElementById("video-prof");
-    let tituloNome = document.getElementById("nome-prof-titulo");
-
-    // 2. ESCONDER TUDO DA HOME E DO CARDÁPIO
-    if(inicio) inicio.style.display = "none";
-    if(secaoProfs) secaoProfs.style.display = "none";
-    if(menuComida) menuComida.style.display = "none";
-
-    // 3. MOSTRAR A ÁREA DO PROFESSOR
     containerVideoAgenda.style.display = "block";
 
-    // 4. CONFIGURAR VÍDEO E TÍTULO
-    tituloNome.innerText = "Aulas de " + prof.nome;
-    // Pega o primeiro nome para o arquivo (ex: Caio Froes -> caio.mp4)
+    document.getElementById("nome-prof-titulo").innerText = "Aulas de " + prof.nome;
+    
+    // Configura o Vídeo (Primeiro nome em minúsculo + .mp4)
+    let videoTag = document.getElementById("video-prof");
     let nomeArquivo = prof.nome.split(' ')[0].toLowerCase();
     videoTag.src = nomeArquivo + ".mp4"; 
 
-    // 5. LIMPAR E MONTAR A AGENDA POR DIAS
+    // Monta a Agenda por dias (Lado a lado com o vídeo via CSS)
+    let agenda = document.getElementById("agenda-semanal");
     agenda.innerHTML = "";
+    
     const diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 
     diasSemana.forEach(dia => {
         let aulasDoDia = prof.aulas.filter(a => a.dia === dia);
-
         if (aulasDoDia.length > 0) {
-            // Criar o bloco do dia
-            let htmlDia = `
-                <div class="bloco-dia">
-                    <h3>📅 ${dia}</h3>
-                    <div class="lista-horarios">
-            `;
-
+            let htmlDia = `<div class="bloco-dia"><h3>📅 ${dia}</h3><div class="lista-horarios">`;
             aulasDoDia.forEach(aula => {
-                // Pegamos o index real da aula para a reserva funcionar
                 let idxAula = prof.aulas.indexOf(aula);
-                
                 htmlDia += `
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">
                         <span>${aula.horario}</span>
@@ -257,32 +243,32 @@ function verProfessor(index) {
                         </button>
                     </div>`;
             });
-
             htmlDia += `</div></div>`;
             agenda.innerHTML += htmlDia;
         }
     });
 }
 
-// Não esqueça de atualizar o voltarInicio para esconder o container do professor
-function voltarInicio() {
-    document.getElementById("container-professor").style.display = "none";
-    document.getElementById("menu").style.display = "grid";
-    document.getElementById("inicio").style.display = "flex";
-    document.getElementById("secao-professores").style.display = "flex";
-    document.querySelector(".sidebar").style.display = "none";
+function reservarAula(p, a) {
+    let aula = professores[p].aulas[a];
+    if(aula.vagas > 0) {
+        aula.vagas--;
+        alert("Reserva solicitada para " + professores[p].nome + " às " + aula.horario);
+        verProfessor(p);
+    } else {
+        alert("Horário esgotado!");
+    }
 }
-function reservarAula(p, a) { alert("Reserva solicitada para " + professores[p].nome + "!"); }
 
 // --- OUTRAS FUNÇÕES ---
 function enviarPedido() {
     let nome = document.getElementById("nome").value;
-    if (!nome || carrinho.length === 0) { alert("Nome vazio ou carrinho vazio!"); return; }
+    if (!nome || carrinho.length === 0) { alert("Nome ou carrinho vazio!"); return; }
     let msg = `Pedido Arena%0ACliente: ${nome}%0AItens:%0A` + carrinho.map(i => `- ${i.nome}`).join('%0A') + `%0ATotal: R$ ${total.toFixed(2)}`;
     window.open(`https://wa.me/5521968892544?text=${msg}`);
 }
 
 function verHistorico() { alert("Histórico em desenvolvimento!"); }
 
-// Inicialização
+// Inicialização obrigatória
 carregarProfessoresHome();
