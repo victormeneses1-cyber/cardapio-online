@@ -1,210 +1,41 @@
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    color: white;
-    background-image: url("fundo.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    margin: 0; font-family: Arial, sans-serif; color: white;
+    background-image: url("fundo.jpg"); background-size: cover;
+    background-position: center; background-attachment: fixed;
 }
-
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: -1;
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); z-index: -1;
 }
-
 .layout { display: flex; }
-
-/* SIDEBAR */
 .sidebar {
-    width: 220px;
-    background: rgba(22, 27, 34, 0.8);
-    padding: 20px;
-    height: 100vh;
-    display: none; /* JS ativa como flex */
-    flex-direction: column;
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(15px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    width: 200px; background: rgba(22, 27, 34, 0.8); padding: 15px;
+    height: 100vh; display: none; flex-direction: column;
+    position: sticky; top: 0; backdrop-filter: blur(10px);
 }
-
-.sidebar button {
-    display: block;
-    width: 100%;
-    margin: 8px 0;
-    padding: 12px;
-    color: white;
-    font-weight: bold;
-    background: rgba(46, 160, 67, 0.8);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+.sidebar button, .btn-start, .btn-verde {
+    margin: 10px 0; padding: 12px; border: none; border-radius: 12px;
+    font-weight: bold; color: white; cursor: pointer; background: #238636;
 }
+.conteudo { flex: 1; padding: 20px; }
+.inicio { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
-.sidebar button:hover {
-    background: #2ea043;
-    transform: scale(1.02);
-}
-
-/* CONTEÚDO */
-.conteudo { flex: 1; padding: 25px; min-height: 100vh; }
-
-.inicio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px 10px;
-}
-
-.btn-start {
-    margin-top: 20px;
-    padding: 15px 40px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #238636, #2ea043);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
-}
-
-/* CARDS */
-.menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.card {
-    background: rgba(22, 27, 34, 0.9);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.preco { color: #2ea043; font-weight: bold; margin: 10px 0; font-size: 1.2em; }
-
-/* CARRINHO */
-.carrinho {
-    position: fixed;
-    bottom: -600px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 380px;
-    max-width: 95%;
-    background: #161b22;
-    padding: 20px;
-    border-radius: 20px 20px 0 0;
-    transition: 0.5s ease;
-    z-index: 1000;
-    border: 1px solid #30363d;
-}
-
-.carrinho.ativo { bottom: 0; }
-
-.btn-carrinho {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    background: #238636;
-    color: white;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 1001;
-}
-
-.btn-verde { background: #238636; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; }
-.btn-vermelho { background: #8b0000; color: white; border: none; padding: 8px; border-radius: 5px; cursor: not-allowed; }
-
-@media (max-width: 768px) {
-    .layout { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: relative; display: none; }
-}
-#agenda-semanal h3 {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 30px;
-    border-left: 5px solid #2ea043;
-    text-align: left;
-}
-
-#agenda-semanal .menu {
-    margin-bottom: 20px;
-}
-/* Botão de voltar menor */
-.btn-voltar-pequeno {
-    width: auto;
-    padding: 8px 20px;
-    background: #444;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-/* Container principal em duas colunas */
-/* Layout em duas colunas para o Professor */
-.layout-professor {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-top: 20px;
-}
-
+/* LAYOUT DUAS COLUNAS PROFESSOR */
+.layout-professor { display: flex; gap: 30px; margin-top: 20px; align-items: flex-start; }
 .coluna-video { flex: 1; min-width: 300px; }
-.coluna-agenda { 
-    flex: 2; 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 15px; 
-}
+.coluna-video video { border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.coluna-agenda { flex: 2; display: flex; flex-wrap: wrap; gap: 15px; }
 
 .bloco-dia {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 15px;
-    border-radius: 10px;
-    min-width: 220px;
-    border-top: 4px solid #2ea043;
+    background: rgba(255, 255, 255, 0.1); padding: 15px;
+    border-radius: 10px; min-width: 200px; border-top: 4px solid #2ea043;
 }
+.btn-voltar-pequeno { background: #444; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+.menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.card { background: rgba(22, 27, 34, 0.9); padding: 15px; border-radius: 15px; text-align: center; }
+.card img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; }
+.carrinho { position: fixed; bottom: -500px; left: 50%; transform: translateX(-50%); width: 320px; background: #161b22; padding: 20px; border-radius: 20px 20px 0 0; transition: 0.5s; z-index: 1000; }
+.carrinho.ativo { bottom: 0; }
+.btn-vermelho { background: #8b0000; cursor: not-allowed; }
 
-.btn-voltar-pequeno {
-    background: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-@media (max-width: 800px) {
-    .layout-professor { flex-direction: column; }
-}
+@media (max-width: 800px) { .layout-professor { flex-direction: column; } }
