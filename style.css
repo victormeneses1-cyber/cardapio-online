@@ -705,18 +705,23 @@ body {
 .secao-localizacao {
     padding: 24px 16px 32px;
     text-align: center;
+    background: rgba(0,0,0,0.4);
+    border-radius: 16px;
+    margin: 0 12px 16px;
 }
 
 .loc-titulo {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 4px;
-    color: var(--text, #222);
+    margin-bottom: 6px;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
 }
 
 .loc-endereco {
-    font-size: 0.85rem;
-    color: #888;
+    font-size: 0.88rem;
+    color: #f0f0f0;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
     margin-bottom: 14px;
 }
 
@@ -724,7 +729,7 @@ body {
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 14px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
 .btn-maps {
