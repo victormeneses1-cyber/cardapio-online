@@ -1,5 +1,8 @@
 let carrinho = [];
 let total = 0;
+let categoriaAtual = 'pizzas';
+let profAtual = 0;
+let diaAtual = '';
 
 const cardapio = {
     pizzas: [
@@ -57,259 +60,358 @@ const cardapio = {
 
 const professores = [
     {
-        nome: "Caio Froes", img: "caio.jpeg", habilidades: "Instrutor há +5 anos",
-        video: "1jWEIN_ubYs",
+        nome: "Caio Froes", img: "caio.jpeg", habilidades: "Instrutor +5 anos",
+        video: "caio.video.mp4",
         aulas: [
-            {dia:"Segunda", horario:"07:00 as 08:00", vagas:3}, {dia:"Segunda", horario:"08:00 as 09:00", vagas:0},
-            {dia:"Segunda", horario:"09:00 as 10:00", vagas:2}, {dia:"Segunda", horario:"17:00 as 18:00", vagas:1},
-            {dia:"Segunda", horario:"18:00 as 19:00", vagas:0}, {dia:"Segunda", horario:"19:00 as 20:00", vagas:0},
-            {dia:"Terça", horario:"17:00 as 18:00", vagas:0}, {dia:"Terça", horario:"18:00 as 19:00", vagas:1},
-            {dia:"Terça", horario:"19:00 as 20:00", vagas:0}, {dia:"Quarta", horario:"07:00 as 08:00", vagas:3},
-            {dia:"Quarta", horario:"08:00 as 09:00", vagas:1}, {dia:"Quarta", horario:"09:00 as 10:00", vagas:2},
-            {dia:"Quarta", horario:"17:00 as 18:00", vagas:0}, {dia:"Quinta", horario:"17:00 as 18:00", vagas:0},
-            {dia:"Quinta", horario:"18:00 as 19:00", vagas:1}, {dia:"Sexta", horario:"07:00 as 08:00", vagas:1},
-            {dia:"Sexta", horario:"08:00 as 09:00", vagas:3}, {dia:"Sexta", horario:"09:00 as 10:00", vagas:0},
-            {dia:"Sexta", horario:"16:00 as 17:00", vagas:2}, {dia:"Sexta", horario:"17:00 as 18:00", vagas:0},
-            {dia:"Sexta", horario:"18:00 as 19:00", vagas:0}
+            {dia:"Segunda", horario:"07:00 - 08:00", vagas:3}, {dia:"Segunda", horario:"08:00 - 09:00", vagas:0},
+            {dia:"Segunda", horario:"09:00 - 10:00", vagas:2}, {dia:"Segunda", horario:"17:00 - 18:00", vagas:1},
+            {dia:"Segunda", horario:"18:00 - 19:00", vagas:0}, {dia:"Segunda", horario:"19:00 - 20:00", vagas:0},
+            {dia:"Terça", horario:"17:00 - 18:00", vagas:0}, {dia:"Terça", horario:"18:00 - 19:00", vagas:1},
+            {dia:"Terça", horario:"19:00 - 20:00", vagas:0}, {dia:"Quarta", horario:"07:00 - 08:00", vagas:3},
+            {dia:"Quarta", horario:"08:00 - 09:00", vagas:1}, {dia:"Quarta", horario:"09:00 - 10:00", vagas:2},
+            {dia:"Quarta", horario:"17:00 - 18:00", vagas:0}, {dia:"Quinta", horario:"17:00 - 18:00", vagas:0},
+            {dia:"Quinta", horario:"18:00 - 19:00", vagas:1}, {dia:"Sexta", horario:"07:00 - 08:00", vagas:1},
+            {dia:"Sexta", horario:"08:00 - 09:00", vagas:3}, {dia:"Sexta", horario:"09:00 - 10:00", vagas:0},
+            {dia:"Sexta", horario:"16:00 - 17:00", vagas:2}, {dia:"Sexta", horario:"17:00 - 18:00", vagas:0},
+            {dia:"Sexta", horario:"18:00 - 19:00", vagas:0}
         ]
     },
     {
         nome: "Pedro Lucca", img: "pedro.jpeg", habilidades: "Especialista iniciantes",
+        video: "pedro.video.mp4",
         aulas: [
-            {dia:"Segunda", horario:"15:00 as 16:00", vagas:3}, {dia:"Segunda", horario:"16:00 as 17:00", vagas:2},
-            {dia:"Segunda", horario:"17:00 as 18:00", vagas:2}, {dia:"Terça", horario:"14:00 as 15:00", vagas:4},
-            {dia:"Terça", horario:"15:00 as 16:00", vagas:4}, {dia:"Terça", horario:"16:00 as 17:00", vagas:4},
-            {dia:"Terça", horario:"17:00 as 18:00", vagas:4}, {dia:"Quarta", horario:"15:00 as 16:00", vagas:3},
-            {dia:"Quarta", horario:"16:00 as 17:00", vagas:2}, {dia:"Quarta", horario:"17:00 as 18:00", vagas:4},
-            {dia:"Quinta", horario:"15:00 as 16:00", vagas:3}, {dia:"Quinta", horario:"16:00 as 17:00", vagas:3},
-            {dia:"Quinta", horario:"17:00 as 18:00", vagas:1}, {dia:"Sexta", horario:"14:00 as 15:00", vagas:4},
-            {dia:"Sexta", horario:"15:00 as 16:00", vagas:4}, {dia:"Sexta", horario:"16:00 as 17:00", vagas:4},
-            {dia:"Sexta", horario:"17:00 as 18:00", vagas:4}
+            {dia:"Segunda", horario:"15:00 - 16:00", vagas:3}, {dia:"Segunda", horario:"16:00 - 17:00", vagas:2},
+            {dia:"Segunda", horario:"17:00 - 18:00", vagas:2}, {dia:"Terça", horario:"14:00 - 15:00", vagas:4},
+            {dia:"Terça", horario:"15:00 - 16:00", vagas:4}, {dia:"Terça", horario:"16:00 - 17:00", vagas:4},
+            {dia:"Terça", horario:"17:00 - 18:00", vagas:4}, {dia:"Quarta", horario:"15:00 - 16:00", vagas:3},
+            {dia:"Quarta", horario:"16:00 - 17:00", vagas:2}, {dia:"Quarta", horario:"17:00 - 18:00", vagas:4},
+            {dia:"Quinta", horario:"15:00 - 16:00", vagas:3}, {dia:"Quinta", horario:"16:00 - 17:00", vagas:3},
+            {dia:"Quinta", horario:"17:00 - 18:00", vagas:1}, {dia:"Sexta", horario:"14:00 - 15:00", vagas:4},
+            {dia:"Sexta", horario:"15:00 - 16:00", vagas:4}, {dia:"Sexta", horario:"16:00 - 17:00", vagas:4},
+            {dia:"Sexta", horario:"17:00 - 18:00", vagas:4}
         ]
     },
     {
-        nome: "Leonardo Briornes", img: "Leonardo.jpeg", habilidades: "Bom professor",
+        nome: "Leonardo Briornes", img: "Leonardo.jpeg", habilidades: "Professor experiente",
+        video: "Leonardo.video.mp4",
         aulas: [
-            {dia:"Segunda", horario:"16:00 as 17:00", vagas:3}, {dia:"Quarta", horario:"09:00 as 10:00", vagas:3},
-            {dia:"Quarta", horario:"10:00 as 11:00", vagas:3}, {dia:"Quarta", horario:"14:00 as 15:00", vagas:1},
-            {dia:"Quarta", horario:"15:00 as 16:00", vagas:0}, {dia:"Quarta", horario:"17:00 as 18:00", vagas:1},
-            {dia:"Quarta", horario:"20:00 as 21:00", vagas:1}, {dia:"Quarta", horario:"21:00 as 22:00", vagas:3},
-            {dia:"Sexta", horario:"09:00 as 10:00", vagas:0}, {dia:"Sexta", horario:"10:00 as 11:00", vagas:0},
-            {dia:"Sexta", horario:"16:00 as 17:00", vagas:0}
+            {dia:"Segunda", horario:"16:00 - 17:00", vagas:3}, {dia:"Quarta", horario:"09:00 - 10:00", vagas:3},
+            {dia:"Quarta", horario:"10:00 - 11:00", vagas:3}, {dia:"Quarta", horario:"14:00 - 15:00", vagas:1},
+            {dia:"Quarta", horario:"15:00 - 16:00", vagas:0}, {dia:"Quarta", horario:"17:00 - 18:00", vagas:1},
+            {dia:"Quarta", horario:"20:00 - 21:00", vagas:1}, {dia:"Quarta", horario:"21:00 - 22:00", vagas:3},
+            {dia:"Sexta", horario:"09:00 - 10:00", vagas:0}, {dia:"Sexta", horario:"10:00 - 11:00", vagas:0},
+            {dia:"Sexta", horario:"16:00 - 17:00", vagas:0}
         ]
     },
     {
-        nome: "Luiz Marabezi", img: "marabezi.jpeg", habilidades: "Bom professor",
+        nome: "Luiz Marabezi", img: "marabezi.jpeg", habilidades: "Professor experiente",
+        video: "marabezi.video.mp4",
         aulas: [
-            {dia:"Segunda", horario:"19:00 as 20:00", vagas:2}, {dia:"Segunda", horario:"20:00 as 21:00", vagas:2},
-            {dia:"Terça", horario:"07:00 as 08:00", vagas:0}, {dia:"Terça", horario:"08:00 as 09:00", vagas:2},
-            {dia:"Terça", horario:"09:00 as 10:00", vagas:4}, {dia:"Terça", horario:"10:00 as 11:00", vagas:4},
-            {dia:"Quarta", horario:"09:00 as 10:00", vagas:1}, {dia:"Quarta", horario:"11:00 as 12:00", vagas:3},
-            {dia:"Quinta", horario:"07:00 as 08:00", vagas:0}, {dia:"Quinta", horario:"08:00 as 09:00", vagas:2},
-            {dia:"Sexta", horario:"09:00 as 10:00", vagas:1}, {dia:"Sexta", horario:"11:00 as 12:00", vagas:3},
-            {dia:"Sexta", horario:"17:00 as 18:00", vagas:3}, {dia:"Sexta", horario:"20:00 as 21:00", vagas:0}
+            {dia:"Segunda", horario:"19:00 - 20:00", vagas:2}, {dia:"Segunda", horario:"20:00 - 21:00", vagas:2},
+            {dia:"Terça", horario:"07:00 - 08:00", vagas:0}, {dia:"Terça", horario:"08:00 - 09:00", vagas:2},
+            {dia:"Terça", horario:"09:00 - 10:00", vagas:4}, {dia:"Terça", horario:"10:00 - 11:00", vagas:4},
+            {dia:"Quarta", horario:"09:00 - 10:00", vagas:1}, {dia:"Quarta", horario:"11:00 - 12:00", vagas:3},
+            {dia:"Quinta", horario:"07:00 - 08:00", vagas:0}, {dia:"Quinta", horario:"08:00 - 09:00", vagas:2},
+            {dia:"Sexta", horario:"09:00 - 10:00", vagas:1}, {dia:"Sexta", horario:"11:00 - 12:00", vagas:3},
+            {dia:"Sexta", horario:"17:00 - 18:00", vagas:3}, {dia:"Sexta", horario:"20:00 - 21:00", vagas:0}
         ]
     }
 ];
 
 // NAVEGAÇÃO
-function abrirCardapio() {
-    document.getElementById("inicio").style.display = "none";
-    document.getElementById("secao-professores").style.display = "none";
-    document.getElementById("container-professor").style.display = "none";
-    document.getElementById("sidebar").style.display = "flex";
-    document.getElementById("menu").style.display = "grid";
-    mostrar('pizzas');
+function irTela(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const mapa = { 's-home': 'nav-home', 's-cardapio': 'nav-cardapio', 's-prof': 'nav-aulas' };
+    if (mapa[id]) document.getElementById(mapa[id]).classList.add('active');
+    window.scrollTo(0, 0);
 }
 
-function voltarInicio() {
-    document.getElementById("menu").innerHTML = "";
-    document.getElementById("inicio").style.display = "flex";
-    document.getElementById("secao-professores").style.display = "flex";
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("container-professor").style.display = "none";
-    let videoTag = document.getElementById("video-prof");
-videoTag.pause();
-videoTag.src = "";
+function irHome() {
+    pararVideo();
+    irTela('s-home');
+}
+
+function irCardapio() {
+    irTela('s-cardapio');
+    renderCategoria('pizzas');
+}
+
+function voltarCardapio() {
+    irTela('s-cardapio');
 }
 
 // CARDÁPIO
-function mostrar(categoria) {
-  let menu = document.getElementById("menu");
+const categorias = [
+    { key: 'pizzas', label: '🍕 Pizzas' },
+    { key: 'espetinhos', label: '🍢 Espetinhos' },
+    { key: 'cervejas', label: '🍺 Cervejas' },
+    { key: 'bebidas', label: '🥤 Bebidas' },
+    { key: 'porcoes', label: '🍟 Porções' }
+];
 
-  /* 1. Fade out rápido antes de trocar */
-  menu.style.opacity = "0";
-
-  setTimeout(() => {
-    menu.innerHTML = "";
-    menu.style.opacity = "1";
-
-    cardapio[categoria].forEach((item, index) => {
-      menu.innerHTML += `
-      <div class="card">
-        <h3>${item.nome}</h3>
-        ${item.img
-          ? `<img src="${item.img}"
-               style="width:100%; border-radius:10px; margin:10px 0;">`
-          : ""
-        }
-        <p class="preco">R$ ${item.preco.toFixed(2)}</p>
-        ${item.opcoes
-          ? `<button onclick="mostrarOpcoes('${categoria}','${item.nome}')">
-               Escolher
-             </button>`
-          : `<button onclick="addItem('${item.nome}',${item.preco})">
-               Adicionar
-             </button>`
-        }
-      </div>`;
-    });
-
-    /* 2. Dispara animação em cascata em cada card */
-    document.querySelectorAll(".card").forEach((card, i) => {
-      setTimeout(() => {
-        card.classList.add("animado");
-      }, i * 100); /* 100ms de delay entre cada card */
-    });
-
-  }, 200); /* aguarda o fade out terminar */
-}
-
-function mostrarOpcoes(categoria, nomeProduto) {
-    let produto = cardapio[categoria].find(item => item.nome === nomeProduto);
-    let menu = document.getElementById("menu");
-    menu.innerHTML = `<button onclick="mostrar('${categoria}')">⬅ Voltar</button><h2>${produto.nome}</h2>`;
-    produto.opcoes.forEach(op => {
-        menu.innerHTML += `
-        <div class="card">
-            <img src="${op.img}" style="width:100%; height:150px; object-fit:cover; border-radius:10px;">
-            <h3>${op.nome}</h3>
-            <button onclick="addItem('${produto.nome} - ${op.nome}', ${produto.preco})">Adicionar</button>
-        </div>`;
+function renderCatScroll() {
+    const scroll = document.getElementById('cat-scroll');
+    scroll.innerHTML = '';
+    categorias.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'cat-pill' + (cat.key === categoriaAtual ? ' active' : '');
+        btn.textContent = cat.label;
+        btn.onclick = () => renderCategoria(cat.key);
+        scroll.appendChild(btn);
     });
 }
 
+function renderCategoria(cat) {
+    categoriaAtual = cat;
+    renderCatScroll();
+    const list = document.getElementById('items-list');
+    list.innerHTML = '';
+    cardapio[cat].forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'item-card';
+        div.style.animationDelay = (i * 60) + 'ms';
+        const imgHtml = item.img
+            ? `<img src="${item.img}" class="item-img" style="object-fit:cover;">`
+            : `<div class="item-img">${catEmoji(cat)}</div>`;
+        const btnHtml = item.opcoes
+            ? `<button class="add-btn" onclick="abrirOpcoes('${cat}','${item.nome}')" style="font-size:14px;">→</button>`
+            : `<button class="add-btn" onclick="addItem('${item.nome}',${item.preco})">+</button>`;
+        div.innerHTML = `
+            ${imgHtml}
+            <div class="item-info">
+                <h3>${item.nome}</h3>
+                <p>${item.descricao || ''}</p>
+            </div>
+            <div class="item-right">
+                <span class="item-price">R$${item.preco.toFixed(2).replace('.', ',')}</span>
+                ${btnHtml}
+            </div>`;
+        list.appendChild(div);
+    });
+}
+
+function catEmoji(cat) {
+    const e = { pizzas:'🍕', espetinhos:'🍢', cervejas:'🍺', bebidas:'🥤', porcoes:'🍟' };
+    return e[cat] || '🍽';
+}
+
+function abrirOpcoes(cat, nomeProduto) {
+    const produto = cardapio[cat].find(i => i.nome === nomeProduto);
+    document.getElementById('opcoes-title').textContent = produto.nome;
+    const list = document.getElementById('opcoes-list');
+    list.innerHTML = '';
+    produto.opcoes.forEach((op, i) => {
+        const div = document.createElement('div');
+        div.className = 'item-card';
+        div.style.animationDelay = (i * 60) + 'ms';
+        div.innerHTML = `
+            <img src="${op.img}" class="item-img" style="object-fit:cover;">
+            <div class="item-info"><h3>${op.nome}</h3></div>
+            <div class="item-right">
+                <span class="item-price">R$${produto.preco.toFixed(2).replace('.', ',')}</span>
+                <button class="add-btn" onclick="addItem('${produto.nome} - ${op.nome}',${produto.preco})">+</button>
+            </div>`;
+        list.appendChild(div);
+    });
+    irTela('s-opcoes');
+}
+
+// CARRINHO
 function addItem(nome, preco) {
-  let nomeCliente = document.getElementById("nome").value.trim();
-  if (nomeCliente === "") {
-    abrirModalNome(nome, preco);
-    return;
-  }
-  carrinho.push({ nome, preco });
-  total += preco;
-  renderCarrinho();
+    const nomeCliente = document.getElementById("nome").value.trim();
+    if (!nomeCliente) { abrirModal(nome, preco); return; }
+    carrinho.push({ nome, preco });
+    total = carrinho.reduce((a, i) => a + i.preco, 0);
+    atualizarBadge();
+    mostrarToast(nome + ' adicionado!');
 }
 
-function abrirModalNome(nome, preco) {
-  const modal = document.getElementById("modal-nome");
-  modal.style.display = "flex";
-  modal.dataset.nome = nome;
-  modal.dataset.preco = preco;
-  document.getElementById("modal-nome-input").focus();
+function atualizarBadge() {
+    const badge = document.getElementById('cart-badge');
+    if (carrinho.length > 0) {
+        badge.style.display = 'flex';
+        badge.textContent = carrinho.length;
+    } else {
+        badge.style.display = 'none';
+    }
 }
 
-function confirmarNome() {
-  const input = document.getElementById("modal-nome-input");
-  const erro = document.getElementById("modal-erro");
-  const v = input.value.trim();
+function abrirCarrinho() {
+    renderCarrinho();
+    document.getElementById('carrinho-panel').classList.add('show');
+    document.getElementById('carrinho-overlay').classList.add('show');
+    document.getElementById('nav-pedido').classList.add('active');
+}
 
-  if (!v) {
-    erro.style.opacity = "1";
-    input.style.borderColor = "#e74c3c";
-    setTimeout(() => input.style.borderColor = "", 1500);
-    return;
-  }
-
-  /* Preenche o campo nome do carrinho automaticamente */
-  document.getElementById("nome").value = v;
-
-  /* Fecha o modal */
-  const modal = document.getElementById("modal-nome");
-  modal.style.display = "none";
-
-  /* Adiciona o item que estava tentando adicionar */
-  const nomeProduto = modal.dataset.nome;
-  const precoProduto = parseFloat(modal.dataset.preco);
-  carrinho.push({ nome: nomeProduto, preco: precoProduto });
-  total += precoProduto;
-  renderCarrinho();
-
-  /* Abre o carrinho automaticamente */
-  document.querySelector(".carrinho").classList.add("ativo");
+function fecharCarrinho() {
+    document.getElementById('carrinho-panel').classList.remove('show');
+    document.getElementById('carrinho-overlay').classList.remove('show');
+    document.getElementById('nav-pedido').classList.remove('active');
 }
 
 function renderCarrinho() {
-    let html = "";
-    carrinho.forEach((item, index) => {
-        html += `<p>${item.nome} - R$ ${item.preco.toFixed(2)} <button onclick="removerItem(${index})">❌</button></p>`;
-    });
-    document.getElementById("carrinho").innerHTML = html;
-    document.getElementById("total").innerText = total.toFixed(2);
+    const container = document.getElementById('carrinho-items');
+    if (carrinho.length === 0) {
+        container.innerHTML = '<p style="color:rgba(255,255,255,.3);font-size:13px;text-align:center;padding:20px 0;">Carrinho vazio</p>';
+    } else {
+        container.innerHTML = '';
+        carrinho.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'carrinho-item';
+            div.innerHTML = `
+                <span class="carrinho-item-nome">${item.nome}</span>
+                <span class="carrinho-item-preco">R$${item.preco.toFixed(2).replace('.', ',')}</span>
+                <button class="carrinho-item-del" onclick="removerItem(${index})">✕</button>`;
+            container.appendChild(div);
+        });
+    }
+    document.getElementById('total-value').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
 }
 
 function removerItem(index) {
-    total -= carrinho[index].preco; carrinho.splice(index, 1); renderCarrinho();
+    carrinho.splice(index, 1);
+    total = carrinho.reduce((a, i) => a + i.preco, 0);
+    atualizarBadge();
+    renderCarrinho();
 }
 
-function toggleCarrinho() { document.querySelector(".carrinho").classList.toggle("ativo"); }
+function enviarPedido() {
+    const nome = document.getElementById("nome").value.trim();
+    if (!nome) { alert("Digite seu nome!"); return; }
+    if (carrinho.length === 0) { alert("Carrinho vazio!"); return; }
+    alert("Pedido enviado! Obrigado, " + nome + "!");
+    carrinho = [];
+    total = 0;
+    atualizarBadge();
+    fecharCarrinho();
+    renderCarrinho();
+}
+
+// MODAL NOME
+function abrirModal(nome, preco) {
+    const overlay = document.getElementById('modal-overlay');
+    overlay.classList.add('show');
+    overlay.dataset.nome = nome;
+    overlay.dataset.preco = preco;
+    setTimeout(() => document.getElementById('modal-nome-input').focus(), 300);
+}
+
+function confirmarNome() {
+    const input = document.getElementById('modal-nome-input');
+    const erro = document.getElementById('modal-erro');
+    const v = input.value.trim();
+    if (!v) { erro.classList.add('show'); input.style.borderColor = '#e74c3c'; return; }
+    document.getElementById('nome').value = v;
+    const overlay = document.getElementById('modal-overlay');
+    overlay.classList.remove('show');
+    const nome = overlay.dataset.nome;
+    const preco = parseFloat(overlay.dataset.preco);
+    carrinho.push({ nome, preco });
+    total = carrinho.reduce((a, i) => a + i.preco, 0);
+    atualizarBadge();
+    mostrarToast(nome + ' adicionado!');
+    abrirCarrinho();
+}
+
+// TOAST
+function mostrarToast(msg) {
+    let t = document.getElementById('toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = 'toast';
+        t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#238636;color:#fff;padding:10px 20px;border-radius:20px;font-family:Poppins,sans-serif;font-size:13px;font-weight:700;z-index:500;opacity:0;transition:opacity .3s;white-space:nowrap;';
+        document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.style.opacity = '1';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.style.opacity = '0', 2000);
+}
 
 // PROFESSORES
 function carregarProfessoresHome() {
-    let container = document.getElementById("lista-professores-home");
-    if(!container) return;
-    container.innerHTML = "";
+    const container = document.getElementById('lista-professores-home');
+    if (!container) return;
+    container.innerHTML = '';
     professores.forEach((prof, index) => {
-        container.innerHTML += `
-        <div class="card">
-            <img src="${prof.img}" style="width:100%; height:160px; object-fit:cover; border-radius:10px;">
-            <h3>${prof.nome}</h3>
-            <button onclick="verProfessor(${index})">Ver Horários</button>
-        </div>`;
+        const div = document.createElement('div');
+        div.className = 'prof-card';
+        div.innerHTML = `
+            <img src="${prof.img}" alt="${prof.nome}">
+            <div class="prof-card-body">
+                <h3>${prof.nome}</h3>
+                <button onclick="verProfessor(${index})">Ver Horários</button>
+            </div>`;
+        container.appendChild(div);
     });
 }
 
 function verProfessor(index) {
-    let prof = professores[index];
-    document.getElementById("inicio").style.display = "none";
-    document.getElementById("secao-professores").style.display = "none";
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("container-professor").style.display = "block";
+    profAtual = index;
+    const prof = professores[index];
+    document.getElementById('prof-topbar-title').textContent = prof.nome;
+    document.getElementById('nome-prof-titulo').textContent = prof.nome;
+    document.getElementById('prof-badge').textContent = prof.habilidades;
+    const video = document.getElementById('video-prof');
+    video.src = prof.video;
+    video.load();
+    video.play().catch(() => {});
+    const diasUnicos = [...new Set(prof.aulas.map(a => a.dia))];
+    diaAtual = diasUnicos[0];
+    renderAgendaTabs(prof, diasUnicos);
+    renderHorarios(prof, diaAtual);
+    irTela('s-prof');
+}
 
-    document.getElementById("nome-prof-titulo").innerText = "Aulas de " + prof.nome;
-   let videoContainer = document.getElementById("video-prof");
-let videoTag = document.getElementById("video-prof");
-videoTag.src = prof.nome.split(' ')[0].toLowerCase() + ".video.mp4";
-videoTag.load();
-videoTag.play()
-
-    let agenda = document.getElementById("agenda-semanal");
-    agenda.innerHTML = "";
-    const diasSemana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
-
-    diasSemana.forEach(dia => {
-        let aulasDoDia = prof.aulas.filter(a => a.dia === dia);
-        if (aulasDoDia.length > 0) {
-            let htmlDia = `<div class="bloco-dia"><h3>📅 ${dia}</h3><div class="lista-horarios">`;
-            aulasDoDia.forEach(aula => {
-                htmlDia += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">
-                        <span>${aula.horario}</span>
-                        <button class="${aula.vagas > 0 ? 'btn-verde' : 'btn-vermelho'}" 
-                                style="padding: 5px 10px; font-size: 11px;"
-                                ${aula.vagas === 0 ? "disabled" : ""} 
-                                onclick="reservarAula(${index})">
-                            ${aula.vagas > 0 ? 'Agendar' : 'Lotado'}
-                        </button>
-                    </div>`;
-            });
-            htmlDia += `</div></div>`;
-            agenda.innerHTML += htmlDia;
-        }
+function renderAgendaTabs(prof, dias) {
+    const tabs = document.getElementById('agenda-tabs');
+    tabs.innerHTML = '';
+    dias.forEach(dia => {
+        const btn = document.createElement('button');
+        btn.className = 'dia-tab' + (dia === diaAtual ? ' active' : '');
+        btn.textContent = dia;
+        btn.onclick = () => {
+            diaAtual = dia;
+            document.querySelectorAll('.dia-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            renderHorarios(prof, dia);
+        };
+        tabs.appendChild(btn);
     });
 }
 
+function renderHorarios(prof, dia) {
+    const list = document.getElementById('horarios-list');
+    list.innerHTML = '';
+    const aulas = prof.aulas.filter(a => a.dia === dia);
+    aulas.forEach((aula, i) => {
+        const div = document.createElement('div');
+        div.className = 'horario-row';
+        div.style.animationDelay = (i * 50) + 'ms';
+        const vagasTexto = aula.vagas === 0 ? 'Sem vagas' : aula.vagas + (aula.vagas === 1 ? ' vaga' : ' vagas');
+        const btn = aula.vagas > 0
+            ? `<button class="btn-agendar" onclick="reservarAula(${profAtual})">Agendar</button>`
+            : `<button class="btn-lotado" disabled>Lotado</button>`;
+        div.innerHTML = `
+            <div>
+                <div class="horario-time">${aula.horario}</div>
+                <div class="horario-vagas">${vagasTexto}</div>
+            </div>
+            ${btn}`;
+        list.appendChild(div);
+    });
+}
+
+function pararVideo() {
+    const video = document.getElementById('video-prof');
+    video.pause();
+    video.src = '';
+}
+
 function reservarAula(p) { alert("Reserva solicitada para " + professores[p].nome); }
-function enviarPedido() { alert("Pedido enviado!"); }
 function verHistorico() { alert("Em breve!"); }
 
 carregarProfessoresHome();
+renderCatScroll();
