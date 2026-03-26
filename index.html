@@ -2,88 +2,114 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Cardápio Arena São Francisco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena São Francisco</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="layout">
-    <div class="sidebar" id="sidebar">
-        <h2>🍔 Arena</h2>
-        <button onclick="voltarInicio()">🏠 Home</button>
-        <button onclick="mostrar('pizzas')">🍕 Pizzas</button>
-        <button onclick="mostrar('espetinhos')">🍢 Espetinhos</button>
-        <button onclick="mostrar('cervejas')">🍺 Cervejas</button>
-        <button onclick="mostrar('bebidas')">🥤 Bebidas</button>
-        <button onclick="mostrar('porcoes')">🍟 Porções</button>
-        <button onclick="verHistorico()">📋 Histórico</button>
-        <button class="btn-carrinho" onclick="toggleCarrinho()">🛒 Ver Pedido</button>
+ 
+<!-- TELA HOME -->
+<div class="screen active" id="s-home">
+    <div class="home-content">
+        <h1 class="home-title">Arena <span>São Francisco</span> 🎾</h1>
+        <p class="home-sub">seu espaço</p>
+        <button class="btn-cardapio" onclick="irCardapio()">🍔 Ver Cardápio</button>
     </div>
-
-  <div class="conteudo">
-
-    <div id="inicio" class="inicio">
-        <h1>Arena <span>São Francisco</span> 🎾</h1>
-        <p class="subtitulo">seu espaço</p>
-        <button class="btn-start" onclick="abrirCardapio()">🍔 Ver Cardápio</button>
+    <div class="section-label">👨‍🏫 Nossos Professores</div>
+    <div class="prof-grid" id="lista-professores-home"></div>
+</div>
+ 
+<!-- TELA CARDÁPIO -->
+<div class="screen" id="s-cardapio">
+    <div class="topbar">
+        <button class="back-btn" onclick="irHome()">←</button>
+        <span class="topbar-title">🍔 Cardápio</span>
     </div>
-
-    <div id="secao-professores" class="inicio" style="margin-top: 50px; width: 100%;">
-        <h2>👨‍🏫 Nossos Professores</h2>
-        <div id="lista-professores-home" class="menu"></div>
+    <div class="cat-scroll" id="cat-scroll"></div>
+    <div class="items-list" id="items-list"></div>
+</div>
+ 
+<!-- TELA PROFESSOR -->
+<div class="screen" id="s-prof">
+    <div class="topbar">
+        <button class="back-btn" onclick="irHome()">←</button>
+        <span class="topbar-title" id="prof-topbar-title"></span>
     </div>
-
-    <div id="container-professor" style="display:none;">
-        <button class="btn-voltar-pequeno" onclick="voltarInicio()">⬅ Voltar</button>
-        <div class="layout-professor">
-            <div class="coluna-video">
-                <h2 id="nome-prof-titulo"></h2>
-                <video id="video-prof" controls autoplay width="100%" style="border-radius:15px;">
-                    <source src="" type="video/mp4">
-                </video>
-            </div>
-            <div id="agenda-semanal" class="coluna-agenda"></div>
+    <div class="prof-video-wrap">
+        <video id="video-prof" controls autoplay playsinline style="width:100%;height:100%;object-fit:cover;border-radius:0;"></video>
+    </div>
+    <div class="prof-info-bar">
+        <h2 id="nome-prof-titulo"></h2>
+        <span class="prof-badge" id="prof-badge"></span>
+    </div>
+    <div class="agenda-tabs" id="agenda-tabs"></div>
+    <div class="horarios-list" id="horarios-list"></div>
+</div>
+ 
+<!-- TELA OPÇÕES -->
+<div class="screen" id="s-opcoes">
+    <div class="topbar">
+        <button class="back-btn" onclick="voltarCardapio()">←</button>
+        <span class="topbar-title" id="opcoes-title"></span>
+    </div>
+    <div class="items-list" id="opcoes-list"></div>
+</div>
+ 
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+    <div class="nav-item active" id="nav-home" onclick="irHome()">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+    </div>
+    <div class="nav-item" id="nav-cardapio" onclick="irCardapio()">
+        <span class="nav-icon">🍔</span>
+        <span class="nav-label">Cardápio</span>
+    </div>
+    <div class="nav-item" id="nav-aulas">
+        <span class="nav-icon">👨‍🏫</span>
+        <span class="nav-label">Aulas</span>
+    </div>
+    <div class="nav-item" id="nav-pedido" onclick="abrirCarrinho()">
+        <span class="nav-icon">🛒</span>
+        <span class="nav-label">Pedido</span>
+        <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+    </div>
+</div>
+ 
+<!-- CARRINHO SLIDE UP -->
+<div class="carrinho-overlay" id="carrinho-overlay" onclick="fecharCarrinho()"></div>
+<div class="carrinho" id="carrinho-panel">
+    <div class="carrinho-handle"></div>
+    <h2 class="carrinho-title">🛒 Seu Pedido</h2>
+    <input type="text" id="nome" placeholder="Seu nome" class="nome-input">
+    <div id="carrinho-items"></div>
+    <div class="carrinho-footer">
+        <div class="carrinho-total">
+            <span>Total</span>
+            <span id="total-value">R$ 0,00</span>
         </div>
-    </div>
-
-    <div id="menu" class="menu"></div>
-
-</div>
-
-    <div id="menu" class="menu"></div>
-</div>
-
-        <div id="menu" class="menu"></div>
-    </div>
-
-    <div class="carrinho">
-        <h2>🛒 Pedido</h2>
-        <input type="text" id="nome" placeholder="Seu nome">
-        <div id="carrinho"></div>
-        <p>Total: R$ <span id="total">0</span></p>
-        <button onclick="enviarPedido()">Enviar Pedido</button>
+        <button class="btn-enviar" onclick="enviarPedido()">Enviar Pedido</button>
     </div>
 </div>
-
+ 
+<!-- MODAL NOME -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box">
+        <div class="modal-icon">🎾</div>
+        <div class="modal-title">Arena <span>São Francisco</span></div>
+        <div class="modal-desc">Para personalizar seu pedido,<br>precisamos saber seu nome.</div>
+        <div class="modal-obrig"><span class="dot-red"></span> Campo obrigatório</div>
+        <div class="modal-input-wrap">
+            <span class="modal-input-icon">👤</span>
+            <input type="text" id="modal-nome-input" placeholder="Digite seu nome...">
+        </div>
+        <div id="modal-erro" class="modal-erro">⚠ Por favor, informe seu nome.</div>
+        <button class="modal-btn" onclick="confirmarNome()">Entrar na Arena</button>
+        <span class="modal-rodape">Seus dados não são salvos</span>
+    </div>
+</div>
+ 
 <script src="script.js"></script>
-
-<div id="modal-nome" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:9999; align-items:center; justify-content:center;">
-  <div style="background:#161b22; border:1px solid rgba(46,160,67,.25); border-radius:20px; padding:32px 28px; width:90%; max-width:380px; display:flex; flex-direction:column; align-items:center; gap:16px; animation:popIn .5s cubic-bezier(.34,1.4,.64,1) both;">
-    <div style="width:60px;height:60px;border-radius:18px;background:#238636;display:flex;align-items:center;justify-content:center;font-size:28px;">🎾</div>
-    <div style="font-size:22px;font-weight:900;color:#fff;text-align:center;">Arena <span style="color:#2ea043;">São Francisco</span></div>
-    <div style="font-size:12px;color:rgba(255,255,255,.4);text-align:center;line-height:1.6;">Para personalizar seu pedido,<br>precisamos saber seu nome.</div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 12px;border-radius:20px;">
-      <span style="width:6px;height:6px;border-radius:50%;background:#e74c3c;display:inline-block;"></span> Campo obrigatório
-    </div>
-    <div style="width:100%;position:relative;">
-      <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;">👤</span>
-      <input type="text" id="modal-nome-input" placeholder="Digite seu nome..."
-        style="width:100%;padding:13px 16px 13px 44px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-family:Arial,sans-serif;font-size:14px;outline:none;box-sizing:border-box;">
-    </div>
-    <div id="modal-erro" style="font-size:11px;color:#e74c3c;opacity:0;transition:opacity .2s;width:100%;">⚠ Por favor, informe seu nome antes de continuar.</div>
-    <button onclick="confirmarNome()" style="width:100%;padding:13px;border-radius:14px;border:none;background:#238636;color:#fff;font-size:14px;font-weight:bold;cursor:pointer;letter-spacing:.5px;">Entrar na Arena</button>
-    <span style="font-size:11px;color:rgba(255,255,255,.2);">Seus dados não são salvos</span>
-  </div>
-</div>
 </body>
 </html>
