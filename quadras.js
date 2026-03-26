@@ -92,8 +92,14 @@ const AGENDA = {
 let diaSelecionado = 0;
 
 function irQuadras() {
-    mostrarTela('s-quadras');
-    setNavAtivo('nav-quadras');
+    // esconde todas as telas
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('s-quadras').classList.add('active');
+
+    // atualiza nav
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('nav-quadras').classList.add('active');
+
     renderDias();
     renderTabela();
 }
