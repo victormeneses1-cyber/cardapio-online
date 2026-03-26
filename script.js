@@ -93,7 +93,7 @@ const professores = [
     },
     {
         nome: "Leonardo Briornes", img: "Leonardo.jpeg", habilidades: "Professor experiente",
-        video: "Leonardo.video.mp4",
+        video: "leonardo.video.mp4",
         aulas: [
             {dia:"Segunda", horario:"16:00 - 17:00", vagas:3}, {dia:"Quarta", horario:"09:00 - 10:00", vagas:3},
             {dia:"Quarta", horario:"10:00 - 11:00", vagas:3}, {dia:"Quarta", horario:"14:00 - 15:00", vagas:1},
@@ -105,7 +105,7 @@ const professores = [
     },
     {
         nome: "Luiz Marabezi", img: "marabezi.jpeg", habilidades: "Professor experiente",
-        video: "marabezi.video.mp4",
+        video: "luiz.video.mp4",
         aulas: [
             {dia:"Segunda", horario:"19:00 - 20:00", vagas:2}, {dia:"Segunda", horario:"20:00 - 21:00", vagas:2},
             {dia:"Terça", horario:"07:00 - 08:00", vagas:0}, {dia:"Terça", horario:"08:00 - 09:00", vagas:2},
