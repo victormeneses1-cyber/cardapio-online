@@ -815,6 +815,10 @@ body {
 .tabela-wrap {
     overflow-x: auto;
     padding: 0 12px;
+    background: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    margin: 0 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
 }
 
 .tabela-quadras {
@@ -827,7 +831,7 @@ body {
 .tabela-quadras thead tr {
     background: #1a1a2e;
     color: #fff;
-}
+} 
 
 .tabela-quadras th {
     padding: 10px 6px;
@@ -838,17 +842,22 @@ body {
 
 .th-hora { width: 52px; }
 
+.tabela-quadras tbody tr {
+    background: rgba(255,255,255,0.92);
+}
+
 .tabela-quadras tbody tr:nth-child(even) {
-    background: rgba(0,0,0,0.03);
+    background: rgba(240,240,240,0.92);
 }
 
 .td-hora {
     padding: 8px 6px;
     font-weight: 700;
-    color: #333;
+    color: #1a1a2e;
     text-align: center;
     white-space: nowrap;
     font-size: 0.75rem;
+    background: rgba(255,255,255,0.95);
 }
 
 .cel {
