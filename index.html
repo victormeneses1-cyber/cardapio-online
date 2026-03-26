@@ -77,6 +77,36 @@
     </div>
     <div class="items-list" id="opcoes-list"></div>
 </div>
+
+<!-- TELA QUADRAS -->
+<div class="screen" id="s-quadras">
+    <div class="topbar">
+        <button class="back-btn" onclick="irHome()">←</button>
+        <span class="topbar-title">🎾 Quadras</span>
+    </div>
+    <div class="quadras-container">
+        <div class="dias-scroll" id="dias-scroll"></div>
+        <div class="legenda-quadras">
+            <span class="leg-item"><span class="leg-dot livre"></span> Livre</span>
+            <span class="leg-item"><span class="leg-dot ocupado"></span> Ocupado</span>
+            <span class="leg-item"><span class="leg-dot mensalista"></span> Mensalista</span>
+        </div>
+        <div class="tabela-wrap">
+            <table class="tabela-quadras" id="tabela-quadras">
+                <thead>
+                    <tr>
+                        <th class="th-hora">Horário</th>
+                        <th>Quadra 1</th>
+                        <th>Quadra 2</th>
+                        <th>Quadra 3</th>
+                        <th>Quadra 4</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-quadras"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
  
 <!-- BOTTOM NAV -->
 
