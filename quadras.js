@@ -77,7 +77,7 @@ const AGENDA = {
         '09:00': ['Caio aula', 'Marabezi aula', 'Leo aula', ''],
         '10:00': ['', '', 'Leo aula', ''],
         '11:00': ['', 'Marabezi aula', '', ''],
-        '16:00': ['Caio aula', ', '', ''],
+        '16:00': ['Caio aula', '', '', ''],
         '17:00': ['Caio aula', 'Leo aula', 'marabezi aula', ''],
         '18:00': ['Caio aula', '', '', ''],
         '19:00': ['🔒', '',  '', ''],
