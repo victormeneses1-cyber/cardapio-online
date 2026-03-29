@@ -542,8 +542,9 @@ b.autoplay = true;
 b.muted = true;
 b.loop = true;
 b.setAttribute('playsinline', '');
-        `;
-        chuva.appendChild(b);
+b.className = 'bola-cai';
+b.style.cssText = `left:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;animation-duration:${0.8+Math.random()*0.8}s;width:${28+Math.random()*24}px;opacity:${0.5+Math.random()*0.5};`;
+chuva.appendChild(b);
     }
 
     setTimeout(() => {
@@ -563,11 +564,11 @@ function renderGrip(el) {
     <div class="grip-scene" id="grip-scene">
         <div class="grip-bg-glow"></div>
         <div class="grip-action-wrap" id="grip-action-wrap">
-            <img src="${IMG_GRIP_ACT}" class="grip-action-img" id="grip-action-img" alt="Grip em uso">
+            <video src="${VIDEO_GRIP_ACT}" class="grip-action-img" id="grip-action-img" autoplay muted loop playsinline></video>
             <div class="grip-action-overlay"></div>
         </div>
         <div class="grip-product-wrap" id="grip-product-wrap">
-            <img src="${IMG_GRIP}" class="grip-produto-img" id="grip-produto-img" alt="Grip Wilson">
+            <video src="${VIDEO_GRIP}" class="grip-produto-img" id="grip-produto-img" autoplay muted loop playsinline></video>
             <div class="grip-info">
                 <div class="grip-titulo">Grip Wilson<br><span>Overgrip Premium</span></div>
                 <div class="grip-desc">Absorção máxima de suor, conforto total e durabilidade profissional. O favorito dos atletas.</div>
