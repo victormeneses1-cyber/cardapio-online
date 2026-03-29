@@ -462,8 +462,8 @@ function renderRaquete(el) {
             <div class="raquete-specs" id="raquete-specs"></div>
             <div class="raquete-preco" id="raquete-preco" style="display:none">
                 <div class="preco-oferta-label">⚡ OFERTA EXCLUSIVA POR TEMPO LIMITADO</div>
-                <div class="preco-de">De <s>R$ 1.850</s></div>
-                <div class="preco-por">R$ 1.399<sup>,00</sup></div>
+                <div class="preco-de">De <s>R$ 1.850,00</s></div>
+                <div class="preco-por">R$ 1.399,99<sup>,00</sup></div>
                 <button class="btn-comprar-raquete" onclick="comprarRaquete()">Reservar via WhatsApp 🎾</button>
             </div>
         </div>
