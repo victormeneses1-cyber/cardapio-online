@@ -1339,3 +1339,11 @@ body {
     transition: transform 0.15s;
 }
 .btn-comprar-grip:hover { transform: scale(1.04); }
+video.raquete-img,
+video.bola-main-img,
+video.bola-cai,
+video.grip-action-img,
+video.grip-produto-img {
+    object-fit: cover;
+    display: block;
+}
