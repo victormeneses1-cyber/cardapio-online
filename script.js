@@ -508,7 +508,7 @@ function renderRaquete(el) {
 }
 
 function comprarRaquete() {
-    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R.399. 🎾');
+    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$: 1.399.99 🎾');
     window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
 }
 
@@ -536,15 +536,12 @@ function renderBola(el) {
     // chuva de bolas
     const chuva = document.getElementById('bola-chuva');
     for (let i = 0; i < 18; i++) {
-        const b = document.createElement('img');
-        b.src = IMG_BOLA;
-        b.className = 'bola-cai';
-        b.style.cssText = `
-            left: ${Math.random() * 100}%;
-            animation-delay: ${Math.random() * 1.5}s;
-            animation-duration: ${0.8 + Math.random() * 0.8}s;
-            width: ${28 + Math.random() * 24}px;
-            opacity: ${0.5 + Math.random() * 0.5};
+       const b = document.createElement('video');
+b.src = VIDEO_BOLA;
+b.autoplay = true;
+b.muted = true;
+b.loop = true;
+b.setAttribute('playsinline', '');
         `;
         chuva.appendChild(b);
     }
