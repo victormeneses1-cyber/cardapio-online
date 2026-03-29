@@ -123,7 +123,7 @@ function irTela(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    const mapa = { 's-home': 'nav-home', 's-cardapio': 'nav-cardapio', 's-prof': 'nav-aulas' };
+    const mapa = { 's-home': 'nav-home', 's-cardapio': 'nav-cardapio', 's-quadras': 'nav-quadras', 's-produtos': 'nav-produtos' };
     if (mapa[id]) document.getElementById(mapa[id]).classList.add('active');
     window.scrollTo(0, 0);
 }
