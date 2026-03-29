@@ -962,8 +962,7 @@ body {
 }
 
 .raquete-img.raquete-enter {
-    animation: raqueteEntrada 1.2s cubic-bezier(0.22,1,0.36,1) forwards,
-               raquete360 3s ease-in-out 1.3s forwards;
+    animation: raqueteEntrada 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 
 @keyframes raqueteEntrada {
@@ -1346,4 +1345,9 @@ video.grip-action-img,
 video.grip-produto-img {
     object-fit: cover;
     display: block;
+}
+video.raquete-img,
+video.bola-main-img,
+video.grip-produto-img {
+    mix-blend-mode: screen;
 }
