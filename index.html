@@ -178,6 +178,30 @@
         </div>
     </div>
 </div>
+    <!-- BOTTOM NAV -->
+<div class="bottom-nav">
+    <div class="nav-item active" id="nav-home" onclick="irHome()">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+    </div>
+    <div class="nav-item" id="nav-cardapio" onclick="irCardapio()">
+        <span class="nav-icon">🍔</span>
+        <span class="nav-label">Cardápio</span>
+    </div>
+    <div class="nav-item" id="nav-quadras" onclick="irQuadras()">
+        <span class="nav-icon">🎾</span>
+        <span class="nav-label">Quadras</span>
+    </div>
+    <div class="nav-item" id="nav-produtos" onclick="irProdutos()">
+        <span class="nav-icon">🛍️</span>
+        <span class="nav-label">Produtos</span>
+    </div>
+    <div class="nav-item" id="nav-pedido" onclick="abrirCarrinho()">
+        <span class="nav-icon">🛒</span>
+        <span class="nav-label">Pedido</span>
+        <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+    </div>
+</div>
 <!-- CARRINHO SLIDE UP -->
 <div class="carrinho-overlay" id="carrinho-overlay" onclick="fecharCarrinho()"></div>
 <div class="carrinho" id="carrinho-panel">
