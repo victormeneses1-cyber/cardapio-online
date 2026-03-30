@@ -118,18 +118,27 @@ const professores = [
     }
 ];
 
+// ═══════════════════════════════════════════
 // NAVEGAÇÃO
+// ═══════════════════════════════════════════
+
 function irTela(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    const mapa = { 's-home': 'nav-home', 's-cardapio': 'nav-cardapio', 's-quadras': 'nav-quadras', 's-produtos': 'nav-produtos' };
+    const mapa = {
+        's-home':     'nav-home',
+        's-cardapio': 'nav-cardapio',
+        's-quadras':  'nav-quadras',
+        's-produtos': 'nav-produtos'
+    };
     if (mapa[id]) document.getElementById(mapa[id]).classList.add('active');
     window.scrollTo(0, 0);
 }
 
 function irHome() {
     pararVideo();
+    pararVideoProdutos();
     irTela('s-home');
 }
 
@@ -142,13 +151,70 @@ function voltarCardapio() {
     irTela('s-cardapio');
 }
 
+function irQuadras() {
+    irTela('s-quadras');
+}
+
+// ═══════════════════════════════════════════
+// PRODUTOS — VÍDEO DE FUNDO CINEMATOGRÁFICO
+// ═══════════════════════════════════════════
+
+function irProdutos() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('s-produtos').classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('nav-produtos').classList.add('active');
+    window.scrollTo(0, 0);
+
+    // Reseta estado visual
+    const card    = document.getElementById('prod-card-compra');
+    const overlay = document.getElementById('raquete-bg-overlay');
+    const video   = document.getElementById('video-raquete-bg');
+
+    card.classList.remove('prod-card-visivel');
+    overlay.classList.remove('overlay-escurece');
+
+    // Reinicia o vídeo do início
+    if (video) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+    }
+
+    // 2.5s → overlay escurece suavemente
+    setTimeout(() => {
+        overlay.classList.add('overlay-escurece');
+    }, 2500);
+
+    // 3.2s → card de compra sobe
+    setTimeout(() => {
+        card.classList.add('prod-card-visivel');
+    }, 3200);
+}
+
+function pararVideoProdutos() {
+    const video = document.getElementById('video-raquete-bg');
+    if (video) { video.pause(); video.currentTime = 0; }
+    const card    = document.getElementById('prod-card-compra');
+    const overlay = document.getElementById('raquete-bg-overlay');
+    if (card)    card.classList.remove('prod-card-visivel');
+    if (overlay) overlay.classList.remove('overlay-escurece');
+}
+
+function comprarRaqueteProd() {
+    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$ 1.399. 🎾');
+    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
+}
+
+// ═══════════════════════════════════════════
 // CARDÁPIO
+// ═══════════════════════════════════════════
+
 const categorias = [
-    { key: 'pizzas', label: '🍕 Pizzas' },
+    { key: 'pizzas',     label: '🍕 Pizzas' },
     { key: 'espetinhos', label: '🍢 Espetinhos' },
-    { key: 'cervejas', label: '🍺 Cervejas' },
-    { key: 'bebidas', label: '🥤 Bebidas' },
-    { key: 'porcoes', label: '🍟 Porções' }
+    { key: 'cervejas',   label: '🍺 Cervejas' },
+    { key: 'bebidas',    label: '🥤 Bebidas' },
+    { key: 'porcoes',    label: '🍟 Porções' }
 ];
 
 function renderCatScroll() {
@@ -218,7 +284,10 @@ function abrirOpcoes(cat, nomeProduto) {
     irTela('s-opcoes');
 }
 
+// ═══════════════════════════════════════════
 // CARRINHO
+// ═══════════════════════════════════════════
+
 function addItem(nome, preco) {
     const nomeCliente = document.getElementById("nome").value.trim();
     if (!nomeCliente) { abrirModal(nome, preco); return; }
@@ -281,7 +350,10 @@ function enviarPedido() {
     const nome = document.getElementById("nome").value.trim();
     if (!nome) { alert("Digite seu nome!"); return; }
     if (carrinho.length === 0) { alert("Carrinho vazio!"); return; }
-    alert("Pedido enviado! Obrigado, " + nome + "!");
+    const itens = carrinho.map(i => `• ${i.nome} — R$${i.preco.toFixed(2).replace('.', ',')}`).join('\n');
+    const totalStr = 'R$ ' + total.toFixed(2).replace('.', ',');
+    const msg = encodeURIComponent(`Olá! Sou ${nome} e quero fazer um pedido:\n\n${itens}\n\n*Total: ${totalStr}*`);
+    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
     carrinho = [];
     total = 0;
     atualizarBadge();
@@ -289,7 +361,10 @@ function enviarPedido() {
     renderCarrinho();
 }
 
+// ═══════════════════════════════════════════
 // MODAL NOME
+// ═══════════════════════════════════════════
+
 function abrirModal(nome, preco) {
     const overlay = document.getElementById('modal-overlay');
     overlay.classList.add('show');
@@ -300,13 +375,13 @@ function abrirModal(nome, preco) {
 
 function confirmarNome() {
     const input = document.getElementById('modal-nome-input');
-    const erro = document.getElementById('modal-erro');
+    const erro  = document.getElementById('modal-erro');
     const v = input.value.trim();
     if (!v) { erro.classList.add('show'); input.style.borderColor = '#e74c3c'; return; }
     document.getElementById('nome').value = v;
     const overlay = document.getElementById('modal-overlay');
     overlay.classList.remove('show');
-    const nome = overlay.dataset.nome;
+    const nome  = overlay.dataset.nome;
     const preco = parseFloat(overlay.dataset.preco);
     carrinho.push({ nome, preco });
     total = carrinho.reduce((a, i) => a + i.preco, 0);
@@ -315,7 +390,10 @@ function confirmarNome() {
     abrirCarrinho();
 }
 
+// ═══════════════════════════════════════════
 // TOAST
+// ═══════════════════════════════════════════
+
 function mostrarToast(msg) {
     let t = document.getElementById('toast');
     if (!t) {
@@ -330,7 +408,10 @@ function mostrarToast(msg) {
     t._timer = setTimeout(() => t.style.opacity = '0', 2000);
 }
 
+// ═══════════════════════════════════════════
 // PROFESSORES
+// ═══════════════════════════════════════════
+
 function carregarProfessoresHome() {
     const container = document.getElementById('lista-professores-home');
     if (!container) return;
@@ -352,8 +433,8 @@ function verProfessor(index) {
     profAtual = index;
     const prof = professores[index];
     document.getElementById('prof-topbar-title').textContent = prof.nome;
-    document.getElementById('nome-prof-titulo').textContent = prof.nome;
-    document.getElementById('prof-badge').textContent = prof.habilidades;
+    document.getElementById('nome-prof-titulo').textContent  = prof.nome;
+    document.getElementById('prof-badge').textContent        = prof.habilidades;
     const video = document.getElementById('video-prof');
     video.src = prof.video;
     video.load();
@@ -390,7 +471,9 @@ function renderHorarios(prof, dia) {
         const div = document.createElement('div');
         div.className = 'horario-row';
         div.style.animationDelay = (i * 50) + 'ms';
-        const vagasTexto = aula.vagas === 0 ? 'Sem vagas' : aula.vagas + (aula.vagas === 1 ? ' vaga' : ' vagas');
+        const vagasTexto = aula.vagas === 0
+            ? 'Sem vagas'
+            : aula.vagas + (aula.vagas === 1 ? ' vaga' : ' vagas');
         const btn = aula.vagas > 0
             ? `<button class="btn-agendar" onclick="reservarAula(${profAtual})">Agendar</button>`
             : `<button class="btn-lotado" disabled>Lotado</button>`;
@@ -406,235 +489,18 @@ function renderHorarios(prof, dia) {
 
 function pararVideo() {
     const video = document.getElementById('video-prof');
-    video.pause();
-    video.src = '';
-}
-// ═══════════════════════════════════════════════
-//  PRODUTOS - ARENA SÃO FRANCISCO
-// ═══════════════════════════════════════════════
-
-const VIDEO_RAQUETE  = 'raquete.video.mp4';
-const VIDEO_BOLA     = 'bolinha.video.mp4';
-const VIDEO_GRIP_ACT = 'grip.video.mp4';
-const VIDEO_GRIP     = 'grip.video.mp4';
-
-function irProdutos() {
-    // Navega para a tela
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('s-produtos').classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('nav-produtos').classList.add('active');
-    window.scrollTo(0, 0);
-
-    // Reseta o card para animar de novo
-    const card = document.getElementById('prod-card-compra');
-    const overlay = document.getElementById('raquete-bg-overlay');
-    const video = document.getElementById('video-raquete-bg');
-
-    card.classList.remove('prod-card-visivel');
-    overlay.classList.remove('overlay-escurece');
-
-    // Reinicia o vídeo
-    if (video) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-    }
-
-    // Após 2.5s o overlay escurece e o card sobe
-    setTimeout(() => {
-        overlay.classList.add('overlay-escurece');
-    }, 2500);
-
-    setTimeout(() => {
-        card.classList.add('prod-card-visivel');
-    }, 3200);
+    if (video) { video.pause(); video.src = ''; }
 }
 
-function comprarRaqueteProd() {
-    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$ 1.399. 🎾');
-    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
-}
-}
-
-function renderProdutosTabs() {
-    const container = document.getElementById('produtos-container');
-    container.innerHTML = `
-    <div class="prod-tabs">
-        <button class="prod-tab ativo" onclick="showProdTab('raquete', this)">🏓 Raquete</button>
-        <button class="prod-tab" onclick="showProdTab('bola', this)">🎾 Bolas</button>
-        <button class="prod-tab" onclick="showProdTab('grip', this)">✊ Grip</button>
-    </div>
-    <div id="prod-content"></div>
-    `;
-    showProdTab('raquete', document.querySelector('.prod-tab.ativo'));
-}
-
-function showProdTab(tab, btn) {
-    document.querySelectorAll('.prod-tab').forEach(b => b.classList.remove('ativo'));
-    btn.classList.add('ativo');
-    const content = document.getElementById('prod-content');
-    content.innerHTML = '';
-
-    if (tab === 'raquete') renderRaquete(content);
-    else if (tab === 'bola') renderBola(content);
-    else if (tab === 'grip') renderGrip(content);
-}
-
-// ── RAQUETE ──────────────────────────────────────
-function renderRaquete(el) {
-    el.innerHTML = `
-    <div class="raquete-scene" id="raquete-scene">
-        <div class="raquete-bg-glow"></div>
-       <video src="${VIDEO_RAQUETE}" class="raquete-img" id="raquete-img"
-  autoplay muted loop playsinline></video>
-        <div class="raquete-info-box" id="raquete-info-box">
-            <div class="raquete-nome">Drop Shot<br><span>Quantum BT</span></div>
-            <div class="raquete-specs" id="raquete-specs"></div>
-            <div class="raquete-preco" id="raquete-preco" style="display:none">
-                <div class="preco-oferta-label">⚡ OFERTA EXCLUSIVA POR TEMPO LIMITADO</div>
-                <div class="preco-de">De <s>R$ 1.850,00</s></div>
-                <div class="preco-por">R$ 1.399,99<sup>,00</sup></div>
-                <button class="btn-comprar-raquete" onclick="comprarRaquete()">Reservar via WhatsApp 🎾</button>
-            </div>
-        </div>
-    </div>
-    `;
-
-    const specs = [
-        { icon: '📐', label: 'Perfil', val: '22mm — Toque confortável e elástico' },
-        { icon: '⚖️', label: 'Peso', val: '310g–330g — Agilidade e potência' },
-        { icon: '🎯', label: 'Balanço', val: 'Médio — Versatilidade total em quadra' },
-    ];
-
-    setTimeout(() => {
-        const img = document.getElementById('raquete-img');
-        img && img.classList.add('raquete-enter');
-    }, 100);
-
-    let i = 0;
-    const specsEl = document.getElementById('raquete-specs');
-
-    function showNextSpec() {
-        if (i >= specs.length) {
-            setTimeout(() => {
-                const precoEl = document.getElementById('raquete-preco');
-                if (precoEl) {
-                    precoEl.style.display = 'block';
-                    precoEl.classList.add('preco-reveal');
-                }
-            }, 400);
-            return;
-        }
-        const s = specs[i];
-        const div = document.createElement('div');
-        div.className = 'spec-item spec-anim';
-        div.innerHTML = `<span class="spec-icon">${s.icon}</span><div><strong>${s.label}</strong><br>${s.val}</div>`;
-        specsEl.appendChild(div);
-        i++;
-        setTimeout(showNextSpec, 900);
-    }
-
-    setTimeout(showNextSpec, 1200);
-}
-
-function comprarRaquete() {
-    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$: 1.399.99 🎾');
+function reservarAula(p) {
+    const prof = professores[p];
+    const msg  = encodeURIComponent(`Olá! Quero agendar uma aula com ${prof.nome}. 🎾`);
     window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
 }
 
-// ── BOLA ──────────────────────────────────────
-function renderBola(el) {
-    el.innerHTML = `
-    <div class="bola-scene" id="bola-scene">
-        <div class="bola-chuva" id="bola-chuva"></div>
-        <div class="bola-hero">
-            <video src="${VIDEO_BOLA}" class="bola-main-img" id="bola-img"
-  autoplay muted loop playsinline></video>
-            <div class="bola-hero-info">
-                <div class="bola-titulo">Bola Penalty<br><span>Beach Tennis</span></div>
-                <div class="bola-desc">Pressurizada, resistente e com excelente resposta para beach tennis e quadras rápidas.</div>
-                <div class="bola-preco-box">
-                    <span class="bola-preco">R$ 50,00</span>
-                    <span class="bola-unidade">/ tubo</span>
-                </div>
-                <button class="btn-comprar-bola" onclick="comprarBola()">Pedir via WhatsApp 🎾</button>
-            </div>
-        </div>
-    </div>
-    `;
-
-    // chuva de bolas
-    const chuva = document.getElementById('bola-chuva');
-    for (let i = 0; i < 18; i++) {
-       const b = document.createElement('video');
-b.src = VIDEO_BOLA;
-b.autoplay = true;
-b.muted = true;
-b.loop = true;
-b.setAttribute('playsinline', '');
-b.className = 'bola-cai';
-b.style.cssText = `left:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;animation-duration:${0.8+Math.random()*0.8}s;width:${28+Math.random()*24}px;opacity:${0.5+Math.random()*0.5};`;
-chuva.appendChild(b);
-    }
-
-    setTimeout(() => {
-        const heroImg = document.getElementById('bola-hero-img');
-        if (heroImg) heroImg.classList.add('bola-rola');
-    }, 1800);
-}
-
-function comprarBola() {
-    const msg = encodeURIComponent('Olá! Tenho interesse em comprar bolas Penalty Beach Tennis. 🎾');
-    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
-}
-
-// ── GRIP ──────────────────────────────────────
-function renderGrip(el) {
-    el.innerHTML = `
-    <div class="grip-scene" id="grip-scene">
-        <div class="grip-bg-glow"></div>
-        <div class="grip-action-wrap" id="grip-action-wrap">
-            <video src="${VIDEO_GRIP_ACT}" class="grip-action-img" id="grip-action-img" autoplay muted loop playsinline></video>
-            <div class="grip-action-overlay"></div>
-        </div>
-        <div class="grip-product-wrap" id="grip-product-wrap">
-            <video src="${VIDEO_GRIP}" class="grip-produto-img" id="grip-produto-img" autoplay muted loop playsinline></video>
-            <div class="grip-info">
-                <div class="grip-titulo">Grip Wilson<br><span>Overgrip Premium</span></div>
-                <div class="grip-desc">Absorção máxima de suor, conforto total e durabilidade profissional. O favorito dos atletas.</div>
-                <div class="grip-preco-box">
-                    <span class="grip-preco">R$ 25,00</span>
-                    <span class="grip-unidade">/ unidade</span>
-                </div>
-                <button class="btn-comprar-grip" onclick="comprarGrip()">Pedir via WhatsApp 🎾</button>
-            </div>
-        </div>
-    </div>
-    `;
-
-    setTimeout(() => {
-        const act = document.getElementById('grip-action-img');
-        if (act) act.classList.add('grip-sai');
-    }, 200);
-
-    setTimeout(() => {
-        const prod = document.getElementById('grip-produto-img');
-        if (prod) prod.classList.add('grip-rola-abre');
-    }, 1400);
-
-    setTimeout(() => {
-        const info = document.querySelector('.grip-info');
-        if (info) info.classList.add('grip-info-show');
-    }, 2200);
-}
-
-function comprarGrip() {
-    const msg = encodeURIComponent('Olá! Tenho interesse no Grip Wilson Overgrip por R5. 🎾');
-    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
-}
-
-function reservarAula(p) { alert("Reserva solicitada para " + professores[p].nome); }
-function verHistorico() { alert("Em breve!"); }
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
 
 carregarProfessoresHome();
 renderCatScroll();
