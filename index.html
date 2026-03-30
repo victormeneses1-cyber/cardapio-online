@@ -107,26 +107,43 @@
 </div>
  
 <!-- TELA PRODUTOS -->
+<!-- TELA PRODUTOS -->
 <div class="screen" id="s-produtos">
-    <!-- Vídeo de fundo -->
-    <video 
-        id="video-raquete-bg" 
-        autoplay 
-        muted 
-        playsinline 
-        loop
-        class="raquete-bg-video">
+
+    <!-- Vídeo de fundo — troca conforme aba ativa -->
+    <video id="video-prod-bg" autoplay muted playsinline loop class="raquete-bg-video">
         <source src="raquete.video.mp4" type="video/mp4">
     </video>
 
-    <!-- Overlay escuro sobre o vídeo -->
+    <!-- Overlay escuro -->
     <div class="raquete-bg-overlay" id="raquete-bg-overlay"></div>
 
-    <!-- Topbar flutuante -->
+    <!-- Topbar -->
     <div class="topbar topbar-transparente">
         <button class="back-btn" onclick="irHome()">←</button>
         <span class="topbar-title">🛍️ Loja</span>
     </div>
+
+    <!-- Abas fixas no topo -->
+    <div class="prod-abas-topo" id="prod-abas-topo">
+        <button class="prod-aba-btn ativo" onclick="trocarProduto('raquete', this)">🏓 Raquete</button>
+        <button class="prod-aba-btn" onclick="trocarProduto('bola', this)">🎾 Bolas</button>
+        <button class="prod-aba-btn" onclick="trocarProduto('grip', this)">✊ Grip</button>
+    </div>
+
+    <!-- Card de compra -->
+    <div class="prod-card-compra" id="prod-card-compra"></div>
+
+</div>
+
+    <!-- Abas Bolas e Grip -->
+<div class="prod-abas-extra" id="prod-abas-extra">
+    <div class="prod-abas-nav">
+        <button class="prod-aba-btn ativo" onclick="showAbaExtra('bola', this)">🎾 Bolas</button>
+        <button class="prod-aba-btn" onclick="showAbaExtra('grip', this)">✊ Grip</button>
+    </div>
+    <div id="prod-aba-conteudo"></div>
+</div>
 
     <!-- Card de compra — aparece após o vídeo -->
     <div class="prod-card-compra" id="prod-card-compra">
