@@ -419,11 +419,41 @@ const VIDEO_GRIP_ACT = 'grip.video.mp4';
 const VIDEO_GRIP     = 'grip.video.mp4';
 
 function irProdutos() {
+    // Navega para a tela
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('s-produtos').classList.add('active');
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('nav-produtos').classList.add('active');
-    renderProdutosTabs();
+    window.scrollTo(0, 0);
+
+    // Reseta o card para animar de novo
+    const card = document.getElementById('prod-card-compra');
+    const overlay = document.getElementById('raquete-bg-overlay');
+    const video = document.getElementById('video-raquete-bg');
+
+    card.classList.remove('prod-card-visivel');
+    overlay.classList.remove('overlay-escurece');
+
+    // Reinicia o vídeo
+    if (video) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+    }
+
+    // Após 2.5s o overlay escurece e o card sobe
+    setTimeout(() => {
+        overlay.classList.add('overlay-escurece');
+    }, 2500);
+
+    setTimeout(() => {
+        card.classList.add('prod-card-visivel');
+    }, 3200);
+}
+
+function comprarRaqueteProd() {
+    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$ 1.399. 🎾');
+    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
+}
 }
 
 function renderProdutosTabs() {
