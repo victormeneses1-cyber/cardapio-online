@@ -193,8 +193,17 @@ function mudarProduto(qual) {
 }
 
 function pararVideoProdutos() {
-    const video = document.getElementById('video-raquete-bg');
-    if (video) { video.pause(); video.currentTime = 0; }
+    prodTimers.forEach(clearTimeout);
+    prodTimers = [];
+    const video   = document.getElementById('video-prod-bg');
+    const card    = document.getElementById('prod-card-compra');
+    const overlay = document.getElementById('raquete-bg-overlay');
+    if (video)   { video.pause(); video.currentTime = 0; }
+    if (card)    { card.classList.remove('prod-card-visivel'); card.innerHTML = ''; }
+    if (overlay) { overlay.classList.remove('overlay-escurece'); }
+    document.querySelectorAll('.prod-aba-btn').forEach((b, i) => {
+        b.classList.toggle('ativo', i === 0);
+    });
 }
 
 // Botões de compra
