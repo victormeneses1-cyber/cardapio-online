@@ -154,26 +154,64 @@ function voltarCardapio() {
 // PRODUTOS — VÍDEO DE FUNDO CINEMATOGRÁFICO
 // ═══════════════════════════════════════════
 
+// ═══════════════════════════════════════════════
+//  PRODUTOS V2 — funções novas
+//  Cole no final do script.js, substituindo
+//  as funções antigas de produtos
+// ═══════════════════════════════════════════════
+
 function irProdutos() {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('s-produtos').classList.add('active');
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('nav-produtos').classList.add('active');
+    const nav = document.getElementById('nav-produtos');
+    if (nav) nav.classList.add('active');
     window.scrollTo(0, 0);
 
-    // Reseta estado visual
-    const card    = document.getElementById('prod-card-compra');
-    const overlay = document.getElementById('raquete-bg-overlay');
-    const video   = document.getElementById('video-raquete-bg');
+    // Reinicia o vídeo
+    const video = document.getElementById('video-raquete-bg');
+    if (video) { video.currentTime = 0; video.play().catch(() => {}); }
 
-    card.classList.remove('prod-card-visivel');
-    overlay.classList.remove('overlay-escurece');
+    // Garante que começa na aba raquete
+    mudarProduto('raquete');
+}
 
-    // Reinicia o vídeo do início
-    if (video) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-    }
+function mudarProduto(qual) {
+    // Esconde todos os painéis
+    ['raquete', 'bola', 'grip'].forEach(p => {
+        const painel = document.getElementById('painel-' + p);
+        const tab    = document.getElementById('tab-' + p);
+        if (painel) painel.style.display = 'none';
+        if (tab)    tab.classList.remove('ativo');
+    });
+
+    // Mostra o selecionado
+    const painelAtivo = document.getElementById('painel-' + qual);
+    const tabAtiva    = document.getElementById('tab-' + qual);
+    if (painelAtivo) painelAtivo.style.display = 'block';
+    if (tabAtiva)    tabAtiva.classList.add('ativo');
+}
+
+function pararVideoProdutos() {
+    const video = document.getElementById('video-raquete-bg');
+    if (video) { video.pause(); video.currentTime = 0; }
+}
+
+// Botões de compra
+function comprarRaqueteProd() {
+    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$ 1.399.99 🎾');
+    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
+}
+
+function comprarBolaProd() {
+    const msg = encodeURIComponent('Olá! Tenho interesse em comprar Bolas Penalty Beach Tennis. 🎾');
+    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
+}
+
+function comprarGripProd() {
+    const msg = encodeURIComponent('Olá! Tenho interesse no Grip Wilson Overgrip por R$ 25. 🎾');
+    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
+}
 
     // 2.5s → overlay escurece suavemente
     setTimeout(() => {
@@ -195,10 +233,6 @@ function pararVideoProdutos() {
     if (overlay) overlay.classList.remove('overlay-escurece');
 }
 
-function comprarRaqueteProd() {
-    const msg = encodeURIComponent('Olá! Tenho interesse na raquete Drop Shot Quantum BT por R$ 1.399. 🎾');
-    window.open(`https://wa.me/5521968892544?text=${msg}`, '_blank');
-}
 
 // ═══════════════════════════════════════════
 // CARDÁPIO
