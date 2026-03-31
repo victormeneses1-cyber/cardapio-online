@@ -101,16 +101,19 @@ const AGENDA = {
 let diaSelecionado = 0;
 
 function irQuadras() {
-    // esconde todas as telas
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('s-quadras').classList.add('active');
+    const tela = document.getElementById('s-quadras');
+    if (tela) tela.classList.add('active');
 
-    // atualiza nav
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('nav-quadras').classList.add('active');
+    const nav = document.getElementById('nav-quadras');
+    if (nav) nav.classList.add('active');
 
-    renderDias();
-    renderTabela();
+    // Pequeno delay garante que o DOM está pronto
+    setTimeout(() => {
+        renderDias();
+        renderTabela();
+    }, 50);
 }
 
 function renderDias() {
