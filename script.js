@@ -150,11 +150,6 @@ function irCardapio() {
 function voltarCardapio() {
     irTela('s-cardapio');
 }
-
-function irQuadras() {
-    irTela('s-quadras');
-}
-
 // ═══════════════════════════════════════════
 // PRODUTOS — VÍDEO DE FUNDO CINEMATOGRÁFICO
 // ═══════════════════════════════════════════
