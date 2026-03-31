@@ -222,7 +222,6 @@ function comprarGripProd() {
     setTimeout(() => {
         card.classList.add('prod-card-visivel');
     }, 3200);
-}
 
 function pararVideoProdutos() {
     const video = document.getElementById('video-raquete-bg');
