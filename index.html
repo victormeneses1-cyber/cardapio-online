@@ -105,95 +105,114 @@
         </div>
     </div>
 </div>
- 
-<!-- TELA PRODUTOS -->
+
+<!-- Cole este bloco no index.html substituindo a tela s-produtos -->
+
 <!-- TELA PRODUTOS -->
 <div class="screen" id="s-produtos">
 
-    <!-- Vídeo de fundo — troca conforme aba ativa -->
-    <video id="video-prod-bg" autoplay muted playsinline loop class="raquete-bg-video">
+    <!-- Vídeo de fundo -->
+    <video id="video-raquete-bg" autoplay muted playsinline loop class="raquete-bg-video">
         <source src="raquete.video.mp4" type="video/mp4">
     </video>
 
-    <!-- Overlay escuro -->
-    <div class="raquete-bg-overlay" id="raquete-bg-overlay"></div>
+    <!-- Overlay -->
+    <div class="raquete-bg-overlay overlay-escurece" id="raquete-bg-overlay"></div>
 
-    <!-- Topbar -->
+    <!-- Topbar fixa -->
     <div class="topbar topbar-transparente">
         <button class="back-btn" onclick="irHome()">←</button>
         <span class="topbar-title">🛍️ Loja</span>
     </div>
 
-    <!-- Abas fixas no topo -->
-    <div class="prod-abas-topo" id="prod-abas-topo">
-        <button class="prod-aba-btn ativo" onclick="trocarProduto('raquete', this)">🏓 Raquete</button>
-        <button class="prod-aba-btn" onclick="trocarProduto('bola', this)">🎾 Bolas</button>
-        <button class="prod-aba-btn" onclick="trocarProduto('grip', this)">✊ Grip</button>
-    </div>
+    <!-- Conteúdo scrollável -->
+    <div class="prod-scroll-content">
 
-    <!-- Card de compra -->
-    <div class="prod-card-compra" id="prod-card-compra"></div>
-
-</div>
-
-    <!-- Abas Bolas e Grip -->
-<div class="prod-abas-extra" id="prod-abas-extra">
-    <div class="prod-abas-nav">
-        <button class="prod-aba-btn ativo" onclick="showAbaExtra('bola', this)">🎾 Bolas</button>
-        <button class="prod-aba-btn" onclick="showAbaExtra('grip', this)">✊ Grip</button>
-    </div>
-    <div id="prod-aba-conteudo"></div>
-</div>
-
-    <!-- Card de compra — aparece após o vídeo -->
-    <div class="prod-card-compra" id="prod-card-compra">
-        <div class="prod-card-inner">
-
-            <!-- Badge -->
-            <div class="prod-badge">⚡ OFERTA EXCLUSIVA</div>
-
-            <!-- Nome -->
-            <h1 class="prod-nome">Drop Shot<br><span>Quantum BT</span></h1>
-
-            <!-- Specs rápidas -->
-            <div class="prod-specs-row">
-                <div class="prod-spec">
-                    <span class="spec-val">22mm</span>
-                    <span class="spec-key">Perfil</span>
-                </div>
-                <div class="prod-spec-divider"></div>
-                <div class="prod-spec">
-                    <span class="spec-val">320g</span>
-                    <span class="spec-key">Peso</span>
-                </div>
-                <div class="prod-spec-divider"></div>
-                <div class="prod-spec">
-                    <span class="spec-val">Médio</span>
-                    <span class="spec-key">Balanço</span>
-                </div>
-            </div>
-
-            <!-- Preço -->
-            <div class="prod-preco-wrap">
-                <span class="prod-preco-de">De <s>R$ 1.850</s></span>
-                <div class="prod-preco-por">
-                    <span class="prod-cifrao">R$</span>
-                    <span class="prod-valor">1.399</span>
-                    <span class="prod-cents">,00</span>
-                </div>
-                <span class="prod-economia">💰 Você economiza R$ 451,00</span>
-            </div>
-
-            <!-- Botão WhatsApp -->
-            <button class="btn-prod-whatsapp" onclick="comprarRaqueteProd()">
-                <span class="wpp-icon">📲</span>
-                Reservar via WhatsApp
-            </button>
-
-            <!-- Rodapé -->
-            <p class="prod-rodape">Estoque limitado • Entrega combinada na arena</p>
+        <!-- Abas -->
+        <div class="prod-tabs-novo">
+            <button class="prod-tab-novo ativo" id="tab-raquete" onclick="mudarProduto('raquete')">🏓 Raquete</button>
+            <button class="prod-tab-novo" id="tab-bola" onclick="mudarProduto('bola')">🎾 Bolas</button>
+            <button class="prod-tab-novo" id="tab-grip" onclick="mudarProduto('grip')">✊ Grip</button>
         </div>
-    </div>
+
+        <!-- ── RAQUETE ── -->
+        <div class="prod-painel" id="painel-raquete">
+            <div class="prod-card-glass">
+                <div class="prod-badge-novo">⚡ OFERTA EXCLUSIVA</div>
+                <h2 class="prod-nome-novo">Drop Shot<br><span>Quantum BT</span></h2>
+
+                <div class="prod-specs-novo">
+                    <div class="spec-novo"><span class="spec-v">22mm</span><span class="spec-k">Perfil</span></div>
+                    <div class="spec-sep"></div>
+                    <div class="spec-novo"><span class="spec-v">320g</span><span class="spec-k">Peso</span></div>
+                    <div class="spec-sep"></div>
+                    <div class="spec-novo"><span class="spec-v">Médio</span><span class="spec-k">Balanço</span></div>
+                </div>
+
+                <div class="prod-preco-novo">
+                    <span class="prod-preco-de">De <s>R$ 1.850,00</s></span>
+                    <div class="prod-preco-valor">
+                        <span class="pv-rs">R$</span>
+                        <span class="pv-num">1.399</span>
+                        <span class="pv-cent">,00</span>
+                    </div>
+                    <span class="prod-economia-novo">💰 Economia de R$ 451,00</span>
+                </div>
+
+                <button class="btn-wpp-novo" onclick="comprarRaqueteProd()">
+                    📲 Reservar via WhatsApp
+                </button>
+                <p class="prod-rodape-novo">Estoque limitado • Retirada na arena</p>
+            </div>
+        </div>
+
+        <!-- ── BOLAS ── -->
+        <div class="prod-painel" id="painel-bola" style="display:none">
+            <div class="prod-card-glass">
+                <div class="prod-badge-novo" style="background:rgba(231,76,60,0.15);border-color:rgba(231,76,60,0.4);color:#e74c3c;">🎾 PRODUTO OFICIAL</div>
+                <h2 class="prod-nome-novo">Bola Penalty<br><span style="color:#e74c3c;">Beach Tennis</span></h2>
+
+                <p class="prod-descricao">Pressurizada, resistente e com excelente resposta. Aprovada para competições e treinos.</p>
+
+                <div class="prod-preco-novo">
+                    <div class="prod-preco-valor">
+                        <span class="pv-rs">R$</span>
+                        <span class="pv-num">50</span>
+                        <span class="pv-cent">,00</span>
+                    </div>
+                    <span class="prod-economia-novo" style="color:rgba(231,76,60,0.8);">📦 por tubo</span>
+                </div>
+
+                <button class="btn-wpp-novo" onclick="comprarBolaProd()">
+                    📲 Pedir via WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- ── GRIP ── -->
+        <div class="prod-painel" id="painel-grip" style="display:none">
+            <div class="prod-card-glass">
+                <div class="prod-badge-novo" style="background:rgba(52,152,219,0.15);border-color:rgba(52,152,219,0.4);color:#3498db;">⭐ MAIS VENDIDO</div>
+                <h2 class="prod-nome-novo">Grip Wilson<br><span style="color:#3498db;">Overgrip Premium</span></h2>
+
+                <p class="prod-descricao">Absorção máxima de suor, conforto total e durabilidade profissional. O favorito dos atletas.</p>
+
+                <div class="prod-preco-novo">
+                    <div class="prod-preco-valor">
+                        <span class="pv-rs">R$</span>
+                        <span class="pv-num">25</span>
+                        <span class="pv-cent">,00</span>
+                    </div>
+                    <span class="prod-economia-novo" style="color:rgba(52,152,219,0.8);">📦 por unidade</span>
+                </div>
+
+                <button class="btn-wpp-novo" onclick="comprarGripProd()">
+                    📲 Pedir via WhatsApp
+                </button>
+            </div>
+        </div>
+
+    </div><!-- fim prod-scroll-content -->
 </div>
     <!-- BOTTOM NAV -->
 <div class="bottom-nav">
