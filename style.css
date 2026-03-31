@@ -1353,9 +1353,10 @@ video.grip-produto-img {
 }
 
 /* ══════════════════════════════════════════════
-   TELA PRODUTOS — VÍDEO DE FUNDO CINEMATOGRÁFICO
+   PRODUTOS V2 — VÍDEO FUNDO + CARDS ELEGANTES
    ══════════════════════════════════════════════ */
 
+/* ── Estrutura da tela ── */
 #s-produtos {
     position: relative;
     min-height: 100vh;
@@ -1363,10 +1364,9 @@ video.grip-produto-img {
     background: #000;
     padding-bottom: 0;
 }
-
-/* Remove o overlay padrão da .screen nesta tela */
 #s-produtos::before { display: none; }
 
+/* ── Vídeo de fundo ── */
 .raquete-bg-video {
     position: fixed;
     top: 0; left: 0;
@@ -1376,100 +1376,136 @@ video.grip-produto-img {
     pointer-events: none;
 }
 
+/* ── Overlay ── */
 .raquete-bg-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0,0,0,0.15);
     z-index: 1;
     transition: background 1.2s ease;
     pointer-events: none;
 }
 .raquete-bg-overlay.overlay-escurece {
-    background: rgba(0, 0, 0, 0.72);
+    background: rgba(0,0,0,0.75);
 }
 
-/* Topbar transparente */
+/* ── Topbar transparente ── */
 .topbar-transparente {
-    position: fixed;
+    position: fixed !important;
     top: 0; left: 0; right: 0;
-    background: transparent !important;
-    border-bottom: none !important;
-    backdrop-filter: none !important;
+    background: rgba(0,0,0,0.4) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    backdrop-filter: blur(12px) !important;
+    z-index: 20 !important;
+}
+
+/* ── Conteúdo scrollável ── */
+.prod-scroll-content {
+    position: relative;
     z-index: 10;
-}
-
-/* Card de compra — sobe do fundo */
-.prod-card-compra {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    z-index: 5;
-    padding: 0 0 80px;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.7s ease;
-}
-.prod-card-compra.prod-card-visivel {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.prod-card-inner {
-    background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 20, 0.0) 0%,
-        rgba(10, 10, 20, 0.92) 18%,
-        rgba(10, 10, 20, 0.98) 100%
-    );
-    padding: 40px 24px 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
-    text-align: center;
+    padding: 70px 16px 100px;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
-/* Badge */
-.prod-badge {
+/* ── Abas novas ── */
+.prod-tabs-novo {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: rgba(0,0,0,0.4);
+    padding: 6px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 360px;
+}
+
+.prod-tab-novo {
+    flex: 1;
+    padding: 10px 8px;
+    border-radius: 24px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+}
+.prod-tab-novo.ativo {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+.prod-tab-novo:hover:not(.ativo) {
+    color: rgba(255,255,255,0.8);
+}
+
+/* ── Painel do produto ── */
+.prod-painel {
+    width: 100%;
+    max-width: 420px;
+    animation: fadeUp 0.4s ease both;
+}
+
+/* ── Card de vidro ── */
+.prod-card-glass {
+    background: rgba(10,10,20,0.75);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 28px 22px 24px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ── Badge ── */
+.prod-badge-novo {
     font-family: 'Poppins', sans-serif;
     font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     color: #f1c40f;
-    background: rgba(241, 196, 15, 0.12);
-    border: 1px solid rgba(241, 196, 15, 0.35);
+    background: rgba(241,196,15,0.12);
+    border: 1px solid rgba(241,196,15,0.35);
     padding: 5px 16px;
     border-radius: 30px;
     animation: pisca 1.4s ease infinite alternate;
 }
 
-/* Nome */
-.prod-nome {
+/* ── Nome ── */
+.prod-nome-novo {
     font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 900;
     color: #fff;
     line-height: 1.1;
     text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
-.prod-nome span {
-    color: #f1c40f;
-    font-size: 2.4rem;
-}
+.prod-nome-novo span { color: #f1c40f; }
 
-/* Specs em linha */
-.prod-specs-row {
+/* ── Specs ── */
+.prod-specs-novo {
     display: flex;
     align-items: center;
-    gap: 0;
     background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 14px;
     overflow: hidden;
     width: 100%;
-    max-width: 340px;
 }
-.prod-spec {
+.spec-novo {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -1477,78 +1513,91 @@ video.grip-produto-img {
     padding: 10px 8px;
     gap: 3px;
 }
-.spec-val {
+.spec-v {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     font-weight: 800;
     color: #fff;
 }
-.spec-key {
+.spec-k {
     font-family: 'Poppins', sans-serif;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 600;
     color: rgba(255,255,255,0.4);
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
-.prod-spec-divider {
+.spec-sep {
     width: 1px;
     height: 36px;
     background: rgba(255,255,255,0.1);
     flex-shrink: 0;
 }
 
-/* Preço */
-.prod-preco-wrap {
+/* ── Descrição ── */
+.prod-descricao {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+/* ── Preço ── */
+.prod-preco-novo {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
 }
 .prod-preco-de {
     font-family: 'Poppins', sans-serif;
     font-size: 0.82rem;
     color: rgba(255,255,255,0.4);
 }
-.prod-preco-por {
+.prod-preco-valor {
     display: flex;
     align-items: flex-start;
     gap: 2px;
     line-height: 1;
 }
-.prod-cifrao {
+.pv-rs {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: #2ecc71;
-    margin-top: 6px;
+    margin-top: 8px;
 }
-.prod-valor {
+.pv-num {
     font-family: 'Poppins', sans-serif;
-    font-size: 3.2rem;
+    font-size: 3.4rem;
     font-weight: 900;
     color: #2ecc71;
     line-height: 1;
     text-shadow: 0 0 40px rgba(46,204,113,0.4);
 }
-.prod-cents {
+.pv-cent {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: #2ecc71;
-    margin-top: 6px;
+    margin-top: 8px;
 }
-.prod-economia {
+.prod-economia-novo {
     font-family: 'Poppins', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: rgba(46,204,113,0.8);
     font-weight: 600;
 }
 
-/* Botão WhatsApp */
-.btn-prod-whatsapp {
+/* ── Botão WhatsApp ── */
+.btn-wpp-novo {
     width: 100%;
-    max-width: 340px;
     padding: 16px;
     background: #25D366;
     color: #fff;
@@ -1566,17 +1615,21 @@ video.grip-produto-img {
     transition: transform 0.15s, box-shadow 0.2s;
     letter-spacing: 0.02em;
 }
-.btn-prod-whatsapp:hover {
+.btn-wpp-novo:hover {
     transform: scale(1.03);
     box-shadow: 0 12px 40px rgba(37,211,102,0.5);
 }
-.btn-prod-whatsapp:active { transform: scale(0.97); }
-.wpp-icon { font-size: 1.2rem; }
+.btn-wpp-novo:active { transform: scale(0.97); }
 
-/* Rodapé */
-.prod-rodape {
+/* ── Rodapé ── */
+.prod-rodape-novo {
     font-family: 'Poppins', sans-serif;
     font-size: 0.7rem;
     color: rgba(255,255,255,0.3);
-    letter-spacing: 0.03em;
+}
+
+/* ── Animação ── */
+@keyframes pisca {
+    from { opacity: 1; }
+    to   { opacity: 0.5; }
 }
